@@ -36,3 +36,51 @@ export type PostApiMbdConfigurationDispatchTypes =
   | ApiConfigurationSuccess
   | ApiConfigurationFail
   | PostApiMbdLoading;
+
+// Movies Genres request Actions and Types for Reducer
+
+export const POST_GENRES_MOVIES_FETCH_FROM_MBD_API_SUCCESS =
+  "POST_GENRES_MOVIES_FETCH_FROM_MBD_API_SUCCESS";
+
+type genre = {
+  id: number;
+  name: string;
+};
+
+export type genresApiResponse = {
+  genres: genre[];
+};
+
+export interface ApiGenresRequestSuccess {
+  type: typeof POST_GENRES_MOVIES_FETCH_FROM_MBD_API_SUCCESS;
+  genres: genresApiResponse;
+}
+
+export type PostMoviesGenresFetchDispatchTypes =
+  | ApiGenresRequestSuccess
+  | ApiConfigurationFail
+  | PostApiMbdLoading;
+
+// Tvshows Genres request Actions and Types for Reducer
+
+export const POST_GENRES_TV_FETCH_FROM_MBD_API_SUCCESS =
+  "POST_GENRES_TV_FETCH_FROM_MBD_API_SUCCESS";
+
+type genreTv = {
+  id: number;
+  name: string;
+};
+
+export type genresTvApiResponse = {
+  genres: genreTv[];
+};
+
+export interface ApiTvGenresRequestSuccess {
+  type: typeof POST_GENRES_TV_FETCH_FROM_MBD_API_SUCCESS;
+  tvGenres: genresTvApiResponse;
+}
+
+export type PostTvGenresFetchDispatchTypes =
+  | ApiTvGenresRequestSuccess
+  | ApiConfigurationFail
+  | PostApiMbdLoading;
