@@ -84,3 +84,131 @@ export type PostTvGenresFetchDispatchTypes =
   | ApiTvGenresRequestSuccess
   | ApiConfigurationFail
   | PostApiMbdLoading;
+
+// Upcoming movies request Actions and Types for Reducer
+
+export const REQUEST_UPCOMING_MOVIES_FETCH_FROM_MBD_API_SUCCESS =
+  "REQUEST_UPCOMING_MOVIES_FETCH_FROM_MBD_API_SUCCESS";
+
+type results = {
+  poster_path: string;
+  overview: string;
+  genre_ids: number[];
+  original_title: string;
+  id: number;
+  title: string;
+  vote_average: number;
+};
+
+type requestUpcomingMoviesResults = {
+  page: number;
+  results: results[];
+};
+
+export type requestUpcomingMoviesResponse = {
+  genres: requestUpcomingMoviesResults[];
+};
+
+export interface UpcomingMoviesRequestSuccess {
+  type: typeof REQUEST_UPCOMING_MOVIES_FETCH_FROM_MBD_API_SUCCESS;
+  upcomingMoviesResponse: requestUpcomingMoviesResponse;
+}
+
+export type UpcomingResquestMbdApiDispatchTypes =
+  | UpcomingMoviesRequestSuccess
+  | ApiConfigurationFail
+  | PostApiMbdLoading;
+
+// Popular movies request Actions and Types for Reducer
+
+export const REQUEST_POPULAR_MOVIES_FETCH_FROM_MBD_API_SUCCESS =
+  "REQUEST_POPULAR_MOVIES_FETCH_FROM_MBD_API_SUCCESS";
+
+type popularMoviesResults = {
+  poster_path: string;
+  overview: string;
+  genre_ids: number[];
+  original_title: string;
+  id: number;
+  title: string;
+  vote_average: number;
+};
+
+type requestPopularMoviesResults = {
+  page: number;
+  results: popularMoviesResults[];
+};
+
+export type requestPopularMoviesResponse = {
+  genres: requestPopularMoviesResults[];
+};
+
+export interface PopularMoviesRequestSuccess {
+  type: typeof REQUEST_POPULAR_MOVIES_FETCH_FROM_MBD_API_SUCCESS;
+  popularMoviesResponse: requestPopularMoviesResponse;
+}
+
+export type popularMoviesResquestMbdApiDispatchTypes =
+  | PopularMoviesRequestSuccess
+  | ApiConfigurationFail
+  | PostApiMbdLoading;
+
+// NowPlaying movies request Actions and Types for Reducer
+
+export const REQUEST_NOWPLAYING_MOVIES_FETCH_FROM_MBD_API_SUCCESS =
+  "REQUEST_NOWPLAYING_MOVIES_FETCH_FROM_MBD_API_SUCCESS";
+
+type nowPlayingMoviesResults = {
+  poster_path: string;
+  overview: string;
+  genre_ids: number[];
+  original_title: string;
+  id: number;
+  title: string;
+  vote_average: number;
+};
+
+export type requestNowPlayingMoviesResponse = {
+  page: number;
+  genres: nowPlayingMoviesResults[];
+};
+
+export interface NowPlayingMoviesRequestSuccess {
+  type: typeof REQUEST_NOWPLAYING_MOVIES_FETCH_FROM_MBD_API_SUCCESS;
+  nowPlayingMoviesResponse: requestNowPlayingMoviesResponse;
+}
+
+export type nowPlayingMoviesResquestMbdApiDispatchTypes =
+  | NowPlayingMoviesRequestSuccess
+  | ApiConfigurationFail
+  | PostApiMbdLoading;
+
+// TopRated movies request Actions and Types for Reducer
+
+export const REQUEST_TOPRATED_MOVIES_FETCH_FROM_MBD_API_SUCCESS =
+  "REQUEST_TOPRATED_MOVIES_FETCH_FROM_MBD_API_SUCCESS";
+
+type topRatedMoviesResults = {
+  poster_path: string;
+  overview: string;
+  genre_ids: number[];
+  original_title: string;
+  id: number;
+  title: string;
+  vote_average: number;
+};
+
+export type requestTopRatedMoviesResponse = {
+  page: number;
+  genres: topRatedMoviesResults[];
+};
+
+export interface TopRatedMoviesRequestSuccess {
+  type: typeof REQUEST_TOPRATED_MOVIES_FETCH_FROM_MBD_API_SUCCESS;
+  topratedMoviesResponse: requestNowPlayingMoviesResponse;
+}
+
+export type TopRatedMoviesResquestMbdApiDispatchTypes =
+  | TopRatedMoviesRequestSuccess
+  | ApiConfigurationFail
+  | PostApiMbdLoading;

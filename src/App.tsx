@@ -1,10 +1,14 @@
 import React, { useEffect } from "react";
 import "./App.css";
+
+import { BrowserRouter, Route } from "react-router-dom";
+
 import { useSelector, useDispatch } from "react-redux";
 import { postMDBConfigurationApi } from "./store/actions/PostApiMbdConfigAction";
 import { postMoviesGenresFetchResponse } from "./store/actions/PostMoviesGenresFetchAction";
 import { postTvshowsGenresFetchResponse } from "./store/actions/PostTvShowsGenresFetchAction";
 import { RootStore } from "./store/store";
+import Home from "./components/home/home";
 
 function App() {
   const dispatch = useDispatch();
@@ -32,7 +36,13 @@ function App() {
     );
   }, []);
 
-  return <div className="App"></div>;
+  return (
+    <BrowserRouter>
+      <div className="App">
+        <Route path="/" component={Home} />
+      </div>
+    </BrowserRouter>
+  );
 }
 
 export default App;
