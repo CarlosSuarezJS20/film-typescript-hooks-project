@@ -3,6 +3,21 @@ export const POST_API_MBD_CONFIGURATION_SUCCESS =
 export const POST_API_MBD_LOADING = "POST_API_MBD_LOADING ";
 export const POST_API_MBD_FAIL = "POST_API_MBD_FAIL";
 
+// Using a Global Interfaces and Types that will work across all Async actions
+
+export interface ApiConfigurationFail {
+  type: typeof POST_API_MBD_FAIL;
+  error: string;
+}
+
+export interface PostApiMbdLoading {
+  type: typeof POST_API_MBD_LOADING;
+}
+
+export type requestFunction = (url: string) => void;
+
+// GLOBAL CONFIGURATION REQUEST FOR DISPLAYING ITEMS
+
 export type payloadResponse = {
   image: {
     base_url: string;
@@ -20,17 +35,6 @@ export interface ApiConfigurationSuccess {
   type: typeof POST_API_MBD_CONFIGURATION_SUCCESS;
   payload: payloadResponse;
 }
-
-export interface ApiConfigurationFail {
-  type: typeof POST_API_MBD_FAIL;
-  error: string;
-}
-
-export interface PostApiMbdLoading {
-  type: typeof POST_API_MBD_LOADING;
-}
-
-export type requestFunction = (url: string) => void;
 
 export type PostApiMbdConfigurationDispatchTypes =
   | ApiConfigurationSuccess
@@ -58,30 +62,6 @@ export interface ApiGenresRequestSuccess {
 
 export type PostMoviesGenresFetchDispatchTypes =
   | ApiGenresRequestSuccess
-  | ApiConfigurationFail
-  | PostApiMbdLoading;
-
-// Tvshows Genres request Actions and Types for Reducer
-
-export const POST_GENRES_TV_FETCH_FROM_MBD_API_SUCCESS =
-  "POST_GENRES_TV_FETCH_FROM_MBD_API_SUCCESS";
-
-type genreTv = {
-  id: number;
-  name: string;
-};
-
-export type genresTvApiResponse = {
-  genres: genreTv[];
-};
-
-export interface ApiTvGenresRequestSuccess {
-  type: typeof POST_GENRES_TV_FETCH_FROM_MBD_API_SUCCESS;
-  tvGenres: genresTvApiResponse;
-}
-
-export type PostTvGenresFetchDispatchTypes =
-  | ApiTvGenresRequestSuccess
   | ApiConfigurationFail
   | PostApiMbdLoading;
 
@@ -210,5 +190,122 @@ export interface TopRatedMoviesRequestSuccess {
 
 export type TopRatedMoviesResquestMbdApiDispatchTypes =
   | TopRatedMoviesRequestSuccess
+  | ApiConfigurationFail
+  | PostApiMbdLoading;
+
+// ACTION TYPES FOR HOME PAGE TV SHOWS
+
+// Tvshows Genres request Actions and Types for Reducer
+
+export const POST_GENRES_TV_FETCH_FROM_MBD_API_SUCCESS =
+  "POST_GENRES_TV_FETCH_FROM_MBD_API_SUCCESS";
+
+type genreTv = {
+  id: number;
+  name: string;
+};
+
+export type genresTvApiResponse = {
+  page: number;
+  genres: genreTv[];
+};
+
+export interface ApiTvGenresRequestSuccess {
+  type: typeof POST_GENRES_TV_FETCH_FROM_MBD_API_SUCCESS;
+  tvGenres: genresTvApiResponse;
+}
+
+export type PostTvGenresFetchDispatchTypes =
+  | ApiTvGenresRequestSuccess
+  | ApiConfigurationFail
+  | PostApiMbdLoading;
+
+// TV shows Airing Tonight
+
+export const REQUEST_TV_SHOWS_AIRING_TODAY_FETCH_FROM_MBD_API_SUCCESS =
+  "REQUEST_TV_SHOWS_AIRING_TODAY_FETCH_FROM_MBD_API_SUCCESS";
+
+type tvShowAiringTodayResponse = {
+  poster_path: string | null;
+  id: number;
+  backdrop_path: string | null;
+  total_results: number;
+  total_pages: number;
+  origin_country: string[];
+  vote_avarega: number;
+};
+
+export type tvShowsAiringTodayApiResponse = {
+  page: number;
+  tvShowsAiringTodayResponse: tvShowAiringTodayResponse[];
+};
+
+export interface TvShowsAiringTodayRequestSuccess {
+  type: typeof REQUEST_TV_SHOWS_AIRING_TODAY_FETCH_FROM_MBD_API_SUCCESS;
+  tvAiringTodayResponse: tvShowsAiringTodayApiResponse;
+}
+
+export type tvShowsAiringTodayFetchDispatchTypes =
+  | TvShowsAiringTodayRequestSuccess
+  | ApiConfigurationFail
+  | PostApiMbdLoading;
+
+// Toprated TVshows Request actions
+
+export const REQUEST_TOPRATED_TVSHOWS_FETCH_FROM_MBD_API_SUCCESS =
+  "REQUEST_TOPRATED_TVSHOWS_FETCH_FROM_MBD_API_SUCCESS";
+
+type topRatedTvShowResponse = {
+  poster_path: string | null;
+  id: number;
+  backdrop_path: string | null;
+  total_results: number;
+  total_pages: number;
+  origin_country: string[];
+  vote_avarega: number;
+};
+
+export type topratedTvshowsApiResponse = {
+  page: number;
+  topTvshowsResponse: topRatedTvShowResponse[];
+};
+
+export interface TopratedTvshowRequestSuccess {
+  type: typeof REQUEST_TOPRATED_TVSHOWS_FETCH_FROM_MBD_API_SUCCESS;
+  topratedTvShowsResponse: topratedTvshowsApiResponse;
+}
+
+export type topratedTvShowsFetchDispatchTypes =
+  | TopratedTvshowRequestSuccess
+  | ApiConfigurationFail
+  | PostApiMbdLoading;
+
+// Popular Request actions
+
+export const REQUEST_POPULAR_TVSHOWS_FETCH_FROM_MBD_API_SUCCESS =
+  "REQUEST_POPULAR_TVSHOWS_FETCH_FROM_MBD_API_SUCCESS";
+
+type popularTvShowResponse = {
+  poster_path: string | null;
+  id: number;
+  backdrop_path: string | null;
+  total_results: number;
+  total_pages: number;
+  origin_country: string[];
+  vote_avarega: number;
+};
+
+export type popularTvShowApiResponse = {
+  page: number;
+  popularTvResponse: popularTvShowResponse[];
+};
+
+export interface popularTvShowRequestSuccess {
+  type: typeof REQUEST_POPULAR_TVSHOWS_FETCH_FROM_MBD_API_SUCCESS;
+  popularTvShowsResponse: popularTvShowApiResponse;
+}
+
+export type popularTvShowFetchDispatchTypes =
+  | popularTvShowRequestSuccess
   | ApiConfigurationFail
   | PostApiMbdLoading;

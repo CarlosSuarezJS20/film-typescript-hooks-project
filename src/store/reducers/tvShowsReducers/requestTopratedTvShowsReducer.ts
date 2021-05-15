@@ -1,13 +1,13 @@
 import {
-  requestPopularMoviesResponse,
-  popularMoviesResquestMbdApiDispatchTypes,
-  REQUEST_POPULAR_MOVIES_FETCH_FROM_MBD_API_SUCCESS,
+  topratedTvshowsApiResponse,
+  topratedTvShowsFetchDispatchTypes,
+  REQUEST_TOPRATED_TVSHOWS_FETCH_FROM_MBD_API_SUCCESS,
   POST_API_MBD_FAIL,
   POST_API_MBD_LOADING,
-} from "../actions/actionsTypes";
+} from "../../actions/actionsTypes";
 
 interface DefaultStateInt {
-  popularMoviesResponseMbd?: requestPopularMoviesResponse;
+  topratedTvshowsResponseMbd?: topratedTvshowsApiResponse;
   loading: boolean;
   error?: string;
 }
@@ -18,7 +18,7 @@ const initialState = {
 
 const postMovieGenresReducer = (
   state: DefaultStateInt = initialState,
-  action: popularMoviesResquestMbdApiDispatchTypes
+  action: topratedTvShowsFetchDispatchTypes
 ): DefaultStateInt => {
   switch (action.type) {
     case POST_API_MBD_FAIL:
@@ -31,11 +31,11 @@ const postMovieGenresReducer = (
         ...state,
         loading: true,
       };
-    case REQUEST_POPULAR_MOVIES_FETCH_FROM_MBD_API_SUCCESS:
+    case REQUEST_TOPRATED_TVSHOWS_FETCH_FROM_MBD_API_SUCCESS:
       return {
         ...state,
         loading: false,
-        popularMoviesResponseMbd: action.popularMoviesResponse,
+        topratedTvshowsResponseMbd: action.topratedTvShowsResponse,
       };
 
     default:

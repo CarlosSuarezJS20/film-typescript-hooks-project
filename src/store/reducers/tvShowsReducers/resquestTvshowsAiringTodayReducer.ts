@@ -1,13 +1,13 @@
 import {
-  genresApiResponse,
-  PostTvGenresFetchDispatchTypes,
-  POST_GENRES_TV_FETCH_FROM_MBD_API_SUCCESS,
+  tvShowsAiringTodayApiResponse,
+  tvShowsAiringTodayFetchDispatchTypes,
+  REQUEST_TV_SHOWS_AIRING_TODAY_FETCH_FROM_MBD_API_SUCCESS,
   POST_API_MBD_FAIL,
   POST_API_MBD_LOADING,
-} from "../actions/actionsTypes";
+} from "../../actions/actionsTypes";
 
 interface DefaultStateInt {
-  tvshowsGenresResponseMbd?: genresApiResponse;
+  tvShowsAiringTodayResponseMbd?: tvShowsAiringTodayApiResponse;
   loading: boolean;
   error?: string;
 }
@@ -18,7 +18,7 @@ const initialState = {
 
 const postMovieGenresReducer = (
   state: DefaultStateInt = initialState,
-  action: PostTvGenresFetchDispatchTypes
+  action: tvShowsAiringTodayFetchDispatchTypes
 ): DefaultStateInt => {
   switch (action.type) {
     case POST_API_MBD_FAIL:
@@ -31,11 +31,11 @@ const postMovieGenresReducer = (
         ...state,
         loading: true,
       };
-    case POST_GENRES_TV_FETCH_FROM_MBD_API_SUCCESS:
+    case REQUEST_TV_SHOWS_AIRING_TODAY_FETCH_FROM_MBD_API_SUCCESS:
       return {
         ...state,
         loading: false,
-        tvshowsGenresResponseMbd: action.tvGenres,
+        tvShowsAiringTodayResponseMbd: action.tvAiringTodayResponse,
       };
 
     default:
