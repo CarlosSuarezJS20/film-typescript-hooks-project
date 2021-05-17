@@ -16,7 +16,7 @@ const initialState = {
   loading: false,
 };
 
-const postMovieGenresReducer = (
+const tvShowsAiringTodayReducer = (
   state: DefaultStateInt = initialState,
   action: tvShowsAiringTodayFetchDispatchTypes
 ): DefaultStateInt => {
@@ -43,4 +43,4 @@ const postMovieGenresReducer = (
   }
 };
 
-export default postMovieGenresReducer;
+export default tvShowsAiringTodayReducer;

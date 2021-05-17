@@ -1,23 +1,23 @@
 import {
-  REQUEST_POPULAR_TVSHOWS_FETCH_FROM_MBD_API_SUCCESS,
+  REQUEST_TV_SHOWS_AIRING_TODAY_FETCH_FROM_MBD_API_SUCCESS,
   POST_API_MBD_LOADING,
   POST_API_MBD_FAIL,
-  popularTvShowFetchDispatchTypes,
+  tvShowsAiringTodayFetchDispatchTypes,
   requestFunction,
-} from "../actions/actionsTypes";
+} from "./actionsTypes";
 import { Dispatch } from "redux";
 import axios from "axios";
 
-export const popularTvshowsFetchReq: requestFunction =
-  (url) => async (dispatch: Dispatch<popularTvShowFetchDispatchTypes>) => {
+export const tvshowsAiringTodayFetchReq: requestFunction =
+  (url) => async (dispatch: Dispatch<tvShowsAiringTodayFetchDispatchTypes>) => {
     try {
       dispatch({
         type: POST_API_MBD_LOADING,
       });
       const postApiResponse = await axios.get(url);
       dispatch({
-        type: REQUEST_POPULAR_TVSHOWS_FETCH_FROM_MBD_API_SUCCESS,
-        popularTvShowsResponse: postApiResponse.data,
+        type: REQUEST_TV_SHOWS_AIRING_TODAY_FETCH_FROM_MBD_API_SUCCESS,
+        tvAiringTodayResponse: postApiResponse.data,
       });
     } catch (error) {
       dispatch({

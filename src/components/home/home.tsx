@@ -22,6 +22,7 @@ const Home = () => {
 
   useEffect(() => {
     // Movie Requests
+    console.log("Home Mounthed");
     dispatch(
       upcomingMoviesFetchResponse(
         `https://api.themoviedb.org/3/movie/upcoming?api_key=${configMbdApiState.apiKey}&language=en-US&page=1`

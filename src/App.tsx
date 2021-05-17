@@ -3,12 +3,17 @@ import "./App.css";
 
 import { BrowserRouter, Route } from "react-router-dom";
 
+import Home from "./components/home/home";
+import SingleMovieDetails from "./components/movieItemDetails/movieItemDetails";
+
 import { useSelector, useDispatch } from "react-redux";
+
 import { postMDBConfigurationApi } from "./store/actions/PostApiMbdConfigAction";
+
 import { postMoviesGenresFetchResponse } from "./store/actions/PostMoviesGenresFetchAction";
 import { postTvshowsGenresFetchResponse } from "./store/actions/PostTvShowsGenresFetchAction";
 import { RootStore } from "./store/store";
-import Home from "./components/home/home";
+import TvShowDetails from "./components/tvshowDetails/tvshowDetails";
 
 function App() {
   const dispatch = useDispatch();
@@ -39,7 +44,18 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <Route path="/" component={Home} />
+        <Route path="/" exact component={Home} />
+
+        <Route
+          path="/details/movie/:movie-title"
+          exact
+          component={SingleMovieDetails}
+        />
+        <Route
+          path="/details/tv/tvshow:title"
+          exact
+          component={TvShowDetails}
+        />
       </div>
     </BrowserRouter>
   );

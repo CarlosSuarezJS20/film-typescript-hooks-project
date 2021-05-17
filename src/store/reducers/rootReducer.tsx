@@ -12,6 +12,15 @@ import postTvshowsGenresFetchReducer from "../../store/reducers/tvShowsReducers/
 
 import tvShowsAiringTodayFetchReducer from "../../store/reducers/tvShowsReducers/resquestTvshowsAiringTodayReducer";
 import topratedTvshowsFetchReducer from "../../store/reducers/tvShowsReducers/requestTopratedTvShowsReducer";
+
+import getMovieDetailsReducer from "./singleItemsReducer/moviesItemReducers/requestMovieDetailsReducer";
+import getMovieCastReducer from "./singleItemsReducer/moviesItemReducers/requestMovieCastReducer";
+import getMovieTrailerReducer from "./singleItemsReducer/moviesItemReducers/requestMovieTrailersReducer";
+
+import getTvshowDetailsReducer from "./singleItemsReducer/tvshowsItemReducers/requestTvshowDetailsReducer";
+import getTvshowCastReducer from "./singleItemsReducer/tvshowsItemReducers/requestTvshowCastReducer";
+import getTvshowVideosReducer from "./singleItemsReducer/tvshowsItemReducers/requestTvshowDetailsReducer";
+
 const rootReducer = combineReducers({
   postApiConfigurationReducer: postApiMbdConfigurationReducer,
   postMoviesGenresReducer: postMoviesGenresFetchReducer,
@@ -20,9 +29,18 @@ const rootReducer = combineReducers({
   requestPopularMoviesReducer: requestPopularMoviesR,
   requestNowPlayingMoviesReducer: requestNowPlayingMoviesR,
   requestTopratedMoviesReducer: requestTopratedMoviesR,
-  //
+  //tv shows:
   tvShowsAiringTFetchReducer: tvShowsAiringTodayFetchReducer,
   topratedTvSFetchReducer: topratedTvshowsFetchReducer,
+  //singleItems reducers
+  //movie reducers
+  getMovieDetailsR: getMovieDetailsReducer,
+  getMovieCastR: getMovieCastReducer,
+  getMovieTrailerR: getMovieTrailerReducer,
+  // tvshow reducers
+  getTvshowDetailsR: getTvshowDetailsReducer,
+  getTvshowCastR: getTvshowCastReducer,
+  getTvshowVideosR: getTvshowVideosReducer,
 });
 
 export default rootReducer;
