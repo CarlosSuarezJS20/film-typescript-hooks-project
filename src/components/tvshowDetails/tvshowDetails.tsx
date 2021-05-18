@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import "./tvshowDetails.css";
 import { useSelector, useDispatch } from "react-redux";
 
+import { NavLink } from "react-router-dom";
+
 import { getTvshowsDetailsResponse } from "../../store/actions/actionsSingleItems/singleTvshowActions/GetTvShowDetails";
 import { getTvshowsCastResponse } from "../../store/actions/actionsSingleItems/singleTvshowActions/GetTvShowCast";
 import { getTvshowsVideosResponse } from "../../store/actions/actionsSingleItems/singleTvshowActions/GetTvShowVideos";
@@ -20,10 +22,21 @@ const TvShowDetails: React.FC<TvShowDetailsProps> = (props) => {
     (state: RootStore) => state.postApiConfigurationReducer
   );
 
+  const getTvshowDetailsState = useSelector(
+    (state: RootStore) => state.getTvshowDetailsR
+  );
+
+  const getTvshowCastState = useSelector(
+    (state: RootStore) => state.getTvshowCastR
+  );
+
+  const getTvshowState = useSelector(
+    (state: RootStore) => state.getTvshowVideosR
+  );
+
   //   test tvshow 100
 
   useEffect(() => {
-    console.log("TSDetails Mounth");
     dispatch(
       getTvshowsDetailsResponse(
         `https://api.themoviedb.org/3/tv/100?api_key=${configMbdApiState.apiKey}&language=en-US`

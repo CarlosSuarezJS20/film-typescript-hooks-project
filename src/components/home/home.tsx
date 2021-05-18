@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import "./home.css";
 import { useSelector, useDispatch } from "react-redux";
+import { NavLink } from "react-router-dom";
 // Movies Requests
 import { upcomingMoviesFetchResponse } from "../../store/actions/RequestUpcomingMoviesApi";
 import { popularMoviesFetchResponse } from "../../store/actions/RequestPopularMoviesApi";
@@ -11,6 +12,7 @@ import { tvshowsAiringTodayFetchReq } from "../../store/actions/RequestTvshowsAi
 import { topratedTvshowsFetchReq } from "../../store/actions/RequestTopratedTVshowsApi";
 
 import { RootStore } from "../../store/store";
+import { $CombinedState } from "redux";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -20,9 +22,35 @@ const Home = () => {
     (state: RootStore) => state.postApiConfigurationReducer
   );
 
+  // states for Movies Requests
+  const upcomingMoviesReqState = useSelector(
+    (state: RootStore) => state.requestUpcomingMoviesReducer
+  );
+
+  const popularMoviesReqState = useSelector(
+    (state: RootStore) => state.requestPopularMoviesReducer
+  );
+
+  const nowPlayingReqState = useSelector(
+    (state: RootStore) => state.requestNowPlayingMoviesReducer
+  );
+
+  const topRatedReqState = useSelector(
+    (state: RootStore) => state.requestTopratedMoviesReducer
+  );
+
+  // states for TvShows Requests
+
+  const tvShowsAiringTodayRequestState = useSelector(
+    (state: RootStore) => state.tvShowsAiringTFetchReducer
+  );
+
+  const topRatedTvshowsRequestState = useSelector(
+    (state: RootStore) => state.topratedTvSFetchReducer
+  );
+
   useEffect(() => {
     // Movie Requests
-    console.log("Home Mounthed");
     dispatch(
       upcomingMoviesFetchResponse(
         `https://api.themoviedb.org/3/movie/upcoming?api_key=${configMbdApiState.apiKey}&language=en-US&page=1`
@@ -56,7 +84,7 @@ const Home = () => {
     );
   }, []);
 
-  return <div className="App"></div>;
+  return <div></div>;
 };
 
 export default Home;

@@ -1,0 +1,82 @@
+.welcomePageHero {
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.418)),
+    url("../../assets/images/pexels-pixabay-33129.jpg") center/cover no-repeat;
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  place-items: center;
+}
+
+.welcome-text-holder {
+  display: flex;
+  color: white;
+  font-size: 2.5rem;
+  font-weight: bolder;
+  margin: 20rem auto;
+  transition: 0.3s color;
+}
+
+.welcome-text-holder div:hover {
+  color: rgb(196, 10, 10);
+}
+
+.links {
+  margin-top: -20rem;
+  display: flex;
+  color: white;
+  font-size: 1.6rem;
+  font-weight: bolder;
+  transition: 0.3s color;
+}
+
+.movies-link {
+  display: flex;
+  color: #ffff;
+  margin: 0 1rem;
+  padding: 0 2rem;
+}
+
+.movies-link:hover {
+  background: rgba(196, 10, 10, 0.322);
+  border-radius: 15px;
+}
+
+.movies-link div:hover {
+  color: rgb(196, 10, 10);
+}
+
+.tv-shows-link {
+  display: flex;
+  color: rgb(196, 10, 10);
+  margin: 0 1rem;
+  padding: 0 2rem;
+}
+
+.tv-shows-link:hover {
+  background: rgba(255, 255, 255, 0.322);
+  border-radius: 15px;
+}
+
+.tv-shows-link div:hover {
+  color: #ffff;
+}
+
+@media (min-width: 500px) {
+  .welcome-text-holder {
+    display: flex;
+    color: white;
+    font-size: 4rem;
+    font-weight: bolder;
+    margin: 20rem auto;
+    transition: 0.3s color;
+  }
+
+  .links {
+    margin-top: -30rem;
+    display: flex;
+    color: white;
+    font-size: 2.3rem;
+    font-weight: bolder;
+    transition: 0.3s color;
+  }
+}

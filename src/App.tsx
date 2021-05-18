@@ -3,8 +3,10 @@ import "./App.css";
 
 import { BrowserRouter, Route } from "react-router-dom";
 
+import WelcomePage from "./components/welcomePage/welcomePage";
 import Home from "./components/home/home";
 import SingleMovieDetails from "./components/movieItemDetails/movieItemDetails";
+import ActorDetails from "./components/actorDetails/actorDetails";
 
 import { useSelector, useDispatch } from "react-redux";
 
@@ -44,7 +46,8 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <Route path="/" exact component={Home} />
+        <Route path="/" exact component={WelcomePage} />
+        <Route path="/home" exact component={Home} />
 
         <Route
           path="/details/movie/:movie-title"
@@ -52,9 +55,14 @@ function App() {
           component={SingleMovieDetails}
         />
         <Route
-          path="/details/tv/tvshow:title"
+          path="/details/tv/:tvshow-title"
           exact
           component={TvShowDetails}
+        />
+        <Route
+          path="/details/actor/:actors-name"
+          exact
+          component={ActorDetails}
         />
       </div>
     </BrowserRouter>

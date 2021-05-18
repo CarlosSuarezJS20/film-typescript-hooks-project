@@ -1,6 +1,9 @@
 import React, { useEffect } from "react";
 import "./movieItemDetails.css";
 import { useSelector, useDispatch } from "react-redux";
+
+import { NavLink } from "react-router-dom";
+
 import { getMovieDetailsResponse } from "../../store/actions/actionsSingleItems/singleMovieItemActions/GetRequestMoviesDetails";
 import { getMovieCastResponse } from "../../store/actions/actionsSingleItems/singleMovieItemActions/GetMovieCast";
 import { getMovieTrailersResponse } from "../../store/actions/actionsSingleItems/singleMovieItemActions/GetMovieTrailers";
@@ -19,8 +22,21 @@ const MovieDetails: React.FC<MovieDetails> = (props) => {
     (state: RootStore) => state.postApiConfigurationReducer
   );
 
+  // Info Movie Request States
+
+  const getMoviesDetailsState = useSelector(
+    (state: RootStore) => state.getMovieDetailsR
+  );
+
+  const getMovieCastState = useSelector(
+    (state: RootStore) => state.getMovieCastR
+  );
+
+  const getMovieTrailersState = useSelector(
+    (state: RootStore) => state.getMovieTrailerR
+  );
+
   useEffect(() => {
-    console.log("movieDetailsMounthed");
     dispatch(
       getMovieDetailsResponse(
         `https://api.themoviedb.org/3/movie/460465?api_key=${configMbdApiState.apiKey}&language=en-US`

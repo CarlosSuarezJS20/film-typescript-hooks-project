@@ -20,6 +20,8 @@ import getMovieTrailerReducer from "./singleItemsReducer/moviesItemReducers/requ
 import getTvshowDetailsReducer from "./singleItemsReducer/tvshowsItemReducers/requestTvshowDetailsReducer";
 import getTvshowCastReducer from "./singleItemsReducer/tvshowsItemReducers/requestTvshowCastReducer";
 import getTvshowVideosReducer from "./singleItemsReducer/tvshowsItemReducers/requestTvshowDetailsReducer";
+import getActorDetailReducer from "./singleItemsReducer/actorDetailsReducers/actorsDetailsReqReducer";
+import getActorCombinedCreditsReducer from "./singleItemsReducer/actorDetailsReducers/actorCombinedCreditsReducer";
 
 const rootReducer = combineReducers({
   postApiConfigurationReducer: postApiMbdConfigurationReducer,
@@ -41,6 +43,9 @@ const rootReducer = combineReducers({
   getTvshowDetailsR: getTvshowDetailsReducer,
   getTvshowCastR: getTvshowCastReducer,
   getTvshowVideosR: getTvshowVideosReducer,
+  // actor Details Reducers
+  getActorDetailsR: getActorDetailReducer,
+  getActorCombinedCreditsR: getActorCombinedCreditsReducer,
 });
 
 export default rootReducer;
