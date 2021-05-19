@@ -1,5 +1,8 @@
 import React, { useEffect } from "react";
 import "./home.css";
+
+import NavigationBar from "../mainNavigation/mainNavigation";
+
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 // Movies Requests
@@ -12,7 +15,6 @@ import { tvshowsAiringTodayFetchReq } from "../../store/actions/RequestTvshowsAi
 import { topratedTvshowsFetchReq } from "../../store/actions/RequestTopratedTVshowsApi";
 
 import { RootStore } from "../../store/store";
-import { $CombinedState } from "redux";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -20,6 +22,10 @@ const Home = () => {
   // fetches necessary configurations for elements img size etc.
   const configMbdApiState = useSelector(
     (state: RootStore) => state.postApiConfigurationReducer
+  );
+
+  const userTypeOfSearchState = useSelector(
+    (state: RootStore) => state.userSearchTypeR
   );
 
   // states for Movies Requests
@@ -51,40 +57,49 @@ const Home = () => {
 
   useEffect(() => {
     // Movie Requests
-    dispatch(
-      upcomingMoviesFetchResponse(
-        `https://api.themoviedb.org/3/movie/upcoming?api_key=${configMbdApiState.apiKey}&language=en-US&page=1`
-      )
-    );
-    dispatch(
-      popularMoviesFetchResponse(
-        `https://api.themoviedb.org/3/movie/popular?api_key=${configMbdApiState.apiKey}&language=en-US&page=1`
-      )
-    );
-    dispatch(
-      nowplayingMoviesFetchResponse(
-        `https://api.themoviedb.org/3/movie/now_playing?api_key=${configMbdApiState.apiKey}&language=en-US&page=1`
-      )
-    );
-    dispatch(
-      topratedMoviesFetchResponse(
-        `https://api.themoviedb.org/3/movie/top_rated?api_key=${configMbdApiState.apiKey}&language=en-US&page=1`
-      )
-    );
-    // TV Requests
-    dispatch(
-      tvshowsAiringTodayFetchReq(
-        `https://api.themoviedb.org/3/tv/airing_today?api_key=${configMbdApiState.apiKey}&language=en-US&page=1`
-      )
-    );
-    dispatch(
-      topratedTvshowsFetchReq(
-        `https://api.themoviedb.org/3/tv/top_rated?api_key=${configMbdApiState.apiKey}&language=en-US&page=1`
-      )
-    );
-  }, []);
+    switch (userTypeOfSearchState.userSearchType) {
+      case "movies":
+        dispatch(
+          upcomingMoviesFetchResponse(
+            `https://api.themoviedb.org/3/movie/upcoming?api_key=${configMbdApiState.apiKey}&language=en-US&page=1`
+          )
+        );
+        dispatch(
+          popularMoviesFetchResponse(
+            `https://api.themoviedb.org/3/movie/popular?api_key=${configMbdApiState.apiKey}&language=en-US&page=1`
+          )
+        );
+        dispatch(
+          nowplayingMoviesFetchResponse(
+            `https://api.themoviedb.org/3/movie/now_playing?api_key=${configMbdApiState.apiKey}&language=en-US&page=1`
+          )
+        );
+        dispatch(
+          topratedMoviesFetchResponse(
+            `https://api.themoviedb.org/3/movie/top_rated?api_key=${configMbdApiState.apiKey}&language=en-US&page=1`
+          )
+        );
+        break;
+      case "tv-shows":
+        dispatch(
+          tvshowsAiringTodayFetchReq(
+            `https://api.themoviedb.org/3/tv/airing_today?api_key=${configMbdApiState.apiKey}&language=en-US&page=1`
+          )
+        );
+        dispatch(
+          topratedTvshowsFetchReq(
+            `https://api.themoviedb.org/3/tv/top_rated?api_key=${configMbdApiState.apiKey}&language=en-US&page=1`
+          )
+        );
+        break;
+    }
+  }, [userTypeOfSearchState.userSearchType]);
 
-  return <div></div>;
+  return (
+    <div className="home-container">
+      <NavigationBar />
+    </div>
+  );
 };
 
 export default Home;

@@ -1,3 +1,18 @@
+// Handles the type or search to generate content for HOME page
+
+export const SET_SEARCH_TYPE_WELCOME_PAGE = "SET_SEARCH_TYPE_WELCOME_PAGE";
+
+export interface typeOfSearch {
+  type: typeof SET_SEARCH_TYPE_WELCOME_PAGE;
+  searchType: string;
+}
+
+export type searchTypeHandlerFunction = (searchType: string) => void;
+
+export type userSearchType = typeOfSearch;
+
+//GENERAL CONFIG AND HOME PAGE REQUESTS ACTION TYPE
+
 export const POST_API_MBD_CONFIGURATION_SUCCESS =
   "POST_API_MBD_CONFIGURATION_SUCCESS";
 export const POST_API_MBD_LOADING = "POST_API_MBD_LOADING ";

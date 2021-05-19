@@ -23,7 +23,13 @@ import getTvshowVideosReducer from "./singleItemsReducer/tvshowsItemReducers/req
 import getActorDetailReducer from "./singleItemsReducer/actorDetailsReducers/actorsDetailsReqReducer";
 import getActorCombinedCreditsReducer from "./singleItemsReducer/actorDetailsReducers/actorCombinedCreditsReducer";
 
+// User Search Type Reducer: For displaying HOME PAGE dynamically
+import userSearchTypeReducer from "../../store/reducers/userSearchTypeReducer";
+
 const rootReducer = combineReducers({
+  //user search type:
+  userSearchTypeR: userSearchTypeReducer,
+  //HOME page content
   postApiConfigurationReducer: postApiMbdConfigurationReducer,
   postMoviesGenresReducer: postMoviesGenresFetchReducer,
   postTvshowsGenresReducer: postTvshowsGenresFetchReducer,

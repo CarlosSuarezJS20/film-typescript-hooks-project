@@ -1,6 +1,7 @@
 .welcomePageHero {
-  background: linear-gradient(transparent, rgba(0, 0, 0, 0.418)),
-    url("../../assets/images/pexels-pixabay-33129.jpg") center/cover no-repeat;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.562)),
+    url("../../assets/images/pexels-skitterphoto-390089.jpg") center/cover
+      no-repeat;
   height: 100vh;
   width: 100vw;
   display: grid;
@@ -10,6 +11,7 @@
 .welcome-text-holder {
   display: flex;
   color: white;
+  text-shadow: 3px 3px #000000;
   font-size: 2.5rem;
   font-weight: bolder;
   margin: 20rem auto;
@@ -32,12 +34,14 @@
 .movies-link {
   display: flex;
   color: #ffff;
+  text-shadow: 1px 1px #000000;
   margin: 0 1rem;
   padding: 0 2rem;
 }
 
 .movies-link:hover {
   background: rgba(196, 10, 10, 0.322);
+  border: 1px solid rgb(255, 0, 0);
   border-radius: 15px;
 }
 
@@ -48,12 +52,14 @@
 .tv-shows-link {
   display: flex;
   color: rgb(196, 10, 10);
+  text-shadow: 1px 1px #000000;
   margin: 0 1rem;
   padding: 0 2rem;
 }
 
 .tv-shows-link:hover {
   background: rgba(255, 255, 255, 0.322);
+  border: 1px solid #ffff;
   border-radius: 15px;
 }
 
