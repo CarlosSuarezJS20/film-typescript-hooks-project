@@ -6,8 +6,8 @@ import { NavLink } from "react-router-dom";
 const Logo: React.FC = () => {
   return (
     <NavLink className="logo" to="/home">
-      <div className="living">living</div>
-      <div className="room">room</div>
+      <div className="living">L</div>
+      <div className="room">R</div>
     </NavLink>
   );
 };

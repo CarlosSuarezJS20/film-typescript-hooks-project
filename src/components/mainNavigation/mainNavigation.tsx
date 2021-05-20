@@ -27,49 +27,72 @@ const NavigationBar: React.FC = () => {
   return (
     <nav className="nav-bar">
       <div className="icon-holder">
-        <FontAwesomeIcon icon={faBars} className="icon-style" />
+        <FontAwesomeIcon icon={faBars} className="icon" />
       </div>
       <div className="logo-holder">
         <Logo />
       </div>
-      <div className="search-box-form-holder">
-        <div className={searchActive ? "search-form open" : "search-form"}>
-          <input
-            placeholder="Seach in Living Room"
-            value={searchTerm}
-            onChange={(e) => {
-              onChangeValueHanlder(e);
-            }}
-          />
-          <div className="icon-style">
-            <div className="icon-holder-times" onClick={searchActiveHandler}>
-              <FontAwesomeIcon icon={faTimes} className="icon-style" />
+      <div className="form-holder">
+        <form
+          style={{
+            border:
+              searchTerm.length > 3 ? "3px solid rgb(196, 10, 10)" : "none",
+          }}
+        >
+          <div
+            className={
+              searchActive ? "search-input-holder show" : "search-input-holder"
+            }
+          >
+            <input
+              placeholder="Search In Living Room"
+              value={searchTerm}
+              onChange={(e) => {
+                onChangeValueHanlder(e);
+              }}
+            />
+            <div
+              className="close-input-icon-holder"
+              onClick={searchActiveHandler}
+            >
+              <FontAwesomeIcon
+                icon={faTimes}
+                className="icon close-input-btn"
+              />
             </div>
-            <div className="icon-holder">
-              <NavLink to="/search-results" className="search-button">
-                <FontAwesomeIcon icon={faSearch} className="icon-style" />
+            <div className="form-search-icon">
+              <NavLink to="search-results">
+                <FontAwesomeIcon
+                  icon={faSearch}
+                  className="input-search-icon"
+                />
               </NavLink>
             </div>
           </div>
-        </div>
-        <div
-          className={
-            searchTerm.length > 3
-              ? "search-instant-results show"
-              : "search-instant-results"
-          }
-        >
-          <div className="results-holder"></div>
-          <div className="more-results-holder">
-            <NavLink
-              to="/search-results"
-              className="more-results"
-            >{`See more results for "${searchTerm}"`}</NavLink>
+          <div
+            className={
+              searchTerm.length > 3
+                ? "instant-results-holder show-results"
+                : "instant-results-holder"
+            }
+          >
+            <div className="results-list"></div>
+            <div className="more-results-redirect">
+              <NavLink to="results-page" className="more-results-link">
+                {`See all results for "${searchTerm}"`}
+              </NavLink>
+            </div>
           </div>
-        </div>
+        </form>
       </div>
-      <div>
-        <NavLink to="/sign-in">Sign in</NavLink>
+      <div
+        className="icon-holder hide-big-screen"
+        onClick={searchActiveHandler}
+      >
+        <FontAwesomeIcon icon={faSearch} className="icon" />
+      </div>
+      <div className="sign-in-holder">
+        <NavLink to="sign-in-page">sign in</NavLink>
       </div>
     </nav>
   );
