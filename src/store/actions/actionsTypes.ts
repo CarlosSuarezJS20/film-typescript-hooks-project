@@ -11,6 +11,8 @@ export type searchTypeHandlerFunction = (searchType: string) => void;
 
 export type userSearchType = typeOfSearch;
 
+// Handles the toggle of the NavBar
+
 //GENERAL CONFIG AND HOME PAGE REQUESTS ACTION TYPE
 
 export const POST_API_MBD_CONFIGURATION_SUCCESS =
