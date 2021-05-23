@@ -126,13 +126,8 @@
   top: 100%;
   left: 0;
   width: 100%;
-  height: 85vh;
   background: rgb(26, 26, 26);
   display: none;
-}
-
-.results-list {
-  height: 88%;
 }
 
 .more-results-redirect {
@@ -175,6 +170,10 @@
 
   /* form */
 
+  .form {
+    border: none;
+  }
+
   .form-search-icon {
     display: block;
     padding: 0.5rem;
@@ -190,10 +189,9 @@
     border-radius: 40px;
   }
 
-  form {
+  .form {
     position: relative;
     margin: 0 auto;
-    border: 2px solid red;
     border-radius: 15px;
     width: 400px;
   }
@@ -224,13 +222,27 @@
     top: 120%;
     left: 0;
     width: 100%;
-    height: 50vh;
     z-index: 100;
   }
 }
 
 @media (min-width: 1080px) {
-  form {
+  .nav-bar {
+    padding: 0.5rem 10rem;
+  }
+
+  .form {
+    width: 600px;
+    border: 2px solid red;
+  }
+}
+
+@media (min-width: 1480px) {
+  .nav-bar {
+    padding: 0.5rem 20rem;
+  }
+
+  .form {
     width: 600px;
   }
 }

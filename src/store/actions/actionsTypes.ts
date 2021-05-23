@@ -1,18 +1,3 @@
-// Handles the type or search to generate content for HOME page
-
-export const SET_SEARCH_TYPE_WELCOME_PAGE = "SET_SEARCH_TYPE_WELCOME_PAGE";
-
-export interface typeOfSearch {
-  type: typeof SET_SEARCH_TYPE_WELCOME_PAGE;
-  searchType: string;
-}
-
-export type searchTypeHandlerFunction = (searchType: string) => void;
-
-export type userSearchType = typeOfSearch;
-
-// Handles the toggle of the NavBar
-
 //GENERAL CONFIG AND HOME PAGE REQUESTS ACTION TYPE
 
 export const POST_API_MBD_CONFIGURATION_SUCCESS =
@@ -36,7 +21,7 @@ export type requestFunction = (url: string) => void;
 // GLOBAL CONFIGURATION REQUEST FOR DISPLAYING ITEMS
 
 export type payloadResponse = {
-  image: {
+  images: {
     base_url: string;
     secure_base_url: string;
     backdrop_sizes: string[];
@@ -324,5 +309,50 @@ export interface popularTvShowRequestSuccess {
 
 export type popularTvShowFetchDispatchTypes =
   | popularTvShowRequestSuccess
+  | ApiConfigurationFail
+  | PostApiMbdLoading;
+
+// Handles the type or search to generate content for HOME page
+
+export const SET_SEARCH_TYPE_WELCOME_PAGE = "SET_SEARCH_TYPE_WELCOME_PAGE";
+
+export interface typeOfSearch {
+  type: typeof SET_SEARCH_TYPE_WELCOME_PAGE;
+  searchType: string;
+}
+
+export type searchTypeHandlerFunction = (searchType: string) => void;
+
+export type userSearchType = typeOfSearch;
+
+//SEARCH REQUEST FOR MULTI SEARCH on NavBar Search filed
+
+export const SEARCH_REQUEST_RESPONSE_ACTION = "SEARCH_REQUEST_RESPONSE_ACTION";
+
+export type searchResponse = {
+  poster_path: string;
+  backdrop_path: string | null;
+  media_type: string;
+  adult: boolean;
+  overview: string;
+  genre_ids: number[];
+  release_date: string;
+  id: number;
+  title: string;
+  vote_average: number;
+};
+
+export type searchResponses = {
+  page: number;
+  results: searchResponse[];
+};
+
+export interface SearchResponsesSuccess {
+  type: typeof SEARCH_REQUEST_RESPONSE_ACTION;
+  searchResults: searchResponses;
+}
+
+export type SearchResponsesDispatchTypes =
+  | SearchResponsesSuccess
   | ApiConfigurationFail
   | PostApiMbdLoading;

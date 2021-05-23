@@ -96,7 +96,7 @@ const Home = () => {
   }, [userTypeOfSearchState.userSearchType]);
 
   return (
-    <div className="home-container">
+    <div className="home-container" onClick={() => {}}>
       <NavigationBar />
     </div>
   );
