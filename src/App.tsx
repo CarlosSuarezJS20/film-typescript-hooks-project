@@ -7,6 +7,7 @@ import WelcomePage from "./components/welcomePage/welcomePage";
 import Home from "./components/home/home";
 import SingleMovieDetails from "./components/movieItemDetails/movieItemDetails";
 import ActorDetails from "./components/actorDetails/actorDetails";
+import ResultsPage from "./components/results/results";
 
 import { useSelector, useDispatch } from "react-redux";
 
@@ -47,23 +48,11 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <Route path="/" exact component={WelcomePage} />
-        <Route path="/home" exact component={Home} />
-
-        <Route
-          path="/details/movie/:movie-title"
-          exact
-          component={SingleMovieDetails}
-        />
-        <Route
-          path="/details/tv/:tvshow-title"
-          exact
-          component={TvShowDetails}
-        />
-        <Route
-          path="/details/actor/:actors-name"
-          exact
-          component={ActorDetails}
-        />
+        <Route path="/home" component={Home} />
+        <Route path="/details/movie/:title" component={SingleMovieDetails} />
+        <Route path="/details/tv/:title" component={TvShowDetails} />
+        <Route path="/details/actor/:name" component={ActorDetails} />
+        <Route path="/results" component={ResultsPage} />
       </div>
     </BrowserRouter>
   );

@@ -42,7 +42,11 @@ const ActorMainDetails: React.FC<ActorMainDetailsProps> = (props) => {
     );
   }, []);
 
-  return <div></div>;
+  return (
+    <div>
+      <h1>Actor</h1>
+    </div>
+  );
 };
 
 export default ActorMainDetails;

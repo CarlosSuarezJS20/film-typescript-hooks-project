@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./mainNavigation.css";
 
 import InstantResultsList from "../instantResultsList/instantResultsList";
+import InformationLoader from "../UI/informationLoader/informationLoader";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faSearch, faTimes } from "@fortawesome/free-solid-svg-icons";
@@ -11,7 +12,10 @@ import Logo from "../UI/logo/logo";
 import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
+// actions
 import { searchMultiFindFetchResponse } from "../../store/actions/SearchMultiRequestAction";
+import { storesUserSearchValueHandler } from "../../store/actions/searchValueFromNavbarHandler";
+
 import { RootStore } from "../../store/store";
 
 // Helper function to debounce search input. Allows request after user stops typing
@@ -25,9 +29,6 @@ const debounceInput = (fn: (...args: any) => void, delay: number) => {
 
 const NavigationBar: React.FC = () => {
   const [searchActive, setSearchActive] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("");
-  // opens div when user is starting a new search
-
   // State from Store:
   const dispatch = useDispatch();
 
@@ -35,26 +36,32 @@ const NavigationBar: React.FC = () => {
     (state: RootStore) => state.postApiConfigurationReducer
   );
 
-  //Exect
-  const handleRequest = () => {
-    dispatch(
-      searchMultiFindFetchResponse(
-        `https://api.themoviedb.org/3/search/multi?api_key=${configMbdApiState.apiKey}&language=en-US&query=${searchTerm}&page=1&include_adult=false`
-      )
-    );
-  };
+  const storeSearchValueState = useSelector(
+    (state: RootStore) => state.searchValueFromInputHandlerR
+  );
+
+  const multiSearchFeatureState = useSelector(
+    (state: RootStore) => state.searchMultiCapabilityR
+  );
 
   useEffect(() => {
-    if (searchTerm.length === 0) {
+    if (storeSearchValueState.userSearchValue.length === 0) {
       return;
     }
-    handleRequest();
-  }, [searchTerm]);
+
+    if (storeSearchValueState.userSearchValue.length >= 3) {
+      dispatch(
+        searchMultiFindFetchResponse(
+          `https://api.themoviedb.org/3/search/multi?api_key=${configMbdApiState.apiKey}&language=en-US&query=${storeSearchValueState.userSearchValue}&page=1&include_adult=false`
+        )
+      );
+    }
+  }, [storeSearchValueState.userSearchValue]);
 
   // for UI changes and styling
   const searchActiveHandler = (): void => {
     if (searchActive) {
-      setSearchTerm("");
+      storesUserSearchValueHandler("");
     }
 
     setSearchActive((prev) => !prev);
@@ -62,7 +69,7 @@ const NavigationBar: React.FC = () => {
 
   const onChangeValueHanlder = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
-    setSearchTerm(e.target.value);
+    dispatch(storesUserSearchValueHandler(e.target.value));
   };
 
   return (
@@ -78,7 +85,9 @@ const NavigationBar: React.FC = () => {
           className="form"
           style={{
             border:
-              searchTerm.length > 3 ? "3px solid rgb(196, 10, 10)" : "none",
+              storeSearchValueState.userSearchValue.length > 3
+                ? "3px solid rgb(196, 10, 10)"
+                : "none",
           }}
         >
           <div
@@ -88,7 +97,7 @@ const NavigationBar: React.FC = () => {
           >
             <input
               placeholder="Search Living Room"
-              defaultValue={searchTerm}
+              defaultValue={storeSearchValueState.userSearchValue}
               onChange={debounceInput(onChangeValueHanlder, 1000)}
             />
             <div
@@ -101,7 +110,9 @@ const NavigationBar: React.FC = () => {
               />
             </div>
             <div className="form-search-icon">
-              <NavLink to="search-results">
+              <NavLink
+                to={`/results?query=${storeSearchValueState.userSearchValue}`}
+              >
                 <FontAwesomeIcon
                   icon={faSearch}
                   className="input-search-icon"
@@ -111,17 +122,29 @@ const NavigationBar: React.FC = () => {
           </div>
           <div
             className={
-              searchTerm.length > 3
+              storeSearchValueState.userSearchValue.length > 0
                 ? "instant-results-holder show-results"
                 : "instant-results-holder"
             }
           >
             <div className="results-list">
-              <InstantResultsList />
+              {multiSearchFeatureState.loading ? (
+                <InformationLoader />
+              ) : multiSearchFeatureState.results?.results &&
+                multiSearchFeatureState.results?.results.length > 0 ? (
+                <InstantResultsList />
+              ) : (
+                <div className="no-results-warning-holder">
+                  <h3>No results found</h3>
+                </div>
+              )}
             </div>
             <div className="more-results-redirect">
-              <NavLink to="results-page" className="more-results-link">
-                {`See all results for "${searchTerm}"`}
+              <NavLink
+                to={`/results?query=${storeSearchValueState.userSearchValue}`}
+                className="more-results-link"
+              >
+                {`See all results for "${storeSearchValueState.userSearchValue}"`}
               </NavLink>
             </div>
           </div>

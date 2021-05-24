@@ -26,6 +26,7 @@ import getActorCombinedCreditsReducer from "./singleItemsReducer/actorDetailsRed
 // User Search Type Reducer: For displaying HOME PAGE dynamically
 import userSearchTypeReducer from "../../store/reducers/userSearchTypeReducer";
 import searchCapabilityReducer from "../../store/reducers/multiSearchQueryReducer";
+import searchValueFromUserReducer from "../../store/reducers/searchValueFromUser";
 
 const rootReducer = combineReducers({
   //user search type:
@@ -54,6 +55,7 @@ const rootReducer = combineReducers({
   getActorDetailsR: getActorDetailReducer,
   getActorCombinedCreditsR: getActorCombinedCreditsReducer,
   // Search Multi reducer
+  searchValueFromInputHandlerR: searchValueFromUserReducer,
   searchMultiCapabilityR: searchCapabilityReducer,
 });
 

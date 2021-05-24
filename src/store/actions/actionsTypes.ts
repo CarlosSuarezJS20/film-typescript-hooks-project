@@ -325,6 +325,19 @@ export type searchTypeHandlerFunction = (searchType: string) => void;
 
 export type userSearchType = typeOfSearch;
 
+// SEACH VALUE FROM NAV INPUT HANDLER
+
+export const SEARCH_VALUE_HANDLER = "SET_SEARCH_VALUE_HANDLER";
+
+export interface searchValueHandler {
+  type: typeof SEARCH_VALUE_HANDLER;
+  searchValue: string;
+}
+
+export type searchValueFromInputHandlerFunction = (searchType: string) => void;
+
+export type searchValueFromInputHandlerType = searchValueHandler;
+
 //SEARCH REQUEST FOR MULTI SEARCH on NavBar Search filed
 
 export const SEARCH_REQUEST_RESPONSE_ACTION = "SEARCH_REQUEST_RESPONSE_ACTION";
@@ -339,6 +352,8 @@ export type searchResponse = {
   release_date: string;
   id: number;
   title: string;
+  name: string;
+  first_air_date: string;
   vote_average: number;
 };
 

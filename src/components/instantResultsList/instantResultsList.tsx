@@ -53,7 +53,11 @@ const InstantResultsList: React.FC = () => {
             return (
               <li key={index} className="result">
                 <NavLink
-                  to={`/details/movie/:movie-title`}
+                  to={
+                    result.media_type === "tv"
+                      ? `/details/tv/${result.name}`
+                      : `/details/movie/${result.title}`
+                  }
                   className="result-link"
                 >
                   <div className="result-link">
@@ -64,7 +68,7 @@ const InstantResultsList: React.FC = () => {
                             ? configMbdApiState.payload!.images
                                 .secure_base_url +
                               configMbdApiState.payload!.images
-                                .poster_sizes[3] +
+                                .poster_sizes[6] +
                               result.poster_path
                             : ""
                         }
@@ -73,18 +77,31 @@ const InstantResultsList: React.FC = () => {
                     </div>
                     <div className="result-details">
                       {result.title ? (
-                        <h3 className="title">{result.title}</h3>
+                        <h3 className="title" id="title">
+                          {result.title}
+                        </h3>
+                      ) : result.name ? (
+                        <h3 className="title" id="title">
+                          {result.name}
+                        </h3>
                       ) : (
-                        <h3 className="title">Title N/A</h3>
+                        <h3 className="title" id="title">
+                          Title N/A
+                        </h3>
                       )}
                       <h3>{`Release date: ${
-                        result.release_date ? result.release_date : "N/A"
+                        result.release_date
+                          ? result.release_date
+                          : result.first_air_date
+                          ? result.first_air_date
+                          : "N/A"
                       }`}</h3>
                       {result.genre_ids.length > 0 ? (
                         addsGenresList(result.media_type, result.genre_ids)
                       ) : (
                         <p>No genres found</p>
                       )}
+                      <h3 className="media-type">{result.media_type}</h3>
                     </div>
                   </div>
                 </NavLink>

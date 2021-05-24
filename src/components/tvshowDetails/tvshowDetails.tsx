@@ -54,7 +54,11 @@ const TvShowDetails: React.FC<TvShowDetailsProps> = (props) => {
     );
   }, []);
 
-  return <div></div>;
+  return (
+    <div>
+      <h1>Tv SHOW</h1>
+    </div>
+  );
 };
 
 export default TvShowDetails;

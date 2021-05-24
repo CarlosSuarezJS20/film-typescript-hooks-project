@@ -38,6 +38,7 @@
 .icon-holder {
   padding: 1rem;
   border-radius: 50px;
+  cursor: pointer;
 }
 
 .icon-holder:hover {
@@ -51,6 +52,7 @@
   min-width: 80px;
   max-width: 80px;
   border-radius: 10px;
+  cursor: pointer;
 }
 
 .sign-in-holder a {

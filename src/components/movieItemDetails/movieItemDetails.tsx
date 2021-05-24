@@ -55,7 +55,11 @@ const MovieDetails: React.FC<MovieDetails> = (props) => {
     );
   }, []);
 
-  return <div></div>;
+  return (
+    <div>
+      <h1>Movie</h1>
+    </div>
+  );
 };
 
 export default MovieDetails;

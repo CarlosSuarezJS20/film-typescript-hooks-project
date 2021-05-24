@@ -4,7 +4,7 @@ import "./home.css";
 import NavigationBar from "../mainNavigation/mainNavigation";
 
 import { useSelector, useDispatch } from "react-redux";
-import { NavLink } from "react-router-dom";
+
 // Movies Requests
 import { upcomingMoviesFetchResponse } from "../../store/actions/RequestUpcomingMoviesApi";
 import { popularMoviesFetchResponse } from "../../store/actions/RequestPopularMoviesApi";
@@ -13,6 +13,8 @@ import { topratedMoviesFetchResponse } from "../../store/actions/RequestToprated
 // Tv Requests
 import { tvshowsAiringTodayFetchReq } from "../../store/actions/RequestTvshowsAiringTodayApi";
 import { topratedTvshowsFetchReq } from "../../store/actions/RequestTopratedTVshowsApi";
+//
+import { storesUserSearchValueHandler } from "../../store/actions/searchValueFromNavbarHandler";
 
 import { RootStore } from "../../store/store";
 
@@ -26,6 +28,10 @@ const Home = () => {
 
   const userTypeOfSearchState = useSelector(
     (state: RootStore) => state.userSearchTypeR
+  );
+
+  const storeSearchValueHandlerState = useSelector(
+    (state: RootStore) => state.searchValueFromInputHandlerR
   );
 
   // states for Movies Requests
@@ -95,8 +101,15 @@ const Home = () => {
     }
   }, [userTypeOfSearchState.userSearchType]);
 
+  // if user clicks outside the instant results div, it removes the div from the UI
+  const resetsUserSearchHandler = () => {
+    if (storeSearchValueHandlerState.userSearchValue.length > 0) {
+      dispatch(storesUserSearchValueHandler(""));
+    }
+  };
+
   return (
-    <div className="home-container" onClick={() => {}}>
+    <div className="home-container" onClick={resetsUserSearchHandler}>
       <NavigationBar />
     </div>
   );
