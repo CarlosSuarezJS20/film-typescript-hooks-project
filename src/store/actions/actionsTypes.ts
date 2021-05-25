@@ -152,7 +152,7 @@ type nowPlayingMoviesResults = {
 
 export type requestNowPlayingMoviesResponse = {
   page: number;
-  genres: nowPlayingMoviesResults[];
+  results: nowPlayingMoviesResults[];
 };
 
 export interface NowPlayingMoviesRequestSuccess {
@@ -182,12 +182,12 @@ type topRatedMoviesResults = {
 
 export type requestTopRatedMoviesResponse = {
   page: number;
-  genres: topRatedMoviesResults[];
+  results: topRatedMoviesResults[];
 };
 
 export interface TopRatedMoviesRequestSuccess {
   type: typeof REQUEST_TOPRATED_MOVIES_FETCH_FROM_MBD_API_SUCCESS;
-  topratedMoviesResponse: requestNowPlayingMoviesResponse;
+  topratedMoviesResponse: requestTopRatedMoviesResponse;
 }
 
 export type TopRatedMoviesResquestMbdApiDispatchTypes =
@@ -239,7 +239,7 @@ type tvShowAiringTodayResponse = {
 
 export type tvShowsAiringTodayApiResponse = {
   page: number;
-  tvShowsAiringTodayResponse: tvShowAiringTodayResponse[];
+  results: tvShowAiringTodayResponse[];
 };
 
 export interface TvShowsAiringTodayRequestSuccess {

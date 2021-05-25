@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import "./home.css";
 
 import NavigationBar from "../mainNavigation/mainNavigation";
+import HomeHeader from "../homeHeader/homeHeader";
 
 import { useSelector, useDispatch } from "react-redux";
 
@@ -111,6 +112,7 @@ const Home = () => {
   return (
     <div className="home-container" onClick={resetsUserSearchHandler}>
       <NavigationBar />
+      <HomeHeader />
     </div>
   );
 };

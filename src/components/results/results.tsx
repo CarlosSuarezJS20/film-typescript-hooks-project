@@ -23,8 +23,6 @@ const Results: React.FC = () => {
     (state: RootStore) => state.searchValueFromInputHandlerR
   );
 
-  console.log(query.get("query"));
-
   return (
     <div className="results-page">
       <h1>{`results ${query.get("query")}`}</h1>
