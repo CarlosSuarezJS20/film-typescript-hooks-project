@@ -1,42 +1,128 @@
-.header-container {
-  height: 100vh;
-}
-
 .carousels-container {
   max-width: 1280px;
-  margin: 0.5rem auto;
-  height: 100%;
-  background: blue;
+  margin: 1rem auto;
 }
 
-.carousel-movies {
-  height: 65%;
-  background: plum;
+.carousel-top-shown {
+  position: relative;
 }
 
-.carousel-people {
-  height: 35%;
+.carousel {
+  margin: 0 auto;
+}
+
+.carousel-title {
+  position: absolute;
+  top: 80%;
+  width: 100%;
+  padding: 1rem 0;
+  background: rgba(22, 22, 22, 0.521);
+  z-index: 100;
+}
+
+.carousel-title h2 {
+  color: white;
+  font-weight: 400;
+  text-transform: capitalize;
+}
+
+/* .carousel-people {
+  height: 300px;
   background: yellow;
+} */
+
+.image-holder {
+  z-index: 99;
 }
 
-@media (min-width: 1080px) {
-  .header-container {
-    height: 65vh;
-  }
+.item-img {
+  opacity: 0.7;
+}
 
+/* arrows carousel */
+
+.next-btn {
+  position: absolute;
+  top: 40%;
+  left: 90%;
+  padding: 1rem;
+  font-size: 1.5rem;
+  color: rgb(228, 227, 227);
+  background: rgba(22, 22, 22, 0.521);
+  border: 1px solid rgb(228, 227, 227);
+  border-radius: 5px;
+  z-index: 100;
+}
+
+.next-btn:hover {
+  border: 1px solid white;
+  color: rgb(177, 30, 30);
+}
+
+.prev-btn {
+  position: absolute;
+  top: 40%;
+  left: 2%;
+  padding: 1rem;
+  color: rgb(216, 216, 216);
+  background: rgba(22, 22, 22, 0.521);
+  border: 1px solid rgb(228, 227, 227);
+  border-radius: 5px;
+  font-size: 1.5rem;
+  z-index: 100;
+}
+
+.prev-btn:hover {
+  border: 1px solid white;
+  color: rgb(177, 30, 30);
+}
+
+/* item Description classe */
+
+.image-and-description-holder {
+  position: relative;
+}
+
+.item-description {
+  position: absolute;
+  display: flex;
+  top: 2%;
+  left: 5%;
+  z-index: 100;
+}
+
+.poster {
+  width: 100px;
+  z-index: 100;
+}
+
+@media (min-width: 990px) {
   .carousels-container {
     display: flex;
   }
 
-  .carousel-movies {
-    height: 100%;
+  .carousel {
+    width: 600px;
+    margin: 0 auto;
+  }
+
+  .carousel-top-shown {
     width: 70%;
-    background: plum;
   }
 
   .carousel-people {
-    height: 100%;
     width: 30%;
+    height: auto;
     background: yellow;
+  }
+
+  /* buttons carousel */
+  .next-btn {
+    left: 102%;
+  }
+
+  .prev-btn {
+    position: absolute;
+    left: -10%;
   }
 }

@@ -12,12 +12,24 @@ import Slick, { Settings } from "react-slick";
 
 import { NavLink } from "react-router-dom";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faChevronLeft,
+  faChevronRight,
+} from "@fortawesome/free-solid-svg-icons";
+
+// buttons helper components for the header carousels
+
 interface PropsNextBtn {
   onClick?: () => void;
 }
 
 const NexBtn: React.FC<PropsNextBtn> = (props) => {
-  return <div onClick={props.onClick}>next Btn</div>;
+  return (
+    <div className="next-btn" onClick={props.onClick}>
+      <FontAwesomeIcon icon={faChevronRight} />
+    </div>
+  );
 };
 
 interface PropsPrevBtn {
@@ -25,13 +37,20 @@ interface PropsPrevBtn {
 }
 
 const PrevBtn: React.FC<PropsPrevBtn> = (props) => {
-  return <div onClick={props.onClick}>prev Btn</div>;
+  return (
+    <div className="prev-btn" onClick={props.onClick}>
+      <FontAwesomeIcon icon={faChevronLeft} />
+    </div>
+  );
 };
+
+// header component starts
 
 const HomeHeader: React.FC = () => {
   const [items, setItems] = useState<any[]>([]);
   const [genres, setGenres] = useState<any[]>([]);
-  const MDBConfigState = useSelector(
+
+  const mDBConfigState = useSelector(
     (state: RootStore) => state.postApiConfigurationReducer
   );
 
@@ -91,20 +110,12 @@ const HomeHeader: React.FC = () => {
     }
   };
 
-  const handleBeforeChange = () => {
-    console.log("%c handleBeforeChange", "color: blue");
-  };
-
-  const handleAfterChange = () => {
-    console.log("%c handleAfterChange", "color: red");
-  };
-
   const slickSettings: Settings = {
     lazyLoad: "ondemand",
     accessibility: false,
     draggable: false,
     autoplay: true,
-    autoplaySpeed: 5000,
+    autoplaySpeed: 6000,
     speed: 2500,
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -116,29 +127,60 @@ const HomeHeader: React.FC = () => {
   return (
     <header className="header-container">
       <div className="carousels-container">
-        <div className="swiper-container carousel-movies">
-          <Slick {...slickSettings}>
-            <div style={{ height: "100vh", width: "100vw", background: "red" }}>
-              Slide 1
-            </div>
-            <div style={{ height: "100%", width: "100%", background: "red" }}>
-              Slide 2
-            </div>
-            <div style={{ height: "100%", width: "100%", background: "red" }}>
-              Slide 3
-            </div>
-            <div style={{ height: "100%", width: "100%", background: "red" }}>
-              Slide 4
-            </div>
-            <div style={{ height: "100%", width: "100%", background: "red" }}>
-              Slide 5
-            </div>
-            <div style={{ height: "100%", width: "100%", background: "red" }}>
-              Slide 6
-            </div>
+        <div className="carousel-top-shown">
+          <div className="carousel-title">
+            <h2>
+              {typeSearchState.userSearchType === "tv-shows"
+                ? "Show airing now!"
+                : "Now playing!"}
+            </h2>
+          </div>
+          <Slick className="carousel" {...slickSettings}>
+            {items.map((item, index) => {
+              if (index > 3 && index < 10) {
+                // request images
+                return (
+                  <NavLink
+                    key={index}
+                    to={
+                      item.media_type === "tv"
+                        ? `/details/tv/${item.name}`
+                        : `/details/movie/${item.title}`
+                    }
+                  >
+                    <div className="image-and-description-holder">
+                      <img
+                        className="item-img"
+                        src={`${
+                          mDBConfigState.payload?.images &&
+                          mDBConfigState.payload.images.secure_base_url
+                        }${
+                          mDBConfigState.payload?.images &&
+                          mDBConfigState.payload.images.poster_sizes[4]
+                        }${item.backdrop_path}`}
+                      />
+                      <div className="item-description">
+                        <div className="poster">
+                          <img
+                            src={`${
+                              mDBConfigState.payload?.images &&
+                              mDBConfigState.payload.images.secure_base_url
+                            }${
+                              mDBConfigState.payload?.images &&
+                              mDBConfigState.payload.images.poster_sizes[4]
+                            }${item.poster_path}`}
+                          />
+                        </div>
+                        <div>text</div>
+                      </div>
+                    </div>
+                  </NavLink>
+                );
+              }
+            })}
           </Slick>
         </div>
-        <div className="home-swiper-container carousel-people"></div>
+        <div className="carousel-people"></div>
       </div>
     </header>
   );

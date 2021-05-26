@@ -148,6 +148,7 @@ type nowPlayingMoviesResults = {
   id: number;
   title: string;
   vote_average: number;
+  backdrop_path: string;
 };
 
 export type requestNowPlayingMoviesResponse = {
