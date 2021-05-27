@@ -1,9 +1,20 @@
-.carousels-container {
-  max-width: 1280px;
-  margin: 1rem auto;
+.header-container {
+  margin: 1rem 0.5rem;
+  min-width: 400px;
+  padding: 1rem 0;
+  background: rgb(20, 20, 20);
 }
 
-.carousel-top-shown {
+.loader-holder-header {
+  padding: 10rem;
+}
+
+.carousels-container {
+  max-width: 1280px;
+  margin: 0rem auto;
+}
+
+.first-carousel {
   position: relative;
 }
 
@@ -16,20 +27,16 @@
   top: 80%;
   width: 100%;
   padding: 1rem 0;
-  background: rgba(22, 22, 22, 0.521);
+  background: rgba(22, 22, 22, 0.651);
   z-index: 100;
 }
 
 .carousel-title h2 {
-  color: white;
-  font-weight: 400;
+  color: rgb(228, 186, 0);
+  font-weight: bold;
+  font-size: 1.5rem;
   text-transform: capitalize;
 }
-
-/* .carousel-people {
-  height: 300px;
-  background: yellow;
-} */
 
 .image-holder {
   z-index: 99;
@@ -56,6 +63,7 @@
 
 .next-btn:hover {
   border: 1px solid white;
+  background: rgba(255, 255, 255, 0.089);
   color: rgb(177, 30, 30);
 }
 
@@ -74,6 +82,7 @@
 
 .prev-btn:hover {
   border: 1px solid white;
+  background: rgba(255, 255, 255, 0.089);
   color: rgb(177, 30, 30);
 }
 
@@ -81,6 +90,11 @@
 
 .image-and-description-holder {
   position: relative;
+  opacity: 0.9;
+}
+
+.image-and-description-holder:hover {
+  opacity: 1;
 }
 
 .item-description {
@@ -96,9 +110,95 @@
   z-index: 100;
 }
 
+.poster img {
+  border-radius: 10px;
+}
+
+.description {
+  text-align: left;
+  font-size: 1.2rem;
+  padding: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Second Carousel */
+
+.second-carousel-holder {
+  position: relative;
+  margin: 1.5rem auto;
+  width: 95vw;
+}
+
+.slick-slide {
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+.second-carousel-title {
+  text-align: left;
+  font-size: 1.3rem;
+  color: rgb(228, 186, 0);
+  margin: 0.5rem 0;
+}
+
+.select:hover {
+  background: rgba(255, 255, 255, 0.041);
+}
+
+.carousel-two-img {
+  opacity: 0.7;
+  border-radius: 10px;
+}
+
+.carousel-two-slide:hover #image-second-carousel {
+  opacity: 1;
+}
+
+.carousel-two-description-holder {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.1em;
+}
+
+/* Second Carousel btn*/
+
+.second-carousel-up-btn {
+  display: none;
+}
+
+.second-carousel-next-btn {
+  position: absolute;
+  top: 30%;
+  left: 90%;
+  padding: 1rem;
+  font-size: 1.5rem;
+  color: rgb(228, 227, 227);
+  background: rgba(22, 22, 22, 0.521);
+  border: 1px solid rgb(228, 227, 227);
+  border-radius: 5px;
+  z-index: 100;
+}
+
+.second-carousel-next-btn:hover {
+  border: 1px solid white;
+  background: rgba(255, 255, 255, 0.089);
+  color: rgb(177, 30, 30);
+}
+
 @media (min-width: 990px) {
+  .header-container {
+    margin: 0.5rem 2rem;
+  }
+
   .carousels-container {
     display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .second-carousel-holder {
+    width: 350px;
+    margin: 0 auto;
+    margin: 0rem;
   }
 
   .carousel {
@@ -106,23 +206,61 @@
     margin: 0 auto;
   }
 
-  .carousel-top-shown {
-    width: 70%;
+  .first-carousel {
+    width: 60%;
   }
-
-  .carousel-people {
-    width: 30%;
-    height: auto;
-    background: yellow;
-  }
-
   /* buttons carousel */
   .next-btn {
-    left: 102%;
+    left: 95%;
   }
 
   .prev-btn {
     position: absolute;
-    left: -10%;
+    left: -3%;
+  }
+
+  /* second carousel */
+  .carousel-two-slide {
+    display: flex;
+    align-items: center;
+  }
+
+  .carousel-two-image-holder {
+    width: 35%;
+  }
+
+  .carousel-two-description-holder {
+    width: 65%;
+  }
+
+  .slick-slide {
+    padding: 5px 10px;
+    box-sizing: border-box;
+  }
+
+  /* carousel buttons */
+
+  .second-carousel-next-btn {
+    display: none;
+  }
+
+  .second-carousel-up-btn {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 40%;
+    padding: 0.5rem 1rem;
+    color: rgb(216, 216, 216);
+    background: rgba(22, 22, 22, 0.521);
+    border: 1px solid rgb(228, 227, 227);
+    border-radius: 5px;
+    font-size: 1.5rem;
+    z-index: 100;
+  }
+
+  .second-carousel-up-btn:hover {
+    border: 1px solid white;
+    background: rgba(255, 255, 255, 0.089);
+    color: rgb(177, 30, 30);
   }
 }

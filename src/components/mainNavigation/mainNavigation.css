@@ -131,6 +131,7 @@
   width: 100%;
   background: rgb(26, 26, 26);
   display: none;
+  z-index: 1001;
 }
 
 .more-results-redirect {

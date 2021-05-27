@@ -72,23 +72,19 @@ export type PostMoviesGenresFetchDispatchTypes =
 export const REQUEST_UPCOMING_MOVIES_FETCH_FROM_MBD_API_SUCCESS =
   "REQUEST_UPCOMING_MOVIES_FETCH_FROM_MBD_API_SUCCESS";
 
-type results = {
-  poster_path: string;
+export type upcomingMoviesResults = {
+  poster_path: string | null;
   overview: string;
   genre_ids: number[];
-  original_title: string;
   id: number;
   title: string;
   vote_average: number;
-};
-
-type requestUpcomingMoviesResults = {
-  page: number;
-  results: results[];
+  backdrop_path: string;
 };
 
 export type requestUpcomingMoviesResponse = {
-  genres: requestUpcomingMoviesResults[];
+  page: number;
+  results: upcomingMoviesResults[];
 };
 
 export interface UpcomingMoviesRequestSuccess {
@@ -106,11 +102,10 @@ export type UpcomingResquestMbdApiDispatchTypes =
 export const REQUEST_POPULAR_MOVIES_FETCH_FROM_MBD_API_SUCCESS =
   "REQUEST_POPULAR_MOVIES_FETCH_FROM_MBD_API_SUCCESS";
 
-type popularMoviesResults = {
-  poster_path: string;
+export type popularMoviesResults = {
+  poster_path: string | null;
   overview: string;
   genre_ids: number[];
-  original_title: string;
   id: number;
   title: string;
   vote_average: number;
@@ -140,11 +135,10 @@ export type popularMoviesResquestMbdApiDispatchTypes =
 export const REQUEST_NOWPLAYING_MOVIES_FETCH_FROM_MBD_API_SUCCESS =
   "REQUEST_NOWPLAYING_MOVIES_FETCH_FROM_MBD_API_SUCCESS";
 
-type nowPlayingMoviesResults = {
-  poster_path: string;
+export type nowPlayingMoviesResults = {
+  poster_path: string | null;
   overview: string;
   genre_ids: number[];
-  original_title: string;
   id: number;
   title: string;
   vote_average: number;
@@ -172,10 +166,9 @@ export const REQUEST_TOPRATED_MOVIES_FETCH_FROM_MBD_API_SUCCESS =
   "REQUEST_TOPRATED_MOVIES_FETCH_FROM_MBD_API_SUCCESS";
 
 type topRatedMoviesResults = {
-  poster_path: string;
+  poster_path: string | null;
   overview: string;
   genre_ids: number[];
-  original_title: string;
   id: number;
   title: string;
   vote_average: number;
@@ -228,14 +221,16 @@ export type PostTvGenresFetchDispatchTypes =
 export const REQUEST_TV_SHOWS_AIRING_TODAY_FETCH_FROM_MBD_API_SUCCESS =
   "REQUEST_TV_SHOWS_AIRING_TODAY_FETCH_FROM_MBD_API_SUCCESS";
 
-type tvShowAiringTodayResponse = {
+export type tvShowAiringTodayResponse = {
   poster_path: string | null;
   id: number;
+  genre_ids: number[];
   backdrop_path: string | null;
   total_results: number;
   total_pages: number;
   origin_country: string[];
-  vote_avarega: number;
+  vote_average: number;
+  name: string;
 };
 
 export type tvShowsAiringTodayApiResponse = {
@@ -258,19 +253,21 @@ export type tvShowsAiringTodayFetchDispatchTypes =
 export const REQUEST_TOPRATED_TVSHOWS_FETCH_FROM_MBD_API_SUCCESS =
   "REQUEST_TOPRATED_TVSHOWS_FETCH_FROM_MBD_API_SUCCESS";
 
-type topRatedTvShowResponse = {
+export type topRatedTvShowResponse = {
   poster_path: string | null;
   id: number;
+  genre_ids: number[];
   backdrop_path: string | null;
   total_results: number;
   total_pages: number;
   origin_country: string[];
-  vote_avarega: number;
+  vote_average: number;
+  name: string;
 };
 
 export type topratedTvshowsApiResponse = {
   page: number;
-  topTvshowsResponse: topRatedTvShowResponse[];
+  results: topRatedTvShowResponse[];
 };
 
 export interface TopratedTvshowRequestSuccess {
