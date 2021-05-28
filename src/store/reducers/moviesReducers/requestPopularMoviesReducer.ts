@@ -1,5 +1,5 @@
 import {
-  requestPopularMoviesResponse,
+  requestPopularMoviesResults,
   popularMoviesResquestMbdApiDispatchTypes,
   REQUEST_POPULAR_MOVIES_FETCH_FROM_MBD_API_SUCCESS,
   POST_API_MBD_FAIL,
@@ -7,7 +7,7 @@ import {
 } from "../../actions/actionsTypes";
 
 interface DefaultStateInt {
-  popularMoviesResponseMbd?: requestPopularMoviesResponse;
+  popularMoviesResponseMbd?: requestPopularMoviesResults;
   loading: boolean;
   error?: string;
 }

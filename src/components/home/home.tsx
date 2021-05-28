@@ -35,31 +35,12 @@ const Home = () => {
     (state: RootStore) => state.searchValueFromInputHandlerR
   );
 
-  // states for Movies Requests
-  const upcomingMoviesReqState = useSelector(
-    (state: RootStore) => state.requestUpcomingMoviesReducer
-  );
-
   const popularMoviesReqState = useSelector(
     (state: RootStore) => state.requestPopularMoviesReducer
   );
 
-  const nowPlayingReqState = useSelector(
-    (state: RootStore) => state.requestNowPlayingMoviesReducer
-  );
-
   const topRatedReqState = useSelector(
     (state: RootStore) => state.requestTopratedMoviesReducer
-  );
-
-  // states for TvShows Requests
-
-  const tvShowsAiringTodayRequestState = useSelector(
-    (state: RootStore) => state.tvShowsAiringTFetchReducer
-  );
-
-  const topRatedTvshowsRequestState = useSelector(
-    (state: RootStore) => state.topratedTvSFetchReducer
   );
 
   useEffect(() => {

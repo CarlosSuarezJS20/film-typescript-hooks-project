@@ -109,20 +109,17 @@ export type popularMoviesResults = {
   id: number;
   title: string;
   vote_average: number;
+  backdrop_path: string;
 };
 
-type requestPopularMoviesResults = {
+export type requestPopularMoviesResults = {
   page: number;
   results: popularMoviesResults[];
 };
 
-export type requestPopularMoviesResponse = {
-  genres: requestPopularMoviesResults[];
-};
-
 export interface PopularMoviesRequestSuccess {
   type: typeof REQUEST_POPULAR_MOVIES_FETCH_FROM_MBD_API_SUCCESS;
-  popularMoviesResponse: requestPopularMoviesResponse;
+  popularMoviesResponse: requestPopularMoviesResults;
 }
 
 export type popularMoviesResquestMbdApiDispatchTypes =
@@ -288,11 +285,13 @@ export const REQUEST_POPULAR_TVSHOWS_FETCH_FROM_MBD_API_SUCCESS =
 type popularTvShowResponse = {
   poster_path: string | null;
   id: number;
+  genre_ids: number[];
   backdrop_path: string | null;
   total_results: number;
   total_pages: number;
   origin_country: string[];
-  vote_avarega: number;
+  vote_average: number;
+  name: string;
 };
 
 export type popularTvShowApiResponse = {
@@ -309,6 +308,91 @@ export type popularTvShowFetchDispatchTypes =
   | popularTvShowRequestSuccess
   | ApiConfigurationFail
   | PostApiMbdLoading;
+
+// on the air Tv-shows
+
+export const REQUEST_ON_THE_AIR_TV_SHOWS_REQUEST_SUCCESS =
+  "REQUEST_ON_THE_AIR_TV_SHOWS_REQUEST_SUCCESS";
+export const REQUEST_ON_THE_AIR_TV_SHOWS_REQUEST_FAIL =
+  "REQUEST_ON_THE_AIR_TV_SHOWS_REQUEST_FAIL";
+export const REQUEST_ON_THE_AIR_TV_SHOWS_REQUEST_LOADING =
+  "REQUEST_ON_THE_AIR_TV_SHOWS_REQUEST_LOADING";
+
+type onTheAirTvshowResponse = {
+  poster_path: string | null;
+  id: number;
+  genre_ids: number[];
+  backdrop_path: string | null;
+  total_results: number;
+  total_pages: number;
+  origin_country: string[];
+  vote_average: number;
+  name: string;
+};
+
+export type onTheAirTvshowsResults = {
+  page: number;
+  results: onTheAirTvshowResponse[];
+};
+
+export interface OnTheAirTvshowsResultsSuccess {
+  type: typeof REQUEST_ON_THE_AIR_TV_SHOWS_REQUEST_SUCCESS;
+  onTheAirTvShowsResponse: onTheAirTvshowsResults;
+}
+
+export interface OnTheAirTvshowRequestFail {
+  type: typeof REQUEST_ON_THE_AIR_TV_SHOWS_REQUEST_FAIL;
+  error: string;
+}
+
+export interface OnTheAirTvshowRequestLoading {
+  type: typeof REQUEST_ON_THE_AIR_TV_SHOWS_REQUEST_LOADING;
+}
+
+export type onTheAirTvshowsRequestTypes =
+  | OnTheAirTvshowsResultsSuccess
+  | OnTheAirTvshowRequestFail
+  | OnTheAirTvshowRequestLoading;
+
+// Latest Tv Shows Request
+
+export const REQUEST_LATEST_TV_SHOW_REQUEST_SUCCESS =
+  "REQUEST_LATEST_TV_SHOW_REQUEST_SUCCESS";
+export const REQUEST_LATEST_TV_SHOW_FAIL = "REQUEST_LATEST_TV_SHOW_FAIL";
+export const REQUEST_LATEST_TV_SHOW_LOADING = "REQUEST_LATEST_TV_SHOW_LOADING";
+
+export type latestTvshowRequestResult = {
+  poster_path: string | null;
+  id: number;
+  genre_ids: number[];
+  backdrop_path: string | null;
+  total_results: number;
+  total_pages: number;
+  origin_country: string[];
+  vote_average: number;
+  name: string;
+};
+
+export interface latestTvshowRequestResultSuccess {
+  type: typeof REQUEST_LATEST_TV_SHOW_REQUEST_SUCCESS;
+  response: latestTvshowRequestResult;
+}
+
+export interface latestTvshowRequestFail {
+  type: typeof REQUEST_LATEST_TV_SHOW_FAIL;
+  error: string;
+}
+
+export interface latestTvshowRequestLoading {
+  type: typeof REQUEST_LATEST_TV_SHOW_LOADING;
+}
+
+export type latestTvshowRequestTypes =
+  | latestTvshowRequestResultSuccess
+  | latestTvshowRequestFail
+  | latestTvshowRequestLoading;
+
+// TYPE OF SEARCH:
 
 // Handles the type or search to generate content for HOME page
 

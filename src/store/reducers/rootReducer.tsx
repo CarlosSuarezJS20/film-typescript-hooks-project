@@ -22,6 +22,8 @@ import getTvshowCastReducer from "./singleItemsReducer/tvshowsItemReducers/reque
 import getTvshowVideosReducer from "./singleItemsReducer/tvshowsItemReducers/requestTvshowDetailsReducer";
 import getActorDetailReducer from "./singleItemsReducer/actorDetailsReducers/actorsDetailsReqReducer";
 import getActorCombinedCreditsReducer from "./singleItemsReducer/actorDetailsReducers/actorCombinedCreditsReducer";
+import onTheAirTvShowsReducer from "./tvShowsReducers/requestOnAirTvShowsReducer";
+import latestTvshowRequestReducer from "./tvShowsReducers/latestTvShowReducer";
 
 // User Search Type Reducer: For displaying HOME PAGE dynamically
 import userSearchTypeReducer from "../../store/reducers/userSearchTypeReducer";
@@ -35,6 +37,7 @@ const rootReducer = combineReducers({
   postApiConfigurationReducer: postApiMbdConfigurationReducer,
   postMoviesGenresReducer: postMoviesGenresFetchReducer,
   postTvshowsGenresReducer: postTvshowsGenresFetchReducer,
+  // movies for home page
   requestUpcomingMoviesReducer: requestUpcomingMoviesR,
   requestPopularMoviesReducer: requestPopularMoviesR,
   requestNowPlayingMoviesReducer: requestNowPlayingMoviesR,
@@ -42,16 +45,18 @@ const rootReducer = combineReducers({
   //tv shows:
   tvShowsAiringTFetchReducer: tvShowsAiringTodayFetchReducer,
   topratedTvSFetchReducer: topratedTvshowsFetchReducer,
+  latestTvShowFetchReducer: latestTvshowRequestReducer,
   //singleItems reducers
   //movie reducers
   getMovieDetailsR: getMovieDetailsReducer,
-  getMovieCastR: getMovieCastReducer,
   getMovieTrailerR: getMovieTrailerReducer,
   // tvshow reducers
   getTvshowDetailsR: getTvshowDetailsReducer,
-  getTvshowCastR: getTvshowCastReducer,
   getTvshowVideosR: getTvshowVideosReducer,
+  getOnTheAirShowsR: onTheAirTvShowsReducer,
   // actor Details Reducers
+  getMovieCastR: getMovieCastReducer,
+  getTvshowCastR: getTvshowCastReducer,
   getActorDetailsR: getActorDetailReducer,
   getActorCombinedCreditsR: getActorCombinedCreditsReducer,
   // Search Multi reducer
