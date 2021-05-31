@@ -1,7 +1,7 @@
 import {
   REQUEST_TV_SHOWS_AIRING_TODAY_FETCH_FROM_MBD_API_SUCCESS,
-  POST_API_MBD_LOADING,
-  POST_API_MBD_FAIL,
+  REQUEST_TV_SHOWS_AIRING_TODAY_FETCH_FROM_MBD_API_LOADING,
+  REQUEST_TV_SHOWS_AIRING_TODAY_FETCH_FROM_MBD_API_FAILED,
   tvShowsAiringTodayFetchDispatchTypes,
   requestFunction,
 } from "./actionsTypes";
@@ -12,7 +12,7 @@ export const tvshowsAiringTodayFetchReq: requestFunction =
   (url) => async (dispatch: Dispatch<tvShowsAiringTodayFetchDispatchTypes>) => {
     try {
       dispatch({
-        type: POST_API_MBD_LOADING,
+        type: REQUEST_TV_SHOWS_AIRING_TODAY_FETCH_FROM_MBD_API_LOADING,
       });
       const postApiResponse = await axios.get(url);
       dispatch({
@@ -21,7 +21,7 @@ export const tvshowsAiringTodayFetchReq: requestFunction =
       });
     } catch (error) {
       dispatch({
-        type: POST_API_MBD_FAIL,
+        type: REQUEST_TV_SHOWS_AIRING_TODAY_FETCH_FROM_MBD_API_FAILED,
         error: error,
       });
     }

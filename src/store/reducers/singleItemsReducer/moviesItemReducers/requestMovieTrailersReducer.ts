@@ -26,6 +26,7 @@ const getMovieTrailersReducer = (
       return {
         ...state,
         loading: false,
+        error: action.error,
       };
     case GET_REQUEST_LOADING:
       return {

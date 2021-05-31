@@ -2,8 +2,8 @@ import {
   tvShowsAiringTodayApiResponse,
   tvShowsAiringTodayFetchDispatchTypes,
   REQUEST_TV_SHOWS_AIRING_TODAY_FETCH_FROM_MBD_API_SUCCESS,
-  POST_API_MBD_FAIL,
-  POST_API_MBD_LOADING,
+  REQUEST_TV_SHOWS_AIRING_TODAY_FETCH_FROM_MBD_API_LOADING,
+  REQUEST_TV_SHOWS_AIRING_TODAY_FETCH_FROM_MBD_API_FAILED,
 } from "../../actions/actionsTypes";
 
 interface DefaultStateInt {
@@ -21,12 +21,13 @@ const tvShowsAiringTodayReducer = (
   action: tvShowsAiringTodayFetchDispatchTypes
 ): DefaultStateInt => {
   switch (action.type) {
-    case POST_API_MBD_FAIL:
+    case REQUEST_TV_SHOWS_AIRING_TODAY_FETCH_FROM_MBD_API_FAILED:
       return {
         ...state,
         loading: false,
+        error: action.error,
       };
-    case POST_API_MBD_LOADING:
+    case REQUEST_TV_SHOWS_AIRING_TODAY_FETCH_FROM_MBD_API_LOADING:
       return {
         ...state,
         loading: true,

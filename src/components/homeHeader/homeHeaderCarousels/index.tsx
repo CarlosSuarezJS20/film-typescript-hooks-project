@@ -185,11 +185,10 @@ export const SecondCarousel: React.FC<FirstCarouselProps> = ({
     autoplay: true,
     autoplaySpeed: 6000,
     speed: 1000,
-
     slidesToScroll: 3,
     infinite: true,
-    nextArrow: <SecondCarouselUpBtn />,
-    prevArrow: <SecondCarouselNextBtn />,
+    nextArrow: <SecondCarouselNextBtn />,
+    prevArrow: <SecondCarouselUpBtn />,
   };
 
   const mDBConfigState = useSelector(

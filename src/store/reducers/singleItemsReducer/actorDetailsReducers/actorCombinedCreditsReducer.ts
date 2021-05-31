@@ -25,6 +25,7 @@ const getActorCombinedCreditsReducer = (
       return {
         ...state,
         loading: false,
+        error: action.error,
       };
     case GET_PEOPLE_REQUEST_LOADING:
       return {

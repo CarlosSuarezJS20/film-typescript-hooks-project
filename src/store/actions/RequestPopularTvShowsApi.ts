@@ -1,7 +1,7 @@
 import {
   REQUEST_POPULAR_TVSHOWS_FETCH_FROM_MBD_API_SUCCESS,
-  POST_API_MBD_LOADING,
-  POST_API_MBD_FAIL,
+  REQUEST_POPULAR_TVSHOWS_FETCH_FROM_MBD_API_FAILED,
+  REQUEST_POPULAR_TVSHOWS_FETCH_FROM_MBD_API_LOADING,
   popularTvShowFetchDispatchTypes,
   requestFunction,
 } from "./actionsTypes";
@@ -12,7 +12,7 @@ export const popularTvshowsFetchReq: requestFunction =
   (url) => async (dispatch: Dispatch<popularTvShowFetchDispatchTypes>) => {
     try {
       dispatch({
-        type: POST_API_MBD_LOADING,
+        type: REQUEST_POPULAR_TVSHOWS_FETCH_FROM_MBD_API_LOADING,
       });
       const postApiResponse = await axios.get(url);
       dispatch({
@@ -21,7 +21,7 @@ export const popularTvshowsFetchReq: requestFunction =
       });
     } catch (error) {
       dispatch({
-        type: POST_API_MBD_FAIL,
+        type: REQUEST_POPULAR_TVSHOWS_FETCH_FROM_MBD_API_FAILED,
         error: error,
       });
     }

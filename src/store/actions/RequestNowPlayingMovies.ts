@@ -1,7 +1,7 @@
 import {
   REQUEST_NOWPLAYING_MOVIES_FETCH_FROM_MBD_API_SUCCESS,
-  POST_API_MBD_LOADING,
-  POST_API_MBD_FAIL,
+  REQUEST_NOWPLAYING_MOVIES_FETCH_FROM_MBD_API_FAILED,
+  REQUEST_NOWPLAYING_MOVIES_FETCH_FROM_MBD_API_LOADING,
   nowPlayingMoviesResquestMbdApiDispatchTypes,
   requestFunction,
 } from "./actionsTypes";
@@ -13,7 +13,7 @@ export const nowplayingMoviesFetchResponse: requestFunction =
   async (dispatch: Dispatch<nowPlayingMoviesResquestMbdApiDispatchTypes>) => {
     try {
       dispatch({
-        type: POST_API_MBD_LOADING,
+        type: REQUEST_NOWPLAYING_MOVIES_FETCH_FROM_MBD_API_LOADING,
       });
       const postApiResponse = await axios.get(url);
       dispatch({
@@ -22,7 +22,7 @@ export const nowplayingMoviesFetchResponse: requestFunction =
       });
     } catch (error) {
       dispatch({
-        type: POST_API_MBD_FAIL,
+        type: REQUEST_NOWPLAYING_MOVIES_FETCH_FROM_MBD_API_FAILED,
         error: error,
       });
     }

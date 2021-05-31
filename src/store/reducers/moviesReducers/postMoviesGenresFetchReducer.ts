@@ -2,8 +2,8 @@ import {
   genresApiResponse,
   PostMoviesGenresFetchDispatchTypes,
   POST_GENRES_MOVIES_FETCH_FROM_MBD_API_SUCCESS,
-  POST_API_MBD_FAIL,
-  POST_API_MBD_LOADING,
+  POST_GENRES_MOVIES_FETCH_FROM_MBD_API_FAILED,
+  POST_GENRES_MOVIES_FETCH_FROM_MBD_API_LOADING,
 } from "../../actions/actionsTypes";
 
 interface DefaultStateInt {
@@ -21,12 +21,13 @@ const postMovieGenresReducer = (
   action: PostMoviesGenresFetchDispatchTypes
 ): DefaultStateInt => {
   switch (action.type) {
-    case POST_API_MBD_FAIL:
+    case POST_GENRES_MOVIES_FETCH_FROM_MBD_API_FAILED:
       return {
         ...state,
         loading: false,
+        error: action.error,
       };
-    case POST_API_MBD_LOADING:
+    case POST_GENRES_MOVIES_FETCH_FROM_MBD_API_LOADING:
       return {
         ...state,
         loading: true,

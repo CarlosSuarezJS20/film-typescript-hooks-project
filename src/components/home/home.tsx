@@ -3,6 +3,8 @@ import "./home.css";
 
 import NavigationBar from "../mainNavigation/mainNavigation";
 import HomeHeader from "../homeHeader/homeHeader";
+import MainCarousel from "../mainCarousel/mainCarousel";
+import LatestTvshowDisplayer from "../latestTvShow/latestTvShow";
 
 import { useSelector, useDispatch } from "react-redux";
 
@@ -14,12 +16,15 @@ import { topratedMoviesFetchResponse } from "../../store/actions/RequestToprated
 // Tv Requests
 import { tvshowsAiringTodayFetchReq } from "../../store/actions/RequestTvshowsAiringTodayApi";
 import { topratedTvshowsFetchReq } from "../../store/actions/RequestTopratedTVshowsApi";
+import { onTheAirTvshowsRequestReq } from "../../store/actions/RequestOntheairTvShowsRequest";
+import { latestTvshowRequestReq } from "../../store/actions/RequestLatestTvshowRequest";
+import { popularTvshowsFetchReq } from "../../store/actions/RequestPopularTvShowsApi";
 //
 import { storesUserSearchValueHandler } from "../../store/actions/searchValueFromNavbarHandler";
 
 import { RootStore } from "../../store/store";
 
-const Home = () => {
+const Home: React.FC = () => {
   const dispatch = useDispatch();
 
   // fetches necessary configurations for elements img size etc.
@@ -35,12 +40,26 @@ const Home = () => {
     (state: RootStore) => state.searchValueFromInputHandlerR
   );
 
+  // movies
   const popularMoviesReqState = useSelector(
     (state: RootStore) => state.requestPopularMoviesReducer
   );
 
   const topRatedReqState = useSelector(
     (state: RootStore) => state.requestTopratedMoviesReducer
+  );
+
+  //tvshows
+  const ontheAirTvShowsReqState = useSelector(
+    (state: RootStore) => state.requestOnTheAirShowsR
+  );
+
+  const popularTvShowsReqState = useSelector(
+    (state: RootStore) => state.requestOnTheAirShowsR
+  );
+
+  const latesttvShowReqState = useSelector(
+    (state: RootStore) => state.latestTvShowFetchReducer
   );
 
   useEffect(() => {
@@ -79,6 +98,21 @@ const Home = () => {
             `https://api.themoviedb.org/3/tv/top_rated?api_key=${configMbdApiState.apiKey}&language=en-US&page=1`
           )
         );
+        dispatch(
+          onTheAirTvshowsRequestReq(
+            `https://api.themoviedb.org/3/tv/on_the_air?api_key=${configMbdApiState.apiKey}&language=en-US&page=1`
+          )
+        );
+        dispatch(
+          latestTvshowRequestReq(
+            `https://api.themoviedb.org/3/tv/latest?api_key=${configMbdApiState.apiKey}&language=en-US&page=1`
+          )
+        );
+        dispatch(
+          popularTvshowsFetchReq(
+            `https://api.themoviedb.org/3/tv/popular?api_key=${configMbdApiState.apiKey}&language=en-US&page=1`
+          )
+        );
         break;
     }
   }, [userTypeOfSearchState.userSearchType]);
@@ -94,6 +128,45 @@ const Home = () => {
     <div className="home-container" onClick={resetsUserSearchHandler}>
       <NavigationBar />
       <HomeHeader />
+      {userTypeOfSearchState.userSearchType === "tv-shows" && (
+        <LatestTvshowDisplayer
+          item={
+            latesttvShowReqState.latestTvShowResult! &&
+            latesttvShowReqState.latestTvShowResult
+          }
+        />
+      )}
+      {userTypeOfSearchState.userSearchType === "movies" ? (
+        <div className="movies-carousels-holder">
+          <MainCarousel
+            items={
+              popularMoviesReqState.popularMoviesResponseMbd! &&
+              popularMoviesReqState.popularMoviesResponseMbd!.results
+            }
+          />
+          <MainCarousel
+            items={
+              topRatedReqState.topratedMoviesResponse! &&
+              topRatedReqState.topratedMoviesResponse!.results
+            }
+          />
+        </div>
+      ) : (
+        <div className="tv-shows-carousels-holder">
+          <MainCarousel
+            items={
+              ontheAirTvShowsReqState.onTheAirTvshowsResults! &&
+              ontheAirTvShowsReqState.onTheAirTvshowsResults!.results
+            }
+          />
+          <MainCarousel
+            items={
+              popularTvShowsReqState.onTheAirTvshowsResults! &&
+              ontheAirTvShowsReqState.onTheAirTvshowsResults!.results
+            }
+          />
+        </div>
+      )}
     </div>
   );
 };

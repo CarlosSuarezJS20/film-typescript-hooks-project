@@ -1,7 +1,7 @@
 import {
-  POST_GENRES_TV_FETCH_FROM_MBD_API_SUCCESS,
-  POST_API_MBD_LOADING,
-  POST_API_MBD_FAIL,
+  REQUEST_GENRES_TV_FETCH_FROM_MBD_API_SUCCESS,
+  REQUEST_GENRES_TV_FETCH_FROM_MBD_API_LOADING,
+  REQUEST_GENRES_TV_FETCH_FROM_MBD_API_FAILED,
   PostTvGenresFetchDispatchTypes,
   requestFunction,
 } from "./actionsTypes";
@@ -12,16 +12,16 @@ export const postTvshowsGenresFetchResponse: requestFunction =
   (url) => async (dispatch: Dispatch<PostTvGenresFetchDispatchTypes>) => {
     try {
       dispatch({
-        type: POST_API_MBD_LOADING,
+        type: REQUEST_GENRES_TV_FETCH_FROM_MBD_API_LOADING,
       });
       const postApiResponse = await axios.get(url);
       dispatch({
-        type: POST_GENRES_TV_FETCH_FROM_MBD_API_SUCCESS,
+        type: REQUEST_GENRES_TV_FETCH_FROM_MBD_API_SUCCESS,
         tvGenres: postApiResponse.data,
       });
     } catch (error) {
       dispatch({
-        type: POST_API_MBD_FAIL,
+        type: REQUEST_GENRES_TV_FETCH_FROM_MBD_API_FAILED,
         error: error,
       });
     }

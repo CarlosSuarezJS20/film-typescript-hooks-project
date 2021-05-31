@@ -2,7 +2,7 @@ import {
   onTheAirTvshowsResults,
   onTheAirTvshowsRequestTypes,
   REQUEST_ON_THE_AIR_TV_SHOWS_REQUEST_SUCCESS,
-  REQUEST_ON_THE_AIR_TV_SHOWS_REQUEST_FAIL,
+  REQUEST_ON_THE_AIR_TV_SHOWS_REQUEST_FAILED,
   REQUEST_ON_THE_AIR_TV_SHOWS_REQUEST_LOADING,
 } from "../../actions/actionsTypes";
 
@@ -21,10 +21,11 @@ const onTheAirTvshowsReducer = (
   action: onTheAirTvshowsRequestTypes
 ): DefaultStateInt => {
   switch (action.type) {
-    case REQUEST_ON_THE_AIR_TV_SHOWS_REQUEST_FAIL:
+    case REQUEST_ON_THE_AIR_TV_SHOWS_REQUEST_FAILED:
       return {
         ...state,
         loading: false,
+        error: action.error,
       };
     case REQUEST_ON_THE_AIR_TV_SHOWS_REQUEST_LOADING:
       return {

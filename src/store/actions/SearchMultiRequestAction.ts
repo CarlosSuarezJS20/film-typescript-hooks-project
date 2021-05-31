@@ -1,8 +1,8 @@
 import {
   SearchResponsesDispatchTypes,
-  SEARCH_REQUEST_RESPONSE_ACTION,
-  POST_API_MBD_FAIL,
-  POST_API_MBD_LOADING,
+  SEARCH_REQUEST_RESPONSE_ACTION_SUCCESS,
+  SEARCH_REQUEST_RESPONSE_ACTION_FAILED,
+  SEARCH_REQUEST_RESPONSE_ACTION_LOADING,
   requestFunction,
 } from "./actionsTypes";
 import { Dispatch } from "redux";
@@ -12,16 +12,16 @@ export const searchMultiFindFetchResponse: requestFunction =
   (url) => async (dispatch: Dispatch<SearchResponsesDispatchTypes>) => {
     try {
       dispatch({
-        type: POST_API_MBD_LOADING,
+        type: SEARCH_REQUEST_RESPONSE_ACTION_LOADING,
       });
       const postApiResponse = await axios.get(url);
       dispatch({
-        type: SEARCH_REQUEST_RESPONSE_ACTION,
+        type: SEARCH_REQUEST_RESPONSE_ACTION_SUCCESS,
         searchResults: postApiResponse.data,
       });
     } catch (error) {
       dispatch({
-        type: POST_API_MBD_FAIL,
+        type: SEARCH_REQUEST_RESPONSE_ACTION_FAILED,
         error: error,
       });
     }

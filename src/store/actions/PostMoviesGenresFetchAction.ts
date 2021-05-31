@@ -1,7 +1,7 @@
 import {
   POST_GENRES_MOVIES_FETCH_FROM_MBD_API_SUCCESS,
-  POST_API_MBD_LOADING,
-  POST_API_MBD_FAIL,
+  POST_GENRES_MOVIES_FETCH_FROM_MBD_API_FAILED,
+  POST_GENRES_MOVIES_FETCH_FROM_MBD_API_LOADING,
   PostMoviesGenresFetchDispatchTypes,
   requestFunction,
 } from "./actionsTypes";
@@ -12,7 +12,7 @@ export const postMoviesGenresFetchResponse: requestFunction =
   (url) => async (dispatch: Dispatch<PostMoviesGenresFetchDispatchTypes>) => {
     try {
       dispatch({
-        type: POST_API_MBD_LOADING,
+        type: POST_GENRES_MOVIES_FETCH_FROM_MBD_API_LOADING,
       });
       const postApiResponse = await axios.get(url);
       dispatch({
@@ -21,7 +21,7 @@ export const postMoviesGenresFetchResponse: requestFunction =
       });
     } catch (error) {
       dispatch({
-        type: POST_API_MBD_FAIL,
+        type: POST_GENRES_MOVIES_FETCH_FROM_MBD_API_FAILED,
         error: error,
       });
     }

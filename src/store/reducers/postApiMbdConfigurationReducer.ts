@@ -27,6 +27,7 @@ const postMDBConfigReducer = (
       return {
         ...state,
         loading: false,
+        error: action.error,
       };
     case POST_API_MBD_LOADING:
       return {

@@ -25,6 +25,7 @@ const latestTvshowRequestReducer = (
       return {
         ...state,
         loading: false,
+        error: action.error,
       };
     case REQUEST_LATEST_TV_SHOW_LOADING:
       return {

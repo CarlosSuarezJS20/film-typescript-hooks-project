@@ -8,7 +8,7 @@ import {
 import { Dispatch } from "redux";
 import axios from "axios";
 
-export const onTheAirTvshowsRequestReq: requestFunction =
+export const requestOnTheairTvshowsFetchResponse: requestFunction =
   (url) => async (dispatch: Dispatch<onTheAirTvshowsRequestTypes>) => {
     try {
       dispatch({

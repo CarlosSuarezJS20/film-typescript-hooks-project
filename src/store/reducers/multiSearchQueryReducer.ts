@@ -1,9 +1,9 @@
 import {
   searchResponses,
   SearchResponsesDispatchTypes,
-  SEARCH_REQUEST_RESPONSE_ACTION,
-  POST_API_MBD_FAIL,
-  POST_API_MBD_LOADING,
+  SEARCH_REQUEST_RESPONSE_ACTION_SUCCESS,
+  SEARCH_REQUEST_RESPONSE_ACTION_FAILED,
+  SEARCH_REQUEST_RESPONSE_ACTION_LOADING,
 } from "../actions/actionsTypes";
 
 interface DefaultStateInt {
@@ -21,17 +21,18 @@ const multiSearchResultsReducer = (
   action: SearchResponsesDispatchTypes
 ): DefaultStateInt => {
   switch (action.type) {
-    case POST_API_MBD_FAIL:
+    case SEARCH_REQUEST_RESPONSE_ACTION_FAILED:
       return {
         ...state,
         loading: false,
+        error: action.error,
       };
-    case POST_API_MBD_LOADING:
+    case SEARCH_REQUEST_RESPONSE_ACTION_LOADING:
       return {
         ...state,
         loading: true,
       };
-    case SEARCH_REQUEST_RESPONSE_ACTION:
+    case SEARCH_REQUEST_RESPONSE_ACTION_SUCCESS:
       return {
         ...state,
         loading: false,
