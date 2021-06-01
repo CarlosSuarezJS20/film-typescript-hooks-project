@@ -55,7 +55,7 @@ const Home: React.FC = () => {
   );
 
   const popularTvShowsReqState = useSelector(
-    (state: RootStore) => state.requestOnTheAirShowsR
+    (state: RootStore) => state.getPopularTvshowsReducer
   );
 
   const latesttvShowReqState = useSelector(
@@ -129,14 +129,30 @@ const Home: React.FC = () => {
       <NavigationBar />
       <HomeHeader />
       {userTypeOfSearchState.userSearchType === "tv-shows" && (
-        <LatestTvshowDisplayer
-          item={
-            latesttvShowReqState.latestTvShowResult! &&
-            latesttvShowReqState.latestTvShowResult
-          }
-        />
+        <React.Fragment>
+          <LatestTvshowDisplayer
+            item={
+              latesttvShowReqState.latestTvShowResult! &&
+              latesttvShowReqState.latestTvShowResult
+            }
+          />
+          <div className="tv-shows-carousels-holder">
+            <MainCarousel
+              items={
+                ontheAirTvShowsReqState.onTheAirTvshowsResults! &&
+                ontheAirTvShowsReqState.onTheAirTvshowsResults!.results
+              }
+            />
+            <MainCarousel
+              items={
+                popularTvShowsReqState.popularTvShowResponseMbd! &&
+                ontheAirTvShowsReqState.onTheAirTvshowsResults!.results
+              }
+            />
+          </div>
+        </React.Fragment>
       )}
-      {userTypeOfSearchState.userSearchType === "movies" ? (
+      {userTypeOfSearchState.userSearchType === "movies" && (
         <div className="movies-carousels-holder">
           <MainCarousel
             items={
@@ -148,21 +164,6 @@ const Home: React.FC = () => {
             items={
               topRatedReqState.topratedMoviesResponse! &&
               topRatedReqState.topratedMoviesResponse!.results
-            }
-          />
-        </div>
-      ) : (
-        <div className="tv-shows-carousels-holder">
-          <MainCarousel
-            items={
-              ontheAirTvShowsReqState.onTheAirTvshowsResults! &&
-              ontheAirTvShowsReqState.onTheAirTvshowsResults!.results
-            }
-          />
-          <MainCarousel
-            items={
-              popularTvShowsReqState.onTheAirTvshowsResults! &&
-              ontheAirTvShowsReqState.onTheAirTvshowsResults!.results
             }
           />
         </div>

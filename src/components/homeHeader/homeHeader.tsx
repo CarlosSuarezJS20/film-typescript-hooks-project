@@ -97,7 +97,8 @@ const HomeHeader: React.FC = () => {
     topRatedTvShowsState,
   ]);
 
-  const addsGenresList = (genreIds: number[]) => {
+  // adds the genres to the paragraph by looping through the genres ids of the items
+  function addsGenresList(genreIds: number[]) {
     let allocatedGenres = [];
 
     if (genres && genreIds.length > 0) {
@@ -110,7 +111,7 @@ const HomeHeader: React.FC = () => {
         });
       return allocatedGenres[0];
     }
-  };
+  }
 
   return (
     <header className="header-container">

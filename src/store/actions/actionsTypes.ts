@@ -483,7 +483,7 @@ export const REQUEST_LATEST_TV_SHOW_LOADING = "REQUEST_LATEST_TV_SHOW_LOADING";
 export type latestTvshowRequestResult = {
   poster_path: string | null;
   id: number;
-  genre_ids: number[];
+  genres: { id: number; name: string }[];
   backdrop_path: string | null;
   total_results: number;
   total_pages: number;

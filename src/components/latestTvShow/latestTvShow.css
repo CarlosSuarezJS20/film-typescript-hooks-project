@@ -1,0 +1,93 @@
+.latest-show-main-area {
+  background: rgb(20, 20, 20);
+  margin: 3rem auto;
+  padding: 1.5rem 1rem;
+  max-width: 1280px;
+}
+
+.no-image-found {
+  height: 150px;
+  margin: 0 auto;
+  padding: 5rem;
+  text-align: center;
+  max-width: 600px;
+  color: rgba(250, 250, 250, 0.61);
+}
+
+.not-image-latest-show-holder {
+  margin: 0 4rem;
+  border: 1px solid rgba(250, 250, 250, 0.61);
+}
+
+.not-image-latest-show-holder:hover {
+  border: 2px solid rgb(250, 250, 250);
+}
+
+.latest-show-description-with-noimage {
+  padding: 2rem;
+}
+
+.latest-show-description-with-noimage h2 {
+  color: rgb(228, 186, 0);
+  font-size: 1.5rem;
+}
+
+.latest-show-description-with-noimage p {
+  color: rgb(214, 214, 214);
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.lastest-show-info {
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.lastest-show-info img {
+  opacity: 0.7;
+}
+
+.lastest-show-info img:hover {
+  opacity: 1;
+}
+
+.latest-show-title-holder {
+  text-align: left;
+  margin: 1rem 0;
+  padding: 0 2rem;
+  font-size: 1.5rem;
+  color: rgb(228, 186, 0);
+}
+
+.latest-show-title-holder p {
+  font-size: 1rem;
+  font-weight: bold;
+  color: rgb(214, 214, 214);
+}
+
+.latest-show-description {
+  position: absolute;
+  text-align: right;
+  padding: 0.5rem 1.5rem;
+  width: 100%;
+  height: 90px;
+  top: 74%;
+  background: rgb(17, 17, 17);
+  background: linear-gradient(
+    0deg,
+    rgba(17, 17, 17, 1) 46%,
+    rgba(255, 255, 255, 0.027220911949685567) 100%
+  );
+}
+
+.latest-show-description h2 {
+  color: rgb(228, 186, 0);
+  font-size: 1.5rem;
+}
+
+.latest-show-description p {
+  color: rgb(214, 214, 214);
+  font-size: 1rem;
+  font-weight: bold;
+}
