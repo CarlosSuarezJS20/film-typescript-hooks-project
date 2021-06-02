@@ -253,6 +253,42 @@ export type TopRatedMoviesResquestMbdApiDispatchTypes =
   | TopRatedMoviesRequestFailed
   | TopRatedMoviesRequestLoading;
 
+export const REQUEST_LATEST_MOVIE_REQUEST_SUCCESS =
+  "REQUEST_LATEST_MOVIE_REQUEST_SUCCESS";
+export const REQUEST_LATEST_MOVIE_SHOW_FAIL = "REQUEST_LATEST_MOVIE_SHOW_FAIL";
+export const REQUEST_LATEST_MOVIE_LOADING = "REQUEST_LATEST_MOVIE_LOADING";
+
+export type latestMovieRequestResult = {
+  poster_path: string | null;
+  id: number;
+  genres: { id: number; name: string }[];
+  backdrop_path: string | null;
+  total_results: number;
+  total_pages: number;
+  origin_country: string[];
+  vote_average: number;
+  name: string;
+};
+
+export interface LatestMovieRequestResultSuccess {
+  type: typeof REQUEST_LATEST_MOVIE_REQUEST_SUCCESS;
+  response: latestMovieRequestResult;
+}
+
+export interface LatestMovieRequestFail {
+  type: typeof REQUEST_LATEST_MOVIE_SHOW_FAIL;
+  error: string;
+}
+
+export interface LatestTvshowRequestLoading {
+  type: typeof REQUEST_LATEST_MOVIE_LOADING;
+}
+
+export type latestMovieRequestTypes =
+  | LatestMovieRequestResultSuccess
+  | LatestMovieRequestFail
+  | LatestTvshowRequestLoading;
+
 // ACTION TYPES FOR HOME PAGE TV SHOWS
 
 // Tvshows Genres request Actions and Types for Reducer
@@ -406,12 +442,12 @@ type popularTvShowResponse = {
 
 export type popularTvShowApiResponse = {
   page: number;
-  popularTvResponse: popularTvShowResponse[];
+  results: popularTvShowResponse[];
 };
 
 export interface PopularTvShowRequestSuccess {
   type: typeof REQUEST_POPULAR_TVSHOWS_FETCH_FROM_MBD_API_SUCCESS;
-  popularTvShowsResponse: popularTvShowApiResponse;
+  results: popularTvShowApiResponse;
 }
 
 export interface PopularTvShowRequestFailed {
@@ -586,3 +622,50 @@ export type SearchResponsesDispatchTypes =
   | SearchResponsesSuccess
   | SearchResponsesFail
   | SearchResponsesLoading;
+
+// TRENDING THIS WEEK API REQUEST:
+
+// Latest Tv Show Request
+
+export const REQUEST_TRENDING_THIS_WEEK_REQUEST_SUCCESS =
+  "REQUEST_TRENDING_THIS_WEEK_REQUEST_SUCCESS";
+export const REQUEST_TRENDING_THIS_WEEK_FAILED =
+  "REQUEST_TRENDING_THIS_WEEK_FAIL";
+export const REQUEST_TRENDING_THIS_WEEK_LOADING =
+  "REQUEST_TRENDING_THIS_WEEK_LOADING";
+
+export type trendingThisweekRequestResult = {
+  poster_path: string | null;
+  id: number;
+  genres: { id: number; name: string }[];
+  backdrop_path: string | null;
+  total_results: number;
+  total_pages: number;
+  origin_country: string[];
+  vote_average: number;
+  title: string;
+};
+
+export type trendingThisweekResults = {
+  page: number;
+  results: trendingThisweekRequestResult[];
+};
+
+export interface TrendingThisweekResultSuccess {
+  type: typeof REQUEST_TRENDING_THIS_WEEK_REQUEST_SUCCESS;
+  response: trendingThisweekResults;
+}
+
+export interface TrendingThisweekRequestFail {
+  type: typeof REQUEST_TRENDING_THIS_WEEK_FAILED;
+  error: string;
+}
+
+export interface TrendingThisweekRequestLoading {
+  type: typeof REQUEST_TRENDING_THIS_WEEK_LOADING;
+}
+
+export type trendingThisweekRequestTypes =
+  | TrendingThisweekResultSuccess
+  | TrendingThisweekRequestFail
+  | TrendingThisweekRequestLoading;

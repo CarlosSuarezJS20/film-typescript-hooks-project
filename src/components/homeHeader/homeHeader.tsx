@@ -114,7 +114,7 @@ const HomeHeader: React.FC = () => {
   }
 
   return (
-    <header className="header-container">
+    <header className="header-container" id="header-main">
       {/* presents a loader while fetching the times */}
       {moviesNowPlayingState.loading &&
       airingNowTvShowsPlayingState.loading &&

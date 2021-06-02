@@ -7,7 +7,7 @@ import {
 } from "../../actions/actionsTypes";
 
 interface DefaultStateInt {
-  popularTvShowResponseMbd?: popularTvShowApiResponse;
+  results?: popularTvShowApiResponse;
   loading: boolean;
   error?: string;
 }
@@ -36,7 +36,7 @@ const postPopularTvShowsReducer = (
       return {
         ...state,
         loading: false,
-        popularTvShowResponseMbd: action.popularTvShowsResponse,
+        results: action.results,
       };
 
     default:

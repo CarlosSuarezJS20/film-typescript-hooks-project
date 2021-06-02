@@ -17,7 +17,7 @@ export const popularTvshowsFetchReq: requestFunction =
       const postApiResponse = await axios.get(url);
       dispatch({
         type: REQUEST_POPULAR_TVSHOWS_FETCH_FROM_MBD_API_SUCCESS,
-        popularTvShowsResponse: postApiResponse.data,
+        results: postApiResponse.data,
       });
     } catch (error) {
       dispatch({

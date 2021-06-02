@@ -1,3 +1,16 @@
 .home-container {
   background: rgb(15, 15, 15);
 }
+
+.main-carousel-title {
+  text-align: left;
+  margin-left: 5rem;
+  color: rgb(228, 186, 0);
+  font-size: 1.5rem;
+}
+
+.main-carousel-title p {
+  color: #ccc;
+  font-size: 1rem;
+  font-weight: bold;
+}

@@ -14,6 +14,8 @@ import { NavLink } from "react-router-dom";
 import {
   faChevronLeft,
   faChevronRight,
+  faPlus,
+  faStar,
 } from "@fortawesome/free-solid-svg-icons";
 
 import { useSelector } from "react-redux";
@@ -27,7 +29,7 @@ interface PropsBtn {
 
 export const NexBtn: React.FC<PropsBtn> = (props) => {
   return (
-    <div className="next-btn" onClick={props.onClick}>
+    <div className="next-btn-main-carousel" onClick={props.onClick}>
       <FontAwesomeIcon icon={faChevronRight} />
     </div>
   );
@@ -35,7 +37,7 @@ export const NexBtn: React.FC<PropsBtn> = (props) => {
 
 export const PrevBtn: React.FC<PropsBtn> = (props) => {
   return (
-    <div className="prev-btn" onClick={props.onClick}>
+    <div className="prev-btn-main-carousel" onClick={props.onClick}>
       <FontAwesomeIcon icon={faChevronLeft} />
     </div>
   );
@@ -59,12 +61,14 @@ interface PropsMaincarousel {
 }
 
 const MainCarousel: React.FC<PropsMaincarousel> = ({ items }) => {
-  console.log(items);
   const mDBConfigState = useSelector(
     (state: RootStore) => state.postApiConfigurationReducer
   );
-  const genresState = useSelector(
+  const genresTvshowsState = useSelector(
     (state: RootStore) => state.postTvshowsGenresReducer
+  );
+  const genresMoviesState = useSelector(
+    (state: RootStore) => state.postMoviesGenresReducer
   );
   const typeOfSearchState = useSelector(
     (state: RootStore) => state.userSearchTypeR
@@ -74,22 +78,33 @@ const MainCarousel: React.FC<PropsMaincarousel> = ({ items }) => {
   const slickSettings: Settings = {
     lazyLoad: "ondemand",
     accessibility: false,
-    draggable: true,
     autoplay: false,
     speed: 1000,
-    slidesToShow: 3,
+    slidesToShow: 6,
     slidesToScroll: 1,
     infinite: true,
     nextArrow: <NexBtn />,
     prevArrow: <PrevBtn />,
+    responsive: [
+      {
+        breakpoint: 990,
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+    ],
   };
 
   const genresFunction = (genresIds: number[]) => {
     let allocatedGenres = [];
+    let genresListFromServer =
+      typeOfSearchState.userSearchType === "movies"
+        ? genresMoviesState.genresResponseMbd!.genres
+        : genresTvshowsState.tvshowsGenresResponseMbd!.genres;
 
-    if (genresState.tvshowsGenresResponseMbd!.genres && genresIds.length > 0) {
-      allocatedGenres = genresState
-        .tvshowsGenresResponseMbd!.genres.filter((genres) => {
+    if (genresIds.length > 0) {
+      allocatedGenres = genresListFromServer
+        .filter((genres) => {
           return genresIds.includes(genres.id);
         })
         .map((genre) => {
@@ -97,59 +112,66 @@ const MainCarousel: React.FC<PropsMaincarousel> = ({ items }) => {
         });
       return allocatedGenres[0];
     }
+    return "N/A";
   };
 
   return (
     <div className="home-page-carousel-holder">
-      <Slick {...slickSettings}>
+      <Slick className="main-carousel" {...slickSettings}>
         {items &&
           items.map((item, index) => {
             // request images
             return (
-              <NavLink
-                key={index}
-                to={
-                  typeOfSearchState.userSearchType === "tv-shows"
-                    ? `/details/tv/${item.name}`
-                    : `/details/movie/${item.title}`
-                }
-              >
-                <div className="image-and-description-holder">
-                  <img
-                    className="item-img"
-                    src={`${
-                      mDBConfigState.payload?.images &&
-                      mDBConfigState.payload.images.secure_base_url
-                    }${
-                      mDBConfigState.payload?.images &&
-                      mDBConfigState.payload.images.poster_sizes[4]
-                    }${item.backdrop_path}`}
-                  />
-                  <div className="item-description">
-                    <div className="poster">
-                      <img
-                        src={`${
-                          mDBConfigState.payload?.images &&
-                          mDBConfigState.payload.images.secure_base_url
-                        }${
-                          mDBConfigState.payload?.images &&
-                          mDBConfigState.payload.images.poster_sizes[4]
-                        }${item.poster_path}`}
-                      />
-                    </div>
-                    <div className="description">
-                      <h2>
-                        {typeOfSearchState.userSearchType === "tv-shows"
-                          ? item.name
-                          : item.title}
-                      </h2>
-                      <p>{`${genresFunction(item.genre_ids!)} | ${
-                        item.vote_average
-                      } Rating`}</p>
-                    </div>
+              <div key={index} className="item-holder">
+                <div className="item-image-container">
+                  <NavLink
+                    to={
+                      typeOfSearchState.userSearchType === "tv-shows"
+                        ? `/details/tv/${item.name}`
+                        : `/details/movie/${item.title}`
+                    }
+                  >
+                    <img
+                      className="item-img-main-carousel"
+                      src={`${
+                        mDBConfigState.payload?.images &&
+                        mDBConfigState.payload.images.secure_base_url
+                      }${
+                        mDBConfigState.payload?.images &&
+                        mDBConfigState.payload.images.poster_sizes[4]
+                      }${item.poster_path}`}
+                    />
+                  </NavLink>
+                  <div className="watch-later-icon">
+                    <FontAwesomeIcon
+                      icon={faPlus}
+                      className="watch-later-plus"
+                    />
                   </div>
                 </div>
-              </NavLink>
+                <div className="item-description-slide">
+                  <div className="item-rating">
+                    <FontAwesomeIcon icon={faStar} className="star" />
+                    <p>{item.vote_average}</p>
+                  </div>
+                  <NavLink
+                    to={
+                      typeOfSearchState.userSearchType === "tv-shows"
+                        ? `/details/tv/${item.name}`
+                        : `/details/movie/${item.title}`
+                    }
+                  >
+                    <h2 className="item-title-main-carousel">
+                      {typeOfSearchState.userSearchType === "tv-shows"
+                        ? item.name
+                        : item.title}
+                    </h2>
+                  </NavLink>
+                  <div className="genres-holder">
+                    <p>{`${genresFunction(item.genre_ids!)}`}</p>
+                  </div>
+                </div>
+              </div>
             );
           })}
       </Slick>

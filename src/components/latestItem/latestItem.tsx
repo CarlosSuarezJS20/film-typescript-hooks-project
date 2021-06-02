@@ -1,5 +1,5 @@
 import React from "react";
-import "./latestTvShow.css";
+import "./latestItem.css";
 
 // Slick library styling
 import "slick-carousel/slick/slick.css";
@@ -27,24 +27,33 @@ interface PropsMaincarousel {
   item: resultFromServer;
 }
 
-const LatestTvshowDisplayer: React.FC<PropsMaincarousel> = ({ item }) => {
+const LatestItemDisplayer: React.FC<PropsMaincarousel> = ({ item }) => {
   const mDBConfigState = useSelector(
     (state: RootStore) => state.postApiConfigurationReducer
   );
 
-  const genresState = useSelector(
+  const genresTvshowsState = useSelector(
     (state: RootStore) => state.postTvshowsGenresReducer
+  );
+
+  const genresMoviesState = useSelector(
+    (state: RootStore) => state.postMoviesGenresReducer
+  );
+
+  const typeOfSearchState = useSelector(
+    (state: RootStore) => state.userSearchTypeR
   );
 
   const addGenres = (genres: { id: number; name: string }[]) => {
     let allocatedGenres = [];
-    if (
-      genresState.tvshowsGenresResponseMbd?.genres &&
-      genres &&
-      genres.length > 0
-    ) {
+    let genresListFromServer =
+      typeOfSearchState.userSearchType === "movies"
+        ? genresMoviesState.genresResponseMbd!.genres
+        : genresTvshowsState.tvshowsGenresResponseMbd!.genres;
+
+    if (genres.length > 0) {
       let genresId = genres.map((genre) => genre.id);
-      allocatedGenres = genresState.tvshowsGenresResponseMbd.genres
+      allocatedGenres = genresListFromServer
         .filter((genres) => {
           return genresId.includes(genres.id);
         })
@@ -59,29 +68,43 @@ const LatestTvshowDisplayer: React.FC<PropsMaincarousel> = ({ item }) => {
   return (
     <React.Fragment>
       {item && (
-        <div className="latest-show-main-area">
-          <div className="latest-show-title-holder">
-            <h2>Latest show</h2>
+        <div className="latest-item-main-area">
+          <div className="latest-item-title-holder">
+            <h2>
+              {`Latest ${
+                typeOfSearchState.userSearchType === "tv-shows"
+                  ? "Show"
+                  : "Movie"
+              }`}
+            </h2>
             <p>Here is our latest addition, check it out!</p>
           </div>
           <NavLink
-            className="latest-show-holder"
-            to={`/details/tv/${item.name}`}
+            className="latest-item-holder"
+            to={
+              typeOfSearchState.userSearchType === "tv-shows"
+                ? `/details/tv/${item.name}`
+                : `/details/movie/${item.title}`
+            }
           >
             {item.backdrop_path === null ? (
-              <div className="not-image-latest-show-holder">
+              <div className="not-image-latest-item-holder">
                 <div className="no-image-found">
                   <p>No image found</p>
-                  <FontAwesomeIcon icon={faSadCry} />
+                  <FontAwesomeIcon icon={faSadCry} className="cry-face" />
                 </div>
-                <div className="latest-show-description-with-noimage">
-                  <h2>{item.name}</h2>
+                <div className="latest-item-description-with-noimage">
+                  <h2>
+                    {typeOfSearchState.userSearchType === "tv-shows"
+                      ? `${item.name}`
+                      : `${item.title}`}
+                  </h2>
                   <p>Rating | {item.vote_average}</p>
                   <p>{addGenres(item.genres!)}</p>
                 </div>
               </div>
             ) : (
-              <div className="lastest-show-info">
+              <div className="lastest-item-info">
                 <img
                   src={`${
                     mDBConfigState.payload?.images &&
@@ -91,8 +114,12 @@ const LatestTvshowDisplayer: React.FC<PropsMaincarousel> = ({ item }) => {
                     mDBConfigState.payload.images.poster_sizes[4]
                   }${item.backdrop_path}`}
                 />
-                <div className="latest-show-description">
-                  <h2>{item.name}</h2>
+                <div className="latest-item-description">
+                  <h2>
+                    {typeOfSearchState.userSearchType === "tv-shows"
+                      ? `${item.name}`
+                      : `${item.title}`}
+                  </h2>
                   <p>Rating | {item.vote_average}</p>
                   <p>{addGenres(item.genres!)}</p>
                 </div>
@@ -105,4 +132,4 @@ const LatestTvshowDisplayer: React.FC<PropsMaincarousel> = ({ item }) => {
   );
 };
 
-export default LatestTvshowDisplayer;
+export default LatestItemDisplayer;

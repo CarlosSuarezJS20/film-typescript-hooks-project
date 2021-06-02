@@ -6,7 +6,7 @@
   width: 100vw;
   min-width: 400px;
   padding: 0.5rem 0.5rem;
-  background: rgb(12, 12, 12);
+  background: black;
 }
 
 .nav-bar div:nth-of-type(1) {
@@ -88,7 +88,7 @@
   top: -100px;
   transition: 1s;
   left: 0;
-  width: 100vw;
+  width: 100%;
 }
 
 .show {
@@ -149,6 +149,11 @@
 
 .show-results {
   display: block;
+}
+
+.mdb-logo {
+  margin: 0.5rem;
+  width: 100px;
 }
 
 @media (min-width: 600px) {

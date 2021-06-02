@@ -60,7 +60,8 @@ const NavigationBar: React.FC = () => {
 
   // for UI changes and styling
   const searchActiveHandler = (): void => {
-    if (searchActive) {
+    console.log("cancel ");
+    if (!searchActive) {
       storesUserSearchValueHandler("");
     }
 
