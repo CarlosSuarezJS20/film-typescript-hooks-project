@@ -80,7 +80,7 @@ const MainCarousel: React.FC<PropsMaincarousel> = ({ items }) => {
     accessibility: false,
     autoplay: false,
     speed: 1000,
-    slidesToShow: 6,
+    slidesToShow: 5,
     slidesToScroll: 1,
     infinite: true,
     nextArrow: <NexBtn />,
@@ -89,7 +89,7 @@ const MainCarousel: React.FC<PropsMaincarousel> = ({ items }) => {
       {
         breakpoint: 990,
         settings: {
-          slidesToShow: 3,
+          slidesToShow: 2,
         },
       },
     ],

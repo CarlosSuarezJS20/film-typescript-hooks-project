@@ -34,6 +34,14 @@ import searchValueFromUserReducer from "../reducers/searchValueFromUser";
 
 import trendingThisweekReducer from "../reducers/trendingThisweekReducer";
 
+import { persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage";
+
+const rootPersistConfig = {
+  key: "root",
+  storage: storage,
+};
+
 const rootReducer = combineReducers({
   //user search type:
   userSearchTypeR: userSearchTypeReducer,
@@ -72,4 +80,4 @@ const rootReducer = combineReducers({
   searchMultiCapabilityR: searchCapabilityReducer,
 });
 
-export default rootReducer;
+export default persistReducer(rootPersistConfig, rootReducer);
