@@ -2,6 +2,29 @@
   background: rgb(15, 15, 15);
 }
 
+.watchlist-display-section {
+  margin: 4rem 0;
+  color: rgb(243, 243, 243);
+  font-size: 1rem;
+}
+
+.title-container {
+  display: flex;
+  color: rgb(243, 243, 243);
+  align-items: center;
+  margin-left: 4rem;
+}
+
+.title-container:hover #arrow {
+  color: rgb(228, 186, 0);
+}
+
+.arrow-watchlist {
+  margin-left: 0.4rem;
+  margin-top: 0.4rem;
+  font-size: 1.5rem;
+}
+
 .main-carousel-title {
   text-align: left;
   margin-left: 5rem;
@@ -13,4 +36,18 @@
   color: #ccc;
   font-size: 1rem;
   font-weight: bold;
+}
+
+@media (min-width: 990px) {
+  .watchlist-display-section {
+    font-size: 1.5rem;
+  }
+
+  .title-container {
+    margin-left: 5rem;
+  }
+
+  .arrow-watchlist {
+    font-size: 2.2rem;
+  }
 }

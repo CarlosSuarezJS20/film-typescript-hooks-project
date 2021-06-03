@@ -87,7 +87,7 @@ const MainCarousel: React.FC<PropsMaincarousel> = ({ items }) => {
     prevArrow: <PrevBtn />,
     responsive: [
       {
-        breakpoint: 990,
+        breakpoint: 780,
         settings: {
           slidesToShow: 2,
         },

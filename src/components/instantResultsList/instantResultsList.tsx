@@ -53,11 +53,14 @@ const InstantResultsList: React.FC = () => {
             return (
               <li key={index} className="result">
                 <NavLink
-                  to={
-                    result.media_type === "tv"
-                      ? `/details/tv/${result.name}`
-                      : `/details/movie/${result.title}`
-                  }
+                  to={{
+                    pathname: `${
+                      result.media_type === "tv"
+                        ? `/details/tv/${result.name}`
+                        : `/details/movie/${result.title}`
+                    }`,
+                    state: { itemId: result.id },
+                  }}
                   className="result-link"
                 >
                   <div className="result-link">

@@ -3,6 +3,7 @@ import "./home.css";
 
 import NavigationBar from "../mainNavigation/mainNavigation";
 import HomeHeader from "../homeHeader/homeHeader";
+import SignUpSection from "../signUpSection/signUpSection";
 import MainCarousel from "../mainCarousel/mainCarousel";
 import LatestItemDisplayer from "../latestItem/latestItem";
 import Footer from "../footer/footer";
@@ -29,6 +30,10 @@ import { trendingThisweekFetchResponse } from "../../store/actions/TrendingItems
 import { storesUserSearchValueHandler } from "../../store/actions/searchValueFromNavbarHandler";
 
 import { RootStore } from "../../store/store";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
+
+import { NavLink } from "react-router-dom";
 
 const Home: React.FC = () => {
   const dispatch = useDispatch();
@@ -159,14 +164,20 @@ const Home: React.FC = () => {
     <div className="home-container" onClick={resetsUserSearchHandler}>
       <NavigationBar />
       <HomeHeader />
+      <div className="watchlist-display-section">
+        <NavLink className="title-container" to="/watchlist">
+          <h2>Here is what is on your watchlist</h2>
+          <span id="arrow">
+            <FontAwesomeIcon
+              icon={faChevronRight}
+              className="arrow-watchlist"
+            />
+          </span>
+        </NavLink>
+        <SignUpSection />
+      </div>
       {userTypeOfSearchState.userSearchType === "tv-shows" && (
         <React.Fragment>
-          <LatestItemDisplayer
-            item={
-              latesttvShowReqState.latestTvShowResult! &&
-              latesttvShowReqState.latestTvShowResult
-            }
-          />
           <div className="tv-shows-carousels-holder">
             <div>
               <div className="main-carousel-title">
@@ -180,6 +191,12 @@ const Home: React.FC = () => {
                 }
               />
             </div>
+            <LatestItemDisplayer
+              item={
+                latesttvShowReqState.latestTvShowResult! &&
+                latesttvShowReqState.latestTvShowResult
+              }
+            />
             <div>
               <div className="main-carousel-title">
                 <h2>Popular shows</h2>
@@ -197,12 +214,6 @@ const Home: React.FC = () => {
       )}
       {userTypeOfSearchState.userSearchType === "movies" && (
         <div className="movies-carousels-holder">
-          <LatestItemDisplayer
-            item={
-              latestMovieReqState.latestMovieResult! &&
-              latestMovieReqState.latestMovieResult
-            }
-          />
           <div>
             <div className="main-carousel-title">
               <h2>Popular movies</h2>
@@ -215,6 +226,12 @@ const Home: React.FC = () => {
               }
             />
           </div>
+          <LatestItemDisplayer
+            item={
+              latestMovieReqState.latestMovieResult! &&
+              latestMovieReqState.latestMovieResult
+            }
+          />
           <div>
             <div className="main-carousel-title">
               <h2>Top rated!</h2>

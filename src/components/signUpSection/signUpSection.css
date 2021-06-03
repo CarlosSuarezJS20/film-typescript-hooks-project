@@ -1,0 +1,20 @@
+.sign-up-area {
+  color: rgb(243, 243, 243);
+  font-size: 1rem;
+  text-align: center;
+  padding: 4rem;
+}
+
+.sign-up-btn {
+  margin: 2rem;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  background: rgb(228, 186, 0);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.sign-up-btn:hover {
+  background: rgb(199, 163, 0);
+}

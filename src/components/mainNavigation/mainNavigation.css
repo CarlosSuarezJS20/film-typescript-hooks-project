@@ -37,7 +37,8 @@
 }
 
 .icon-holder {
-  padding: 1rem;
+  padding: 1rem 0.5rem;
+  text-align: center;
   border-radius: 50px;
   cursor: pointer;
 }
@@ -88,7 +89,7 @@
   top: -100px;
   transition: 1s;
   left: 0;
-  width: 100%;
+  width: 98%;
 }
 
 .show {
@@ -106,7 +107,8 @@
 }
 
 .close-input-icon-holder {
-  padding: 1rem;
+  padding: 1rem 0.5rem;
+  text-align: center;
   height: 60px;
   width: 60px;
   margin: 0.2rem;

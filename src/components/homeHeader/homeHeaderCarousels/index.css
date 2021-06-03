@@ -45,7 +45,7 @@
 .next-btn {
   position: absolute;
   top: 40%;
-  left: 90%;
+
   padding: 1rem;
   font-size: 1.5rem;
   color: rgb(228, 227, 227);
@@ -64,7 +64,7 @@
 .prev-btn {
   position: absolute;
   top: 40%;
-  left: 2%;
+  left: 0;
   padding: 1rem;
   color: rgb(216, 216, 216);
   background: rgba(22, 22, 22, 0.521);
@@ -120,7 +120,7 @@
 .second-carousel-holder {
   position: relative;
   margin: 1.5rem auto;
-  width: 95vw;
+  width: 90%;
   min-width: 400px;
 }
 
