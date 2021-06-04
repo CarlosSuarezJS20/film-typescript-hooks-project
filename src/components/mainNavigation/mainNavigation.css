@@ -50,6 +50,7 @@
 /* sign in page */
 
 .sign-in-holder {
+  text-align: center;
   padding: 1rem 0.5rem;
   min-width: 80px;
   max-width: 80px;
@@ -89,7 +90,7 @@
   top: -100px;
   transition: 1s;
   left: 0;
-  width: 98%;
+  width: 100%;
 }
 
 .show {
@@ -156,6 +157,17 @@
 .mdb-logo {
   margin: 0.5rem;
   width: 100px;
+}
+
+/* loader */
+.results-loader {
+  width: 40px;
+  margin: 0 auto;
+}
+
+/* MORE results Div */
+.more-results-redirect {
+  text-align: center;
 }
 
 @media (min-width: 600px) {

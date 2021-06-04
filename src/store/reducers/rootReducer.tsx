@@ -30,7 +30,7 @@ import latestTvshowRequestReducer from "./tvShowsReducers/latestTvShowReducer";
 // User Search Type Reducer: For displaying HOME PAGE dynamically
 import userSearchTypeReducer from "../reducers/userSearchTypeReducer";
 import searchCapabilityReducer from "../reducers/multiSearchQueryReducer";
-import searchValueFromUserReducer from "../reducers/searchValueFromUser";
+import searchValueFromUserReducer from "../reducers/searchValueFromUserReducer";
 
 import trendingThisweekReducer from "../reducers/trendingThisweekReducer";
 
@@ -81,3 +81,4 @@ const rootReducer = combineReducers({
 });
 
 export default persistReducer(rootPersistConfig, rootReducer);
+// export default rootReducer;

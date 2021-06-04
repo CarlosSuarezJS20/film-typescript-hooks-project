@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./mainNavigation.css";
 
 import InstantResultsList from "../instantResultsList/instantResultsList";
@@ -29,6 +29,7 @@ const debounceInput = (fn: (...args: any) => void, delay: number) => {
 
 const NavigationBar: React.FC = () => {
   const [searchActive, setSearchActive] = useState(false);
+
   // State from Store:
   const dispatch = useDispatch();
 
@@ -60,7 +61,6 @@ const NavigationBar: React.FC = () => {
 
   // for UI changes and styling
   const searchActiveHandler = (): void => {
-    console.log("cancel ");
     if (!searchActive) {
       storesUserSearchValueHandler("");
     }
@@ -97,8 +97,11 @@ const NavigationBar: React.FC = () => {
             }
           >
             <input
+              type="text"
+              onBlur={(e) => {
+                e.target.value = "";
+              }}
               placeholder="Search Living Room"
-              defaultValue={storeSearchValueState.userSearchValue}
               onChange={debounceInput(onChangeValueHanlder, 1000)}
             />
             <div
@@ -130,10 +133,12 @@ const NavigationBar: React.FC = () => {
           >
             <div className="results-list">
               {multiSearchFeatureState.loading ? (
-                <InformationLoader />
+                <div className="results-loader">
+                  <InformationLoader />
+                </div>
               ) : multiSearchFeatureState.results?.results &&
                 multiSearchFeatureState.results?.results.length > 0 ? (
-                <InstantResultsList />
+                <InstantResultsList closeSearchInput={searchActiveHandler} />
               ) : (
                 <div className="no-results-warning-holder">
                   <h3>No results found</h3>

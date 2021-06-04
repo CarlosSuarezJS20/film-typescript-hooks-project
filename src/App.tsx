@@ -18,12 +18,18 @@ import { postTvshowsGenresFetchResponse } from "./store/actions/PostTvShowsGenre
 import { RootStore } from "./store/store";
 import TvShowDetails from "./components/tvshowDetails/tvshowDetails";
 
+import { storesUserSearchValueHandler } from "./store/actions/searchValueFromNavbarHandler";
+
 function App() {
   const dispatch = useDispatch();
 
   // fetches necessary configurations for elements img size etc.
   const configMbdApiState = useSelector(
     (state: RootStore) => state.postApiConfigurationReducer
+  );
+
+  const storeSearchValueHandlerState = useSelector(
+    (state: RootStore) => state.searchValueFromInputHandlerR
   );
 
   useEffect(() => {
@@ -44,9 +50,17 @@ function App() {
     );
   }, []);
 
+  // if user clicks outside the instant results div, it removes the div from the UI
+
+  const resetsUserSearchHandler = () => {
+    if (storeSearchValueHandlerState.userSearchValue.length > 0) {
+      dispatch(storesUserSearchValueHandler(""));
+    }
+  };
+
   return (
     <BrowserRouter>
-      <div className="App">
+      <div className="App" onClick={resetsUserSearchHandler}>
         <Route path="/" exact component={WelcomePage} />
         <Route path="/home" component={Home} />
         <Route path="/details/movie/:title" component={SingleMovieDetails} />

@@ -24,7 +24,7 @@ export type getDetailsRequestResponse = {
   title: string;
   overview: string | null;
   vote_average: number;
-  genres: { id: number; name: string };
+  genres: { id: number; name: string }[];
   original_language: string;
   status: string;
 };
@@ -43,17 +43,20 @@ export type getDetailsRequestDispatchTypes =
 
 export const GET_MOVIE_CAST_SUCCESS = "GET_MOVIE_CAST_SUCCESS";
 
-type actor = {
+type details = {
   id: number;
   name: string;
   profile_path: string | null;
-  character: string;
+  popularity: number;
+  character?: string;
   credit_id: string;
+  job?: string;
 };
 
 export type getAllCastRequestResponse = {
   id: number;
-  cast: actor[];
+  cast: details[];
+  crew: details[];
 };
 
 export interface GetMovieCastRequestSuccess {

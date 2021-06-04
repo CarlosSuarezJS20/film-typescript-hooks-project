@@ -5,9 +5,12 @@ import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import { RootStore } from "../../store/store";
-import { getConfigFileParsingDiagnostics } from "typescript";
 
-const InstantResultsList: React.FC = () => {
+interface PropsIntantR {
+  closeSearchInput: () => void;
+}
+
+const InstantResultsList: React.FC<PropsIntantR> = ({ closeSearchInput }) => {
   // State from Store:
 
   const configMbdApiState = useSelector(
@@ -51,7 +54,8 @@ const InstantResultsList: React.FC = () => {
               return;
             }
             return (
-              <li key={index} className="result">
+              // closeSearchInput function removed the search-input if on mobile version. if the user searches for another item
+              <li key={index} className="result" onClick={closeSearchInput}>
                 <NavLink
                   to={{
                     pathname: `${

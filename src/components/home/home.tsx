@@ -27,8 +27,6 @@ import { popularTvshowsFetchReq } from "../../store/actions/RequestPopularTvShow
 // Trending Request
 import { trendingThisweekFetchResponse } from "../../store/actions/TrendingItemsThisweekRequest";
 
-import { storesUserSearchValueHandler } from "../../store/actions/searchValueFromNavbarHandler";
-
 import { RootStore } from "../../store/store";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
@@ -153,15 +151,8 @@ const Home: React.FC = () => {
     }
   }, [userTypeOfSearchState.userSearchType]);
 
-  // if user clicks outside the instant results div, it removes the div from the UI
-  const resetsUserSearchHandler = () => {
-    if (storeSearchValueHandlerState.userSearchValue.length > 0) {
-      dispatch(storesUserSearchValueHandler(""));
-    }
-  };
-
   return (
-    <div className="home-container" onClick={resetsUserSearchHandler}>
+    <div className="home-container">
       <NavigationBar />
       <HomeHeader />
       <div className="watchlist-display-section">
