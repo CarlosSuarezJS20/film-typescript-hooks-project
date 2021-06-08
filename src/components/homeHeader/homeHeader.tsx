@@ -29,10 +29,6 @@ const HomeHeader: React.FC = () => {
   >([]);
   const [genres, setGenres] = useState<any[]>([]);
 
-  const mDBConfigState = useSelector(
-    (state: RootStore) => state.postApiConfigurationReducer
-  );
-
   const typeSearchState = useSelector(
     (state: RootStore) => state.userSearchTypeR
   );

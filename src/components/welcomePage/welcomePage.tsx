@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import TrailString from "../../components/UI/TrailTitle/trailTitle";
 import SqueezeString from "../../components/UI/squeezeSpringTitle/squeezeSpringTitle";

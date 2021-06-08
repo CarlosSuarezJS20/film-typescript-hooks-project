@@ -6,6 +6,7 @@ import HomeHeader from "../homeHeader/homeHeader";
 import SignUpSection from "../signUpSection/signUpSection";
 import MainCarousel from "../mainCarousel/mainCarousel";
 import LatestItemDisplayer from "../latestItem/latestItem";
+
 import Footer from "../footer/footer";
 
 import { useSelector, useDispatch } from "react-redux";
@@ -30,6 +31,8 @@ import { trendingThisweekFetchResponse } from "../../store/actions/TrendingItems
 import { RootStore } from "../../store/store";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
+
+import { storesUserSearchValueHandler } from "../../store/actions/searchValueFromNavbarHandler";
 
 import { NavLink } from "react-router-dom";
 
@@ -151,8 +154,14 @@ const Home: React.FC = () => {
     }
   }, [userTypeOfSearchState.userSearchType]);
 
+  const resetsUserSearchHandler = () => {
+    if (storeSearchValueHandlerState.userSearchValue.length > 0) {
+      dispatch(storesUserSearchValueHandler(""));
+    }
+  };
+
   return (
-    <div className="home-container">
+    <div className="home-container" onClick={resetsUserSearchHandler}>
       <NavigationBar />
       <HomeHeader />
       <div className="watchlist-display-section">
