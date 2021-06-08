@@ -68,7 +68,7 @@ const rootReducer = combineReducers({
   // tvshow reducers
   getTvshowDetailsR: getTvshowDetailsReducer,
   getTvshowVideosR: getTvshowVideosReducer,
-  // actor Details Reducers
+  // actor Details Reducers/
   getMovieCastR: getMovieCastReducer,
   getTvshowCastR: getTvshowCastReducer,
   getActorDetailsR: getActorDetailReducer,

@@ -18,7 +18,7 @@
 }
 
 .people-item-img-carousel {
-  width: 120px;
+  width: 60%;
   clip-path: circle(50% at 50% 50%);
 }
 
@@ -73,4 +73,11 @@
   border: 1px solid white;
   background: rgba(255, 255, 255, 0.089);
   color: rgb(177, 30, 30);
+}
+
+@media (min-width: 780px) {
+  .people-item-img-carousel {
+    width: 120px;
+    clip-path: circle(50% at 50% 50%);
+  }
 }

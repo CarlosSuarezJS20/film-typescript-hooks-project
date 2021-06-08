@@ -112,11 +112,13 @@ export const FistCarouse: React.FC<FirstCarouselProps> = ({
           return (
             <NavLink
               key={index}
-              to={
-                typeOfSearchState.userSearchType === "tv-shows"
-                  ? `/details/tv/${item.name}`
-                  : `/details/movie/${item.title}`
-              }
+              to={{
+                pathname:
+                  typeOfSearchState.userSearchType === "tv-shows"
+                    ? `/details/tv/${item.name}`
+                    : `/details/movie/${item.title}`,
+                state: { itemId: item.id },
+              }}
             >
               <div className="image-and-description-holder">
                 <img
@@ -208,11 +210,13 @@ export const SecondCarousel: React.FC<FirstCarouselProps> = ({
             <NavLink
               className="carousel-two-slide"
               key={index}
-              to={
-                typeSearchState.userSearchType === "tv-shows"
-                  ? `/details/tv/${item.name}`
-                  : `/details/movie/${item.title}`
-              }
+              to={{
+                pathname:
+                  typeSearchState.userSearchType === "tv-shows"
+                    ? `/details/tv/${item.name}`
+                    : `/details/movie/${item.title}`,
+                state: { itemId: item.id },
+              }}
             >
               <div className="select"></div>
 

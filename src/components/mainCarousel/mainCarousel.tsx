@@ -87,7 +87,7 @@ const MainCarousel: React.FC<PropsMaincarousel> = ({ items }) => {
     prevArrow: <PrevBtn />,
     responsive: [
       {
-        breakpoint: 780,
+        breakpoint: 880,
         settings: {
           slidesToShow: 2,
         },
@@ -125,11 +125,13 @@ const MainCarousel: React.FC<PropsMaincarousel> = ({ items }) => {
               <div key={index} className="item-holder">
                 <div className="item-image-container">
                   <NavLink
-                    to={
-                      typeOfSearchState.userSearchType === "tv-shows"
-                        ? `/details/tv/${item.name}`
-                        : `/details/movie/${item.title}`
-                    }
+                    to={{
+                      pathname:
+                        typeOfSearchState.userSearchType === "tv-shows"
+                          ? `/details/tv/${item.name}`
+                          : `/details/movie/${item.title}`,
+                      state: { itemId: item.id },
+                    }}
                   >
                     <img
                       className="item-img-main-carousel"

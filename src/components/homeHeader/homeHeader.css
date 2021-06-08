@@ -51,7 +51,7 @@
 
 @media (min-width: 990px) {
   .header-container {
-    margin: 1rem auto;
+    margin: 0 auto;
     max-width: 1280px;
   }
   .carousels-container {

@@ -85,7 +85,7 @@ type videos = {
 
 export type getMovieTrailersRequestResponse = {
   id: number;
-  cast: videos[];
+  results: videos[];
 };
 
 export interface GetMovieTrailersRequestSuccess {

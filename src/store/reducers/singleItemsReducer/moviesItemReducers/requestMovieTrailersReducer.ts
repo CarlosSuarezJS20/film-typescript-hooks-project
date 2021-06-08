@@ -1,7 +1,6 @@
 import {
   getMovieTrailersRequestResponse,
   getMovieTrailersRequestDispatchTypes,
-  GET_MOVIE_DETAILS_SUCCESS,
   GET_REQUEST_FAIL,
   GET_REQUEST_LOADING,
   GET_MOVIE_TRAILERS_SUCCESS,
