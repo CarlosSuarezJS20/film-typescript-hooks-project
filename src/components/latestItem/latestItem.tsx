@@ -81,11 +81,13 @@ const LatestItemDisplayer: React.FC<PropsMaincarousel> = ({ item }) => {
           </div>
           <NavLink
             className="latest-item-holder"
-            to={
-              typeOfSearchState.userSearchType === "tv-shows"
-                ? `/details/tv/${item.name}`
-                : `/details/movie/${item.title}`
-            }
+            to={{
+              pathname:
+                typeOfSearchState.userSearchType === "tv-shows"
+                  ? `/details/tv/${item.name}`
+                  : `/details/movie/${item.title}`,
+              state: { itemId: item.id },
+            }}
           >
             {item.backdrop_path === null ? (
               <div className="not-image-latest-item-holder">

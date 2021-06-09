@@ -20,10 +20,11 @@ export type getRequestFunction = (url: string) => void;
 export type getTvshowDetailsRequestResponse = {
   id: number;
   poster_path: string | null;
+  backdrop_path: string | null;
   title: string;
   overview: string | null;
   vote_average: number;
-  genres: { id: number; name: string };
+  genres: { id: number; name: string }[];
   original_language: string;
   status: string;
 };
@@ -46,6 +47,7 @@ type actor = {
   id: number;
   name: string;
   profile_path: string | null;
+  popularity: number;
   character: string;
   credit_id: string;
 };
@@ -69,7 +71,7 @@ export type getTvshowCastDispatchTypes =
 
 export const GET_TVSHOWS_VIDEOS_SUCCESS = "GET_TVSHOWS_VIDEOS_SUCCESS";
 
-type videos = {
+type video = {
   id: string;
   iso_639_1: string;
   iso_3166_1: string;
@@ -81,7 +83,7 @@ type videos = {
 
 export type getTvshowsVideosRequestResponse = {
   id: number;
-  cast: videos[];
+  results: video[];
 };
 
 export interface GetTvshowsVideosRequestSuccess {

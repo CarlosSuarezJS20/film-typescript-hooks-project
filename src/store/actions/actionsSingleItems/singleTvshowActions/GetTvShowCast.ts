@@ -10,7 +10,6 @@ import axios from "axios";
 
 export const getTvshowsCastResponse: getRequestFunction =
   (url) => async (dispatch: Dispatch<getTvshowCastDispatchTypes>) => {
-    console.log(url);
     try {
       dispatch({
         type: GET_REQUEST_LOADING,

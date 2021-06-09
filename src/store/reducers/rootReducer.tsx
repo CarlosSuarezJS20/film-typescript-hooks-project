@@ -20,7 +20,7 @@ import getMovieTrailerReducer from "./singleItemsReducer/moviesItemReducers/requ
 
 import getTvshowDetailsReducer from "./singleItemsReducer/tvshowsItemReducers/requestTvshowDetailsReducer";
 import getTvshowCastReducer from "./singleItemsReducer/tvshowsItemReducers/requestTvshowCastReducer";
-import getTvshowVideosReducer from "./singleItemsReducer/tvshowsItemReducers/requestTvshowDetailsReducer";
+import getTvshowVideosReducer from "./singleItemsReducer/tvshowsItemReducers/requestTvshowVideosReducer";
 import getActorDetailReducer from "./singleItemsReducer/actorDetailsReducers/actorsDetailsReqReducer";
 import getActorCombinedCreditsReducer from "./singleItemsReducer/actorDetailsReducers/actorCombinedCreditsReducer";
 import onTheAirTvShowsReducer from "./tvShowsReducers/requestOnAirTvShowsReducer";

@@ -66,9 +66,6 @@ const MovieDetails: React.FC = () => {
   };
 
   useEffect(() => {
-    // cleans the search input if user search for a new movie
-    dispatch(storesUserSearchValueHandler(""));
-
     dispatch(
       getMovieDetailsResponse(
         `https://api.themoviedb.org/3/movie/${state.itemId}?api_key=${mDBConfigState.apiKey}&language=en-US`
@@ -84,6 +81,8 @@ const MovieDetails: React.FC = () => {
         `https://api.themoviedb.org/3/movie/${state.itemId}/videos?api_key=${mDBConfigState.apiKey}&language=en-US`
       )
     );
+    // cleans the search input if user search for a new movie
+    dispatch(storesUserSearchValueHandler(""));
   }, [state.itemId]);
 
   const gobackToProjectsPage = () => {
@@ -210,7 +209,8 @@ const MovieDetails: React.FC = () => {
             <div className="cast-title-holder">
               <h2>Cast</h2>
             </div>
-            {getMovieCastState.movieCast!.cast.length > 0 ? (
+            {getMovieCastState.movieCast?.cast &&
+            getMovieCastState.movieCast!.cast.length > 0 ? (
               <PeopleCarousel items={getMovieCastState.movieCast!.cast} />
             ) : (
               <div className="no-poster-available">
@@ -220,19 +220,24 @@ const MovieDetails: React.FC = () => {
           </div>
         </React.Fragment>
       )}
-      {getTrailerState.movieTrailers!.results.length > 0 && (
-        <div className="trailers-holder">
-          <div className="videos-holder">
-            {getTrailerState.movieTrailers!.results.map((movie) => (
-              <iframe
-                key={movie.key}
-                title="1"
-                src={`https://www.youtube.com/embed/${movie.key}`}
-              ></iframe>
-            ))}
+      {getTrailerState.movieTrailers?.results &&
+        getTrailerState.movieTrailers!.results.length > 0 && (
+          <div className="trailers-holder">
+            <div className="videos-holder">
+              {getTrailerState.movieTrailers!.results.map((movie, index) => {
+                if (index >= 0 && index < 2) {
+                  return (
+                    <iframe
+                      key={movie.key}
+                      title="1"
+                      src={`https://www.youtube.com/embed/${movie.key}`}
+                    ></iframe>
+                  );
+                }
+              })}
+            </div>
           </div>
-        </div>
-      )}
+        )}
       <Footer />
     </div>
   );

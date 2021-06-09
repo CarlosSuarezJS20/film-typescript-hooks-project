@@ -53,67 +53,69 @@ const InstantResultsList: React.FC<PropsIntantR> = ({ closeSearchInput }) => {
             if (!result.poster_path) {
               return;
             }
-            return (
-              // closeSearchInput function removed the search-input if on mobile version. if the user searches for another item
-              <li key={index} className="result" onClick={closeSearchInput}>
-                <NavLink
-                  to={{
-                    pathname: `${
-                      result.media_type === "tv"
-                        ? `/details/tv/${result.name}`
-                        : `/details/movie/${result.title}`
-                    }`,
-                    state: { itemId: result.id },
-                  }}
-                  className="result-link"
-                >
-                  <div className="result-link">
-                    <div className="img-holder">
-                      <img
-                        src={
-                          result.poster_path
-                            ? configMbdApiState.payload!.images
-                                .secure_base_url +
-                              configMbdApiState.payload!.images
-                                .poster_sizes[6] +
-                              result.poster_path
-                            : ""
-                        }
-                        alt="poster"
-                      />
+            if (index >= 0 && index < 5) {
+              return (
+                // closeSearchInput function removed the search-input if on mobile version. if the user searches for another item
+                <li key={index} className="result" onClick={closeSearchInput}>
+                  <NavLink
+                    to={{
+                      pathname: `${
+                        result.media_type === "tv"
+                          ? `/details/tv/${result.name}`
+                          : `/details/movie/${result.title}`
+                      }`,
+                      state: { itemId: result.id },
+                    }}
+                    className="result-link"
+                  >
+                    <div className="result-link">
+                      <div className="img-holder">
+                        <img
+                          src={
+                            result.poster_path
+                              ? configMbdApiState.payload!.images
+                                  .secure_base_url +
+                                configMbdApiState.payload!.images
+                                  .poster_sizes[6] +
+                                result.poster_path
+                              : ""
+                          }
+                          alt="poster"
+                        />
+                      </div>
+                      <div className="result-details">
+                        {result.title ? (
+                          <h3 className="title" id="title">
+                            {result.title}
+                          </h3>
+                        ) : result.name ? (
+                          <h3 className="title" id="title">
+                            {result.name}
+                          </h3>
+                        ) : (
+                          <h3 className="title" id="title">
+                            Title N/A
+                          </h3>
+                        )}
+                        <h3>{`Release date: ${
+                          result.release_date
+                            ? result.release_date
+                            : result.first_air_date
+                            ? result.first_air_date
+                            : "N/A"
+                        }`}</h3>
+                        {result.genre_ids.length > 0 ? (
+                          addsGenresList(result.media_type, result.genre_ids)
+                        ) : (
+                          <p>No genres found</p>
+                        )}
+                        <h3 className="media-type">{result.media_type}</h3>
+                      </div>
                     </div>
-                    <div className="result-details">
-                      {result.title ? (
-                        <h3 className="title" id="title">
-                          {result.title}
-                        </h3>
-                      ) : result.name ? (
-                        <h3 className="title" id="title">
-                          {result.name}
-                        </h3>
-                      ) : (
-                        <h3 className="title" id="title">
-                          Title N/A
-                        </h3>
-                      )}
-                      <h3>{`Release date: ${
-                        result.release_date
-                          ? result.release_date
-                          : result.first_air_date
-                          ? result.first_air_date
-                          : "N/A"
-                      }`}</h3>
-                      {result.genre_ids.length > 0 ? (
-                        addsGenresList(result.media_type, result.genre_ids)
-                      ) : (
-                        <p>No genres found</p>
-                      )}
-                      <h3 className="media-type">{result.media_type}</h3>
-                    </div>
-                  </div>
-                </NavLink>
-              </li>
-            );
+                  </NavLink>
+                </li>
+              );
+            }
           })
         : null}
     </ul>

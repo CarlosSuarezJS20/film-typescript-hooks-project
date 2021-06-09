@@ -1,13 +1,13 @@
 import {
-  getDetailsRequestResponse,
-  getDetailsRequestDispatchTypes,
-  GET_MOVIE_DETAILS_SUCCESS,
+  getTvshowsVideosRequestResponse,
+  getTvshowsVideosRequestDispatchTypes,
+  GET_TVSHOWS_VIDEOS_SUCCESS,
   GET_REQUEST_FAIL,
   GET_REQUEST_LOADING,
-} from "../../../actions/actionsSingleItems/singleMovieItemActions/singleMovieItemActionsTypes";
+} from "../../../actions/actionsSingleItems/singleTvshowActions/singleTvShowsActionsType";
 
 interface DefaultStateInt {
-  movieDetails?: getDetailsRequestResponse;
+  tvShowsVideosResponse?: getTvshowsVideosRequestResponse;
   loading: boolean;
   error?: string;
 }
@@ -18,7 +18,7 @@ const initialState = {
 
 const getMovieDetailsReducer = (
   state: DefaultStateInt = initialState,
-  action: getDetailsRequestDispatchTypes
+  action: getTvshowsVideosRequestDispatchTypes
 ): DefaultStateInt => {
   switch (action.type) {
     case GET_REQUEST_FAIL:
@@ -32,11 +32,11 @@ const getMovieDetailsReducer = (
         ...state,
         loading: true,
       };
-    case GET_MOVIE_DETAILS_SUCCESS:
+    case GET_TVSHOWS_VIDEOS_SUCCESS:
       return {
         ...state,
         loading: false,
-        movieDetails: action.getMovieDetailsResponse,
+        tvShowsVideosResponse: action.getTvshowsVideosResponse,
       };
 
     default:
