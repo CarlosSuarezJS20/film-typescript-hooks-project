@@ -34,6 +34,8 @@ import searchValueFromUserReducer from "../reducers/searchValueFromUserReducer";
 
 import trendingThisweekReducer from "../reducers/trendingThisweekReducer";
 
+import menuSectionReducer from "../reducers/menuSectionReducer";
+
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
@@ -78,6 +80,8 @@ const rootReducer = combineReducers({
   // Search Multi reducer
   searchValueFromInputHandlerR: searchValueFromUserReducer,
   searchMultiCapabilityR: searchCapabilityReducer,
+  // Menu Reducer
+  menuSectionR: menuSectionReducer,
 });
 
 export default persistReducer(rootPersistConfig, rootReducer);

@@ -9,6 +9,7 @@ import SingleMovieDetails from "./components/movieItemDetails/movieItemDetails";
 import ActorDetails from "./components/actorDetails/actorDetails";
 import ResultsPage from "./components/results/results";
 import ScrollToTop from "./components/UI/scrollToTop/scrollToTop";
+import MenuSection from "./components/menuSection/menuSection";
 
 import { useSelector, useDispatch } from "react-redux";
 
@@ -51,6 +52,7 @@ const App: React.FC = () => {
     <BrowserRouter>
       {/* Locates the scroll to where the user is intending to go. New page up to the top, goes back to where the user began searching */}
       <ScrollToTop>
+        <MenuSection />
         <Switch>
           <Route path="/" exact component={WelcomePage} />
           <Route path="/home" component={Home} />

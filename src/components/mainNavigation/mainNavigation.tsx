@@ -15,6 +15,7 @@ import { useSelector, useDispatch } from "react-redux";
 // actions
 import { searchMultiFindFetchResponse } from "../../store/actions/SearchMultiRequestAction";
 import { storesUserSearchValueHandler } from "../../store/actions/searchValueFromNavbarHandler";
+import { showMenuSectionHandler } from "../../store/actions/actionsMenuSection/menuSectionShowHandler";
 
 import { RootStore } from "../../store/store";
 
@@ -73,9 +74,13 @@ const NavigationBar: React.FC = () => {
     dispatch(storesUserSearchValueHandler(e.target.value));
   };
 
+  const menuShowHandler = () => {
+    dispatch(showMenuSectionHandler());
+  };
+
   return (
     <nav className="nav-bar">
-      <div className="icon-holder">
+      <div className="icon-holder" onClick={menuShowHandler}>
         <FontAwesomeIcon icon={faBars} className="icon" />
       </div>
       <div className="logo-holder">
