@@ -94,8 +94,12 @@ const PeopleCarousel: React.FC<PropsMaincarousel> = ({ items }) => {
             return (
               <div key={index} className="slide-holder">
                 <div className="slide" key={index}>
-                  {}
-                  <NavLink to={`/details/actor/${item.name}`}>
+                  <NavLink
+                    to={{
+                      pathname: `/details/actor/${item.name}`,
+                      state: { actorId: item.id },
+                    }}
+                  >
                     <img
                       id="people-img"
                       className="people-item-img-carousel"

@@ -1,6 +1,12 @@
 import React, { useEffect } from "react";
 import "./actorDetails.css";
+
+import Navbar from "../mainNavigation/mainNavigation";
+import Footer from "../footer/footer";
+
 import { useSelector, useDispatch } from "react-redux";
+
+import { useHistory, useLocation } from "react-router-dom";
 
 import { NavLink } from "react-router-dom";
 
@@ -9,12 +15,13 @@ import { RootStore } from "../../store/store";
 import { getActorDetailsResponse } from "../../store/actions/actionsSingleItems/singleActorActions/GetActorDetails";
 import { getActorCombinedCreditsResponse } from "../../store/actions/actionsSingleItems/singleActorActions/GetCombinedCreditsReq";
 
-interface ActorMainDetailsProps {
+interface ActorMainDetails {
   actorId: number;
 }
 
-const ActorMainDetails: React.FC<ActorMainDetailsProps> = (props) => {
+const ActorMainDetails: React.FC = () => {
   const dispatch = useDispatch();
+  const { state } = useLocation<ActorMainDetails>();
 
   // fetches necessary configurations for elements img size etc.
   const configMbdApiState = useSelector(
@@ -32,19 +39,119 @@ const ActorMainDetails: React.FC<ActorMainDetailsProps> = (props) => {
   useEffect(() => {
     dispatch(
       getActorDetailsResponse(
-        `https://api.themoviedb.org/3/person/59410?api_key=${configMbdApiState.apiKey}&language=en-US`
+        `https://api.themoviedb.org/3/person/${state.actorId}?api_key=${configMbdApiState.apiKey}&language=en-US`
       )
     );
     dispatch(
       getActorCombinedCreditsResponse(
-        `https://api.themoviedb.org/3/person/59410/combined_credits?api_key=${configMbdApiState.apiKey}&language=en-US`
+        `https://api.themoviedb.org/3/person/${state.actorId}/combined_credits?api_key=${configMbdApiState.apiKey}&language=en-US`
       )
     );
-  }, []);
+  }, [state.actorId]);
 
   return (
-    <div>
-      <h1>Actor</h1>
+    <div className="actor-page">
+      <Navbar />
+      <div className="actor-details-main">
+        {actorDetailReqState.actorDetails &&
+          actorCombinedCreditsReqState.combinedCredits && (
+            <header className="actor-header">
+              <div className="details-holder">
+                <div className="actor-details-holder">
+                  <img
+                    src={`${
+                      configMbdApiState.payload?.images &&
+                      configMbdApiState.payload.images.secure_base_url
+                    }${
+                      configMbdApiState.payload?.images &&
+                      configMbdApiState.payload.images.poster_sizes[4]
+                    }${actorDetailReqState.actorDetails.profile_path}`}
+                  />
+                  <div className="name-holder">
+                    <h2>{actorDetailReqState.actorDetails.name}</h2>
+                  </div>
+                </div>
+                <div className="actor-latest-movie-holder">
+                  {actorCombinedCreditsReqState.combinedCredits.cast.map(
+                    (credit, index) => {
+                      if (index === 0) {
+                        return (
+                          <img
+                            src={`${
+                              configMbdApiState.payload?.images &&
+                              configMbdApiState.payload.images.secure_base_url
+                            }${
+                              configMbdApiState.payload?.images &&
+                              configMbdApiState.payload.images.poster_sizes[4]
+                            }${credit.backdrop_path}`}
+                          />
+                        );
+                      }
+                    }
+                  )}
+                  <img />
+                </div>
+              </div>
+              <div className="bio-section">
+                <p>{actorDetailReqState.actorDetails.biography}</p>
+                <p className="actor-birth-details">
+                  Born:
+                  <span className="date-and-place">{`${actorDetailReqState.actorDetails.birthday} in ${actorDetailReqState.actorDetails.place_of_birth}`}</span>
+                </p>
+              </div>
+            </header>
+          )}
+        {actorCombinedCreditsReqState.combinedCredits && (
+          <div className="credits-list">
+            {actorCombinedCreditsReqState.combinedCredits.cast.map(
+              (credit, index) => {
+                if (
+                  credit.poster_path === null ||
+                  credit.title === "" ||
+                  credit.release_date === ""
+                ) {
+                  return;
+                } else {
+                  return (
+                    <NavLink
+                      key={index}
+                      to={{
+                        pathname:
+                          credit.media_type === "movie"
+                            ? `/details/movie/${credit.title}`
+                            : `/details/tv/${credit.title}`,
+                        state: { itemId: credit.id },
+                      }}
+                    >
+                      <div className="credit-item">
+                        <div className="credit-image">
+                          <img
+                            src={`${
+                              configMbdApiState.payload?.images &&
+                              configMbdApiState.payload.images.secure_base_url
+                            }${
+                              configMbdApiState.payload?.images &&
+                              configMbdApiState.payload.images.poster_sizes[4]
+                            }${credit.poster_path}`}
+                          />
+                        </div>
+                        <div>
+                          <h3>{credit.title}</h3>
+                        </div>
+                        <div>
+                          <p>{credit.release_date}</p>
+                        </div>
+                      </div>
+                    </NavLink>
+                  );
+                }
+              }
+            )}
+          </div>
+        )}
+      </div>
+
+      <Footer />
     </div>
   );
 };

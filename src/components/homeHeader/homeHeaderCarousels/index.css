@@ -124,6 +124,11 @@
   min-width: 400px;
 }
 
+.second-carousel-holder .slick-slider {
+  width: 88%;
+  margin: 0 auto;
+}
+
 .slick-slide {
   padding: 0 10px;
   box-sizing: border-box;

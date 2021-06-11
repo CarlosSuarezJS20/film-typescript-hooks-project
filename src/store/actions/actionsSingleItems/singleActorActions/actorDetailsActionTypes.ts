@@ -19,8 +19,10 @@ export type getPeopleDetailsFunction = (url: string) => void;
 
 export type getPeopleDetailsRequestResponse = {
   id: number;
+  name: string;
   biography: string;
   birthday: string | null;
+  place_of_birth: string;
   profile_path: string | null;
 };
 
@@ -39,7 +41,18 @@ export type getPeopleDetailsRequestDispatchTypes =
 export const GET_PEOPLE_COMBINED_CREDIT_REQ_SUCCESS =
   "GET_PEOPLE_COMBINED_CREDIT_REQ_SUCCESS";
 
-export type getPeopleCombinedCreditsRequestResponse = {};
+type creditDetails = {
+  backdrop_path: string;
+  id: number;
+  title: string;
+  poster_path: string;
+  release_date: string;
+  media_type: string;
+};
+
+export type getPeopleCombinedCreditsRequestResponse = {
+  cast: creditDetails[];
+};
 
 export interface GetPeopleCombinedCreditsRequestSuccess {
   type: typeof GET_PEOPLE_COMBINED_CREDIT_REQ_SUCCESS;

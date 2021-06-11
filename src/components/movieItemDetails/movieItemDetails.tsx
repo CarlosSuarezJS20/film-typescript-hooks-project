@@ -146,7 +146,8 @@ const MovieDetails: React.FC = () => {
               />
             </div>
             <div className="gradient"></div>
-            {getMoviesDetailsState.movieDetails.backdrop_path!.length > 0 ? (
+            {getMoviesDetailsState.movieDetails.backdrop_path! &&
+            getMoviesDetailsState.movieDetails.backdrop_path!.length > 0 ? (
               <img
                 className="single-item-image"
                 src={`${
