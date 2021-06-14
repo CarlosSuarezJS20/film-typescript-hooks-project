@@ -14,6 +14,9 @@ import { RootStore } from "../../store/store";
 
 import { getActorDetailsResponse } from "../../store/actions/actionsSingleItems/singleActorActions/GetActorDetails";
 import { getActorCombinedCreditsResponse } from "../../store/actions/actionsSingleItems/singleActorActions/GetCombinedCreditsReq";
+import { storesUserSearchValueHandler } from "../../store/actions/searchValueFromNavbarHandler";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 
 interface ActorMainDetails {
   actorId: number;
@@ -21,6 +24,7 @@ interface ActorMainDetails {
 
 const ActorMainDetails: React.FC = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const { state } = useLocation<ActorMainDetails>();
 
   // fetches necessary configurations for elements img size etc.
@@ -49,9 +53,28 @@ const ActorMainDetails: React.FC = () => {
     );
   }, [state.actorId]);
 
+  const gobackToPreviousPage = () => {
+    history.goBack();
+  };
+
   return (
-    <div className="actor-page">
+    <div
+      className="actor-page"
+      onClick={() => {
+        dispatch(storesUserSearchValueHandler(""));
+      }}
+    >
       <Navbar />
+      <div className="back-page-section">
+        <div>
+          <p onClick={gobackToPreviousPage}>
+            <span>
+              <FontAwesomeIcon icon={faChevronLeft} />
+            </span>
+            back
+          </p>
+        </div>
+      </div>
       <div className="actor-details-main">
         {actorDetailReqState.actorDetails &&
           actorCombinedCreditsReqState.combinedCredits && (
@@ -77,6 +100,7 @@ const ActorMainDetails: React.FC = () => {
                       if (index === 0) {
                         return (
                           <img
+                            key={`${index}-${credit.id}`}
                             src={`${
                               configMbdApiState.payload?.images &&
                               configMbdApiState.payload.images.secure_base_url
@@ -114,7 +138,7 @@ const ActorMainDetails: React.FC = () => {
                 } else {
                   return (
                     <NavLink
-                      key={index}
+                      key={`${index}`}
                       to={{
                         pathname:
                           credit.media_type === "movie"

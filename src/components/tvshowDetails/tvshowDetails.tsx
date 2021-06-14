@@ -76,8 +76,6 @@ const TvShowDetails: React.FC = (props) => {
         `https://api.themoviedb.org/3/tv/${state.itemId}/videos?api_key=${configMbdApiState.apiKey}&language=en-US`
       )
     );
-    // cleans the search input if user search for a new movie
-    dispatch(storesUserSearchValueHandler(""));
   }, [state.itemId]);
 
   // displays sharing icons upon users requests

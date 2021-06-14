@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 import { showMenuSectionHandler } from "../../store/actions/actionsMenuSection/menuSectionShowHandler";
+import { fetchUserTypeOfSearchHandler } from "../../store/actions/SetUserSearchTypeAction";
 
 import { useSelector, useDispatch } from "react-redux";
 import { RootStore } from "../../store/store";
@@ -19,8 +20,17 @@ const MenuSection: React.FC = () => {
     (state: RootStore) => state.menuSectionR
   );
 
+  const typeOfSearchState = useSelector(
+    (state: RootStore) => state.userSearchTypeR
+  );
+
   const menuSectionHandler = () => {
     dispatch(showMenuSectionHandler());
+  };
+
+  // handles the switch of type of search
+  const switchTypeOfSearchHandler = (newTypeOfSearch: string) => {
+    dispatch(fetchUserTypeOfSearchHandler(newTypeOfSearch));
   };
 
   return (
@@ -44,19 +54,32 @@ const MenuSection: React.FC = () => {
           </li>
           <li onClick={menuSectionHandler}>
             <NavLink className="menu-link" to="/home">
-              Search
+              Search All
             </NavLink>
           </li>
-          <li onClick={menuSectionHandler}>
-            <NavLink className="menu-link" to="/home">
-              Movies
-            </NavLink>
-          </li>
-          <li onClick={menuSectionHandler}>
-            <NavLink className="menu-link" to="/home">
-              Tv-shows
-            </NavLink>
-          </li>
+          {typeOfSearchState.userSearchType === "movies" ? (
+            <li
+              onClick={() => {
+                menuSectionHandler();
+                switchTypeOfSearchHandler("tv-shows");
+              }}
+            >
+              <NavLink className="menu-link" to="/home">
+                Tv-shows
+              </NavLink>
+            </li>
+          ) : (
+            <li
+              onClick={() => {
+                menuSectionHandler();
+                switchTypeOfSearchHandler("movies");
+              }}
+            >
+              <NavLink className="menu-link" to="/home">
+                Movies
+              </NavLink>
+            </li>
+          )}
         </ul>
       </div>
     </div>

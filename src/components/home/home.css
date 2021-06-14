@@ -12,7 +12,7 @@
   display: flex;
   color: rgb(243, 243, 243);
   align-items: center;
-  margin-left: 4rem;
+  margin-left: 2rem;
 }
 
 .title-container:hover #arrow {

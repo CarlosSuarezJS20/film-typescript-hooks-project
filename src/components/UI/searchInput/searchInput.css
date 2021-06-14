@@ -1,0 +1,20 @@
+.nav-bar-input {
+  background: rgb(243, 243, 243);
+  color: rgb(26, 26, 26);
+  font-size: 1.2rem;
+  margin-left: 1rem;
+  padding: 0 0.5rem 0 0.5rem;
+  width: 80vw;
+  border-right: 1px solid rgb(77, 77, 77);
+  outline-width: 0;
+}
+
+.results-page-input {
+  width: 40%;
+  background: black;
+  color: rgba(230, 230, 230, 0.8);
+  border: 1px solid white;
+  padding: 1rem;
+  border-radius: 20px;
+  outline-width: 0;
+}

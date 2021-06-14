@@ -123,13 +123,7 @@
   text-decoration: underline;
 }
 
-@media (min-width: 600px) {
-  .mainFooter {
-    padding: 4rem 10rem;
-  }
-}
-
-@media (min-width: 900px) {
+@media (min-width: 500px) {
   .mainFooter {
     display: grid;
     padding-left: 8rem;

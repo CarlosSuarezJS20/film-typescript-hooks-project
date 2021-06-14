@@ -1,8 +1,9 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import "./mainNavigation.css";
 
 import InstantResultsList from "../instantResultsList/instantResultsList";
 import InformationLoader from "../UI/informationLoader/informationLoader";
+import SearchInput from "../UI/searchInput/searchInput";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faSearch, faTimes } from "@fortawesome/free-solid-svg-icons";
@@ -13,20 +14,10 @@ import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 // actions
-import { searchMultiFindFetchResponse } from "../../store/actions/SearchMultiRequestAction";
 import { storesUserSearchValueHandler } from "../../store/actions/searchValueFromNavbarHandler";
 import { showMenuSectionHandler } from "../../store/actions/actionsMenuSection/menuSectionShowHandler";
 
 import { RootStore } from "../../store/store";
-
-// Helper function to debounce search input. Allows request after user stops typing
-const debounceInput = (fn: (...args: any) => void, delay: number) => {
-  let timerId: any;
-  return (...args: any[]) => {
-    clearTimeout(timerId);
-    timerId = setTimeout(() => fn(...args), delay);
-  };
-};
 
 const NavigationBar: React.FC = () => {
   const [searchActive, setSearchActive] = useState(false);
@@ -46,20 +37,6 @@ const NavigationBar: React.FC = () => {
     (state: RootStore) => state.searchMultiCapabilityR
   );
 
-  useEffect(() => {
-    if (storeSearchValueState.userSearchValue.length === 0) {
-      return;
-    }
-
-    if (storeSearchValueState.userSearchValue.length >= 3) {
-      dispatch(
-        searchMultiFindFetchResponse(
-          `https://api.themoviedb.org/3/search/multi?api_key=${configMbdApiState.apiKey}&language=en-US&query=${storeSearchValueState.userSearchValue}&page=1&include_adult=false`
-        )
-      );
-    }
-  }, [storeSearchValueState.userSearchValue]);
-
   // for UI changes and styling
   const searchActiveHandler = (): void => {
     if (!searchActive) {
@@ -67,11 +44,6 @@ const NavigationBar: React.FC = () => {
     }
 
     setSearchActive((prev) => !prev);
-  };
-
-  const onChangeValueHanlder = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault();
-    dispatch(storesUserSearchValueHandler(e.target.value));
   };
 
   const menuShowHandler = () => {
@@ -101,14 +73,7 @@ const NavigationBar: React.FC = () => {
               searchActive ? "search-input-holder show" : "search-input-holder"
             }
           >
-            <input
-              type="text"
-              onBlur={(e) => {
-                e.target.value = "";
-              }}
-              placeholder="Search Living Room"
-              onChange={debounceInput(onChangeValueHanlder, 1000)}
-            />
+            <SearchInput location="navigation" page={1} />
             <div
               className="close-input-icon-holder"
               onClick={searchActiveHandler}
@@ -119,6 +84,13 @@ const NavigationBar: React.FC = () => {
               />
             </div>
             <div className="form-search-icon">
+              <div
+                className={
+                  storeSearchValueState.userSearchValue.length === 0
+                    ? "disable-link"
+                    : "disable-link remove-disabled-link"
+                }
+              ></div>
               <NavLink
                 to={`/results?query=${storeSearchValueState.userSearchValue}`}
               >
