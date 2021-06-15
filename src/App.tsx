@@ -10,6 +10,7 @@ import ActorDetails from "./components/actorDetails/actorDetails";
 import ResultsPage from "./components/results/results";
 import ScrollToTop from "./components/UI/scrollToTop/scrollToTop";
 import MenuSection from "./components/menuSection/menuSection";
+import Discovery from "./components/discovery/discovery";
 
 import { useSelector, useDispatch } from "react-redux";
 
@@ -60,6 +61,7 @@ const App: React.FC = () => {
           <Route path="/details/tv/:title" component={TvShowDetails} />
           <Route path="/details/actor/:name" component={ActorDetails} />
           <Route path="/results" component={ResultsPage} />
+          <Route path="/discover" component={Discovery} />
         </Switch>
       </ScrollToTop>
     </BrowserRouter>

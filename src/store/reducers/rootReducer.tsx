@@ -35,6 +35,7 @@ import searchValueFromUserReducer from "../reducers/searchValueFromUserReducer";
 import trendingThisweekReducer from "../reducers/trendingThisweekReducer";
 
 import menuSectionReducer from "../reducers/menuSectionReducer";
+import getDiscoverRequestReducer from "../reducers/getDiscoverRequestReducer";
 
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
@@ -82,6 +83,8 @@ const rootReducer = combineReducers({
   searchMultiCapabilityR: searchCapabilityReducer,
   // Menu Reducer
   menuSectionR: menuSectionReducer,
+  // Discover
+  getDiscoverR: getDiscoverRequestReducer,
 });
 
 export default persistReducer(rootPersistConfig, rootReducer);

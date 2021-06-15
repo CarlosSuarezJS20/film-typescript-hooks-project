@@ -112,28 +112,7 @@ const Results: React.FC = () => {
 
         <hr className="search-query-title-highlight" />
       </header>
-      {multiSearchState.results && multiSearchState.results!.total_pages > 1 && (
-        <div className="pagination-btns-holder">
-          <button
-            disabled={page === 1}
-            onClick={() => {
-              paginationHandler("-");
-            }}
-          >
-            previous
-          </button>
-          <button
-            disabled={page === multiSearchState.results?.total_pages}
-            onClick={() => {
-              paginationHandler("+");
-            }}
-          >
-            next
-          </button>
-        </div>
-      )}
-
-      <div className="results-holder">
+      <main className="results-holder">
         {multiSearchState.results?.results
           ? multiSearchState.results.results.map((result, index) => {
               if (!result.poster_path) {
@@ -196,6 +175,7 @@ const Results: React.FC = () => {
                         ) : (
                           <p>No genres found</p>
                         )}
+                        <p>{result.vote_average}</p>
                         <h3 className="media-type">{result.media_type}</h3>
                       </div>
                     </div>
@@ -204,7 +184,27 @@ const Results: React.FC = () => {
               );
             })
           : null}
-      </div>
+      </main>
+      {multiSearchState.results && multiSearchState.results!.total_pages > 1 && (
+        <div className="pagination-btns-holder">
+          <button
+            disabled={page === 1}
+            onClick={() => {
+              paginationHandler("-");
+            }}
+          >
+            previous
+          </button>
+          <button
+            disabled={page === multiSearchState.results?.total_pages}
+            onClick={() => {
+              paginationHandler("+");
+            }}
+          >
+            next
+          </button>
+        </div>
+      )}
       <Footer />
     </div>
   );

@@ -53,8 +53,8 @@ const MenuSection: React.FC = () => {
             </NavLink>
           </li>
           <li onClick={menuSectionHandler}>
-            <NavLink className="menu-link" to="/home">
-              Search All
+            <NavLink className="menu-link" to="/discover">
+              discover
             </NavLink>
           </li>
           {typeOfSearchState.userSearchType === "movies" ? (

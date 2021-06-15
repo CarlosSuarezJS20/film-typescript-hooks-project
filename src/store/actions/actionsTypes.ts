@@ -671,3 +671,44 @@ export type trendingThisweekRequestTypes =
   | TrendingThisweekResultSuccess
   | TrendingThisweekRequestFail
   | TrendingThisweekRequestLoading;
+
+// Discover Section Request
+
+export const GET_DISCOVER_REQUEST_SUCCESS = "GET_DISCOVER_REQUEST_SUCCESS";
+export const GET_DISCOVER_REQUEST_FAILED = "GET_DISCOVER_REQUEST_FAILED";
+export const GET_DISCOVER_REQUEST_LOADING = "GET_DISCOVER_REQUEST_LOADING";
+
+export type getDiscoverRequestResult = {
+  poster_path: string | null;
+  id: number;
+  genre_ids: number[];
+  vote_average: number;
+  release_date: string;
+  title: string;
+};
+
+export type getDiscoverRequestResponse = {
+  page: number;
+  total_pages: number;
+  total_results: number;
+  results: getDiscoverRequestResult[];
+};
+
+export interface GetDiscoverRequestSuccess {
+  type: typeof GET_DISCOVER_REQUEST_SUCCESS;
+  response: getDiscoverRequestResponse;
+}
+
+export interface GetDiscoverRequestFail {
+  type: typeof GET_DISCOVER_REQUEST_FAILED;
+  error: string;
+}
+
+export interface GetDiscoverRequestLoading {
+  type: typeof GET_DISCOVER_REQUEST_LOADING;
+}
+
+export type getDiscoverRequestTypes =
+  | GetDiscoverRequestSuccess
+  | GetDiscoverRequestFail
+  | GetDiscoverRequestLoading;
