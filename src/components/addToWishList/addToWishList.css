@@ -1,0 +1,44 @@
+.watch-later-icon {
+  position: absolute;
+  top: 0;
+  left: 5%;
+  padding: 1rem 0.5rem;
+  background: rgba(56, 56, 56, 0.541);
+  clip-path: polygon(100% 0, 100% 99%, 49% 78%, 0% 100%, 0 48%, 0% 0%);
+  border: 1px solid rgba(180, 180, 180, 0.8);
+  transition: ease 0.5s;
+  cursor: pointer;
+}
+
+.watch-later-icon:hover {
+  background: rgba(138, 138, 138, 0.541);
+}
+
+.watch-later-plus {
+  color: rgb(243, 243, 243);
+  font-size: 1rem;
+}
+
+/* this is for the details page icon */
+
+.watch-later-details-page {
+  background: rgba(56, 56, 56, 0.541);
+  text-align: center;
+  width: 150px;
+  border-radius: 5px;
+  padding: 0.2rem 0.4rem;
+  border: 1px solid rgba(180, 180, 180, 0.8);
+  transition: ease 0.5s;
+  cursor: pointer;
+}
+
+.watch-later-details-page:hover {
+  background: rgba(138, 138, 138, 0.541);
+}
+
+.add-to-wishlist {
+  color: rgb(243, 243, 243);
+  padding-left: 0.4rem;
+  font-weight: bold;
+  font-size: 1rem;
+}

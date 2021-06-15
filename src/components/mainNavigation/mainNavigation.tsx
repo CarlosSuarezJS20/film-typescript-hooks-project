@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./mainNavigation.css";
 
 import InstantResultsList from "../instantResultsList/instantResultsList";
@@ -18,16 +18,14 @@ import { storesUserSearchValueHandler } from "../../store/actions/searchValueFro
 import { showMenuSectionHandler } from "../../store/actions/actionsMenuSection/menuSectionShowHandler";
 
 import { RootStore } from "../../store/store";
+import { set } from "lodash";
+import { convertToObject } from "typescript";
 
 const NavigationBar: React.FC = () => {
   const [searchActive, setSearchActive] = useState(false);
 
   // State from Store:
   const dispatch = useDispatch();
-
-  const configMbdApiState = useSelector(
-    (state: RootStore) => state.postApiConfigurationReducer
-  );
 
   const storeSearchValueState = useSelector(
     (state: RootStore) => state.searchValueFromInputHandlerR
@@ -37,15 +35,22 @@ const NavigationBar: React.FC = () => {
     (state: RootStore) => state.searchMultiCapabilityR
   );
 
-  // for UI changes and styling
-  const searchActiveHandler = (): void => {
+  // for UI changes and styling for small screen input div.
+  const searchActiveOpen = (): void => {
     if (!searchActive) {
       storesUserSearchValueHandler("");
     }
-
-    setSearchActive((prev) => !prev);
+    setSearchActive(true);
   };
 
+  const searchActiveClose = (): void => {
+    if (!searchActive) {
+      storesUserSearchValueHandler("");
+    }
+    setSearchActive(false);
+  };
+
+  // Menu control
   const menuShowHandler = () => {
     dispatch(showMenuSectionHandler());
   };
@@ -76,7 +81,7 @@ const NavigationBar: React.FC = () => {
             <SearchInput location="navigation" page={1} />
             <div
               className="close-input-icon-holder"
-              onClick={searchActiveHandler}
+              onClick={searchActiveClose}
             >
               <FontAwesomeIcon
                 icon={faTimes}
@@ -115,7 +120,7 @@ const NavigationBar: React.FC = () => {
                 </div>
               ) : multiSearchFeatureState.results?.results &&
                 multiSearchFeatureState.results?.results.length > 0 ? (
-                <InstantResultsList closeSearchInput={searchActiveHandler} />
+                <InstantResultsList closeSearchInput={searchActiveClose} />
               ) : (
                 <div className="no-results-warning-holder">
                   <h3>No results found</h3>
@@ -133,10 +138,7 @@ const NavigationBar: React.FC = () => {
           </div>
         </div>
       </div>
-      <div
-        className="icon-holder hide-big-screen"
-        onClick={searchActiveHandler}
-      >
+      <div className="icon-holder hide-big-screen" onClick={searchActiveOpen}>
         <FontAwesomeIcon icon={faSearch} className="icon" />
       </div>
       <div className="sign-in-holder">

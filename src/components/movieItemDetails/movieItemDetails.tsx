@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import MainNavigation from "../mainNavigation/mainNavigation";
 import PeopleCarousel from "../PeopleCarousel/peopleCarousel";
+import AddToWishlist from "../addToWishList/addToWishList";
 
 import Footer from "../footer/footer";
 
@@ -201,6 +202,7 @@ const MovieDetails: React.FC = () => {
           <div className="single-item-overview">
             <div className="plot-title">
               <h2> Plot Summary</h2>
+              <AddToWishlist location="details-page" />
             </div>
             <div className="plot-summary">
               <p>{getMoviesDetailsState.movieDetails!.overview}</p>

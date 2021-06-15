@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./results.css";
 
+import AddToWishlist from "../addToWishList/addToWishList";
 import Footer from "../footer/footer";
 
 // Router
@@ -23,7 +24,6 @@ const useQuery = () => {
 };
 
 const Results: React.FC = () => {
-  const [newSearch, setNewSearch] = useState(false);
   // pagination local state handler
   const [page, setPage] = useState(1);
   const query = useQuery();
@@ -112,26 +112,29 @@ const Results: React.FC = () => {
 
         <hr className="search-query-title-highlight" />
       </header>
-      <div>
-        <button
-          disabled={page === 1}
-          onClick={() => {
-            paginationHandler("-");
-          }}
-        >
-          previous
-        </button>
-        <button
-          disabled={page === multiSearchState.results?.total_pages}
-          onClick={() => {
-            paginationHandler("+");
-          }}
-        >
-          next
-        </button>
-      </div>
+      {multiSearchState.results && multiSearchState.results!.total_pages > 1 && (
+        <div className="pagination-btns-holder">
+          <button
+            disabled={page === 1}
+            onClick={() => {
+              paginationHandler("-");
+            }}
+          >
+            previous
+          </button>
+          <button
+            disabled={page === multiSearchState.results?.total_pages}
+            onClick={() => {
+              paginationHandler("+");
+            }}
+          >
+            next
+          </button>
+        </div>
+      )}
+
       <div className="results-holder">
-        {multiSearchState.results
+        {multiSearchState.results?.results
           ? multiSearchState.results.results.map((result, index) => {
               if (!result.poster_path) {
                 return;
@@ -165,6 +168,7 @@ const Results: React.FC = () => {
                           }
                           alt="poster"
                         />
+                        <AddToWishlist location="results" />
                       </div>
                       <div className="results-page-result-details">
                         {result.title ? (

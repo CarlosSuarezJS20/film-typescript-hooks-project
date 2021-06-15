@@ -5,6 +5,8 @@ import "./mainCarousel.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+import AddToWishlist from "../addToWishList/addToWishList";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import Slick, { Settings } from "react-slick";
@@ -14,7 +16,6 @@ import { NavLink } from "react-router-dom";
 import {
   faChevronLeft,
   faChevronRight,
-  faPlus,
   faStar,
 } from "@fortawesome/free-solid-svg-icons";
 
@@ -144,12 +145,7 @@ const MainCarousel: React.FC<PropsMaincarousel> = ({ items }) => {
                       }${item.poster_path}`}
                     />
                   </NavLink>
-                  <div className="watch-later-icon">
-                    <FontAwesomeIcon
-                      icon={faPlus}
-                      className="watch-later-plus"
-                    />
-                  </div>
+                  <AddToWishlist location="main-carousel" />
                 </div>
                 <div className="item-description-slide">
                   <div className="item-rating">

@@ -21,7 +21,8 @@ export type getTvshowDetailsRequestResponse = {
   id: number;
   poster_path: string | null;
   backdrop_path: string | null;
-  title: string;
+  title?: string;
+  name?: string;
   overview: string | null;
   vote_average: number;
   genres: { id: number; name: string }[];

@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 // components
 import MainNavigation from "../mainNavigation/mainNavigation";
 import PeopleCarousel from "../PeopleCarousel/peopleCarousel";
+import AddToWishlist from "../addToWishList/addToWishList";
 
 import Footer from "../footer/footer";
 
@@ -144,6 +145,7 @@ const TvShowDetails: React.FC = (props) => {
               />
             </div>
             <div className="gradient"></div>
+
             {getTvshowDetailsState.tvshowDetails.backdrop_path! === null ? (
               <div className="no-poster-available">
                 <h2>Not poster available</h2>
@@ -174,7 +176,7 @@ const TvShowDetails: React.FC = (props) => {
               />
               <div className="single-item-description">
                 <div className="single-item-title">
-                  <h2>{getTvshowDetailsState.tvshowDetails!.title}</h2>
+                  <h2>{getTvshowDetailsState.tvshowDetails!.name}</h2>
                   <div className="single-item-rating">
                     <p>{getTvshowDetailsState.tvshowDetails!.vote_average}</p>
                     <FontAwesomeIcon
@@ -198,6 +200,7 @@ const TvShowDetails: React.FC = (props) => {
           <div className="single-item-overview">
             <div className="plot-title">
               <h2> Plot Summary</h2>
+              <AddToWishlist location="details-page" />
             </div>
             <div className="plot-summary">
               <p>{getTvshowDetailsState.tvshowDetails!.overview}</p>
