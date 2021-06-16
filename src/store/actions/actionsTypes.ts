@@ -684,7 +684,8 @@ export type getDiscoverRequestResult = {
   genre_ids: number[];
   vote_average: number;
   release_date: string;
-  title: string;
+  title?: string;
+  name?: string;
 };
 
 export type getDiscoverRequestResponse = {

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./discovery.css";
 
 import MainNavigation from "../mainNavigation/mainNavigation";
+import InformationLoader from "../UI/informationLoader/informationLoader";
 import AddToWishlist from "../addToWishList/addToWishList";
 import Footer from "../footer/footer";
 
@@ -12,6 +13,8 @@ import { getDiscoverRequest } from "../../store/actions/GetDiscoverRequest";
 
 import { useSelector, useDispatch } from "react-redux";
 import { RootStore } from "../../store/store";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 
 const Discovery: React.FC = () => {
   // local state for search query set up
@@ -28,6 +31,10 @@ const Discovery: React.FC = () => {
     (state: RootStore) => state.postApiConfigurationReducer
   );
 
+  const searchTypestate = useSelector(
+    (state: RootStore) => state.userSearchTypeR
+  );
+
   const getDiscoverRequestState = useSelector(
     (state: RootStore) => state.getDiscoverR
   );
@@ -42,21 +49,40 @@ const Discovery: React.FC = () => {
   );
 
   useEffect(() => {
-    dispatch(
-      getDiscoverRequest(
-        `https://api.themoviedb.org/3/discover/movie?api_key=${
-          mDBConfigState.apiKey
-        }&language=en-US&sort_by=${sortBy}&include_adult=false&include_video=false&page=${page}&${
-          voteAverage ? `vote_average.gte=${voteAverage}&` : ""
-        }${withGenres ? `with_genres=${withGenres}&` : ""}${
-          year ? `year=${year}` : ""
-        }`
-      )
-    );
-  }, [page]);
+    if (searchTypestate.userSearchType === "movies") {
+      dispatch(
+        getDiscoverRequest(
+          `https://api.themoviedb.org/3/discover/movie?api_key=${
+            mDBConfigState.apiKey
+          }&language=en-US&sort_by=${sortBy}&include_adult=false&include_video=false&page=${page}&${
+            voteAverage ? `vote_average.gte=${voteAverage}&` : ""
+          }${withGenres ? `with_genres=${withGenres}&` : ""}${
+            year ? `year=${year}` : ""
+          }`
+        )
+      );
+    } else {
+      dispatch(
+        getDiscoverRequest(
+          `https://api.themoviedb.org/3/discover/tv?api_key=${
+            mDBConfigState.apiKey
+          }&language=en-US&sort_by=${sortBy}&include_adult=false&include_video=false&page=${page}&${
+            voteAverage ? `vote_average.gte=${voteAverage}&` : ""
+          }${withGenres ? `with_genres=${withGenres}&` : ""}${
+            year ? `year=${year}` : ""
+          }`
+        )
+      );
+    }
+  }, [page, sortBy]);
 
   const addsGenre = (genreIds: number[]) => {
-    const genresList = moviesGenresState?.genres;
+    // chooses the genres depending on the user's type of search
+    const genresList =
+      searchTypestate.userSearchType === "movies"
+        ? moviesGenresState?.genres
+        : tvGenresState?.genres;
+
     if (genresList && genreIds.length > 0) {
       const genres = genresList
         .filter((genres) => {
@@ -70,17 +96,31 @@ const Discovery: React.FC = () => {
   };
 
   const onRequestHandler = () => {
-    dispatch(
-      getDiscoverRequest(
-        `https://api.themoviedb.org/3/discover/movie?api_key=${
-          mDBConfigState.apiKey
-        }&language=en-US&sort_by=${sortBy}&include_adult=false&include_video=false&page=${page}&${
-          voteAverage ? `vote_average.gte=${voteAverage}&` : ""
-        }${withGenres ? `with_genres=${withGenres}&` : ""}${
-          year ? `year=${year}` : ""
-        }`
-      )
-    );
+    if (searchTypestate.userSearchType === "movies") {
+      dispatch(
+        getDiscoverRequest(
+          `https://api.themoviedb.org/3/discover/movie?api_key=${
+            mDBConfigState.apiKey
+          }&language=en-US&sort_by=${sortBy}&include_adult=false&include_video=false&page=${page}&${
+            voteAverage ? `vote_average.gte=${voteAverage}&` : ""
+          }${withGenres ? `with_genres=${withGenres}&` : ""}${
+            year ? `year=${year}` : ""
+          }`
+        )
+      );
+    } else {
+      dispatch(
+        getDiscoverRequest(
+          `https://api.themoviedb.org/3/discover/tv?api_key=${
+            mDBConfigState.apiKey
+          }&language=en-US&sort_by=${sortBy}&include_adult=false&include_video=false&page=${page}&${
+            voteAverage ? `vote_average.gte=${voteAverage}&` : ""
+          }${withGenres ? `with_genres=${withGenres}&` : ""}${
+            year ? `year=${year}` : ""
+          }`
+        )
+      );
+    }
   };
 
   // deals with pagination
@@ -99,7 +139,20 @@ const Discovery: React.FC = () => {
       <div className="discovery">
         <MainNavigation />
         <header className="form-section">
-          <h1>Discover Movies</h1>
+          <div className="discover-back-to-home">
+            <p
+              className="back-page"
+              onClick={() => {
+                history.goBack();
+              }}
+            >
+              <FontAwesomeIcon icon={faChevronLeft} />
+              <span className="discovery-back">back</span>
+            </p>
+          </div>
+          <h1>{`Discover ${
+            searchTypestate.userSearchType === "movies" ? "Movies" : "Tv Shows"
+          }`}</h1>
           <hr className="title-highlighter" />
           <form className="discover-form" method="GET" action="/">
             <div className="filters">
@@ -164,68 +217,84 @@ const Discovery: React.FC = () => {
             </button>
           </form>
         </header>
-        <main className="results-holder">
-          {getDiscoverRequestState.response?.results
-            ? getDiscoverRequestState.response.results.map((result, index) => {
-                if (!result.poster_path) {
-                  return;
-                }
-                return (
-                  // closeSearchInput function removed the search-input if on mobile version. if the user searches for another item
-                  <div key={index} className="result-page-item">
-                    <NavLink
-                      to={{
-                        pathname: `/details/movie/${result.title}`,
-                        state: { itemId: result.id },
-                      }}
-                      className="results-result-link"
-                    >
-                      <div className="results-result-link">
-                        <div className="img-holder-results-page">
-                          <img
-                            src={
-                              result.poster_path
-                                ? mDBConfigState.payload!.images
-                                    .secure_base_url +
-                                  mDBConfigState.payload!.images
-                                    .poster_sizes[6] +
-                                  result.poster_path
-                                : ""
-                            }
-                            alt="poster"
-                          />
-                          <AddToWishlist location="results" />
-                        </div>
-                        <div className="results-page-result-details">
-                          {result.title ? (
-                            <h3 className="title" id="title">
-                              {result.title}
-                            </h3>
-                          ) : result.title ? (
-                            <h3 className="title" id="title">
-                              {result.title}
-                            </h3>
-                          ) : (
-                            <h3 className="title" id="title">
-                              Title N/A
-                            </h3>
-                          )}
-                          <h3>{`Release date: ${
-                            result.release_date ? result.release_date : "N/A"
-                          }`}</h3>
-                          {result.genre_ids.length > 0 ? (
-                            addsGenre(result.genre_ids)
-                          ) : (
-                            <p>No genres found</p>
-                          )}
-                          <p>{result.vote_average}</p>
-                        </div>
+        <main
+          className={
+            getDiscoverRequestState.loading ||
+            (getDiscoverRequestState.response?.results &&
+              getDiscoverRequestState.response?.results.length === 0)
+              ? "discovery-no-items-holder"
+              : "discovery-results-holder"
+          }
+        >
+          {getDiscoverRequestState.loading ? (
+            <div className="loader-holder">
+              <InformationLoader />
+            </div>
+          ) : getDiscoverRequestState.response?.results &&
+            getDiscoverRequestState.response?.results.length > 0 ? (
+            getDiscoverRequestState.response.results.map((result, index) => {
+              if (!result.poster_path) {
+                return;
+              }
+              return (
+                // closeSearchInput function removed the search-input if on mobile version. if the user searches for another item
+                <div key={index} className="discovery-result-page-item">
+                  <NavLink
+                    to={{
+                      pathname: `/details/movie/${result.title}`,
+                      state: { itemId: result.id },
+                    }}
+                    className="discovery-results-result-link"
+                  >
+                    <div className="discovery-results-result-link">
+                      <div className="discovery-img-holder-results-page">
+                        <img
+                          className="discovery-img"
+                          src={
+                            result.poster_path
+                              ? mDBConfigState.payload!.images.secure_base_url +
+                                mDBConfigState.payload!.images.poster_sizes[6] +
+                                result.poster_path
+                              : ""
+                          }
+                          alt="poster"
+                        />
+                        <AddToWishlist location="results" />
                       </div>
-                    </NavLink>
-                  </div>
-                );
-              })
-            : null}
+                      <div className="discovery-results-page-result-details">
+                        {result.title ? (
+                          <h3 className="discovery-title" id="title">
+                            {result.title}
+                          </h3>
+                        ) : result.name ? (
+                          <h3 className="discovery-title" id="title">
+                            {result.name}
+                          </h3>
+                        ) : (
+                          <h3 className="discovery-title" id="title">
+                            Title N/A
+                          </h3>
+                        )}
+                        <h3>{`Release date: ${
+                          result.release_date ? result.release_date : "N/A"
+                        }`}</h3>
+                        {result.genre_ids.length > 0 ? (
+                          addsGenre(result.genre_ids)
+                        ) : (
+                          <p>No genres found</p>
+                        )}
+                        <p>{result.vote_average}</p>
+                      </div>
+                    </div>
+                  </NavLink>
+                </div>
+              );
+            })
+          ) : (
+            <div className="discovery-no-results">
+              <h2>No Results Found</h2>
+            </div>
+          )}
         </main>
         <div className="discovery-pagination">
           <button

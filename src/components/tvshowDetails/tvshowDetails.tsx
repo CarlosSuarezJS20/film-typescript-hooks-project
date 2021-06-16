@@ -90,7 +90,7 @@ const TvShowDetails: React.FC = (props) => {
 
   return (
     <div
-      className="movie-main-container"
+      className="tv-show-main-container"
       // helps to clean the search input and close the results div
       onClick={() => {
         dispatch(storesUserSearchValueHandler(""));
@@ -99,11 +99,11 @@ const TvShowDetails: React.FC = (props) => {
       <MainNavigation />
       {getTvshowDetailsState.tvshowDetails && (
         <React.Fragment>
-          <div className="item-hero-section">
-            <div className="share-and-nav-icons">
+          <div className="tv-show-hero-section">
+            <div className="tv-show-share-and-nav-icons">
               <FontAwesomeIcon
                 icon={faChevronCircleLeft}
-                className="back-page-icon"
+                className="tv-show-back-page-icon"
                 onClick={() => {
                   // closes the sharing icon holders if user leaves the page and the sharing icon container is open
                   if (sharing) {
@@ -114,45 +114,61 @@ const TvShowDetails: React.FC = (props) => {
               />
               <FontAwesomeIcon
                 icon={faShareAlt}
-                className="share-icon"
+                className="tv-show-share-icon"
                 onClick={onSharingHandler}
               />
             </div>
             <div
               className={
                 sharing
-                  ? "sharing-icons-holder show-icons"
-                  : "sharing-icons-holder"
+                  ? "tv-show-sharing-icons-holder tv-shows-show-icons"
+                  : "tv-show-sharing-icons-holder"
               }
             >
               <FontAwesomeIcon
                 icon={faFacebook}
-                className={sharing ? "facebook display-icons " : "facebook"}
+                className={
+                  sharing
+                    ? "tv-show-facebook tv-show-display-icons "
+                    : "tv-show-facebook"
+                }
               />
 
               <FontAwesomeIcon
                 icon={faInstagram}
-                className={sharing ? "instagram display-icons " : "instagram"}
+                className={
+                  sharing
+                    ? "tv-show-instagram tv-show-display-icons "
+                    : "tv-show-instagram"
+                }
               />
 
               <FontAwesomeIcon
                 icon={faLinkedin}
-                className={sharing ? "linkedin display-icons " : "linkedin"}
+                className={
+                  sharing
+                    ? "tv-show-linkedin tv-show-display-icons "
+                    : "tv-show-linkedin"
+                }
               />
               <FontAwesomeIcon
                 icon={faGithub}
-                className={sharing ? "github display-icons " : "github"}
+                className={
+                  sharing
+                    ? "tv-show-github tv-show-display-icons "
+                    : "tv-show-github"
+                }
               />
             </div>
-            <div className="gradient"></div>
+            <div className="tv-show-gradient"></div>
 
             {getTvshowDetailsState.tvshowDetails.backdrop_path! === null ? (
-              <div className="no-poster-available">
+              <div className="tv-show-no-poster-available">
                 <h2>Not poster available</h2>
               </div>
             ) : (
               <img
-                className="single-item-image"
+                className="tv-show-single-item-image"
                 src={`${
                   configMbdApiState.payload?.images &&
                   configMbdApiState.payload.images.secure_base_url
@@ -162,10 +178,10 @@ const TvShowDetails: React.FC = (props) => {
                 }${getTvshowDetailsState.tvshowDetails!.backdrop_path}`}
               />
             )}
-            <div className="back-and-share-container"></div>
-            <div className="single-item-details">
+            <div className="tv-show-back-and-share-container"></div>
+            <div className="tv-show-single-item-details">
               <img
-                className="single-item-details-image"
+                className="tv-show-single-item-details-image"
                 src={`${
                   configMbdApiState.payload?.images &&
                   configMbdApiState.payload.images.secure_base_url
@@ -174,14 +190,14 @@ const TvShowDetails: React.FC = (props) => {
                   configMbdApiState.payload.images.poster_sizes[4]
                 }${getTvshowDetailsState.tvshowDetails!.poster_path}`}
               />
-              <div className="single-item-description">
-                <div className="single-item-title">
+              <div className="tv-show-single-item-description">
+                <div className="tv-show-single-item-title">
                   <h2>{getTvshowDetailsState.tvshowDetails!.name}</h2>
-                  <div className="single-item-rating">
+                  <div className="tv-show-single-item-rating">
                     <p>{getTvshowDetailsState.tvshowDetails!.vote_average}</p>
                     <FontAwesomeIcon
                       icon={faStar}
-                      className="single-star-rating"
+                      className="tv-show-single-star-rating"
                     />
                   </div>
                   <p>
@@ -197,17 +213,17 @@ const TvShowDetails: React.FC = (props) => {
               </div>
             </div>
           </div>
-          <div className="single-item-overview">
-            <div className="plot-title">
+          <div className="tv-show-single-item-overview">
+            <div className="tv-show-plot-title">
               <h2> Plot Summary</h2>
               <AddToWishlist location="details-page" />
             </div>
-            <div className="plot-summary">
+            <div className="tv-show-plot-summary">
               <p>{getTvshowDetailsState.tvshowDetails!.overview}</p>
             </div>
           </div>
-          <div className="cast-carousel-holder">
-            <div className="cast-title-holder">
+          <div className="tv-show-cast-carousel-holder">
+            <div className="tv-show-cast-title-holder">
               <h2>Cast</h2>
             </div>
             {getTvshowCastState.tvshowCastResponse?.cast &&
@@ -216,7 +232,7 @@ const TvShowDetails: React.FC = (props) => {
                 items={getTvshowCastState.tvshowCastResponse!.cast}
               />
             ) : (
-              <div className="no-poster-available">
+              <div className="tv-show-no-poster-available">
                 <h2>Cast not available</h2>
               </div>
             )}
@@ -225,8 +241,8 @@ const TvShowDetails: React.FC = (props) => {
       )}
       {getTvshowVideosState.tvShowsVideosResponse?.results &&
         getTvshowVideosState.tvShowsVideosResponse!.results.length > 0 && (
-          <div className="trailers-holder">
-            <div className="videos-holder">
+          <div className="tv-show-trailers-holder">
+            <div className="tv-show-videos-holder">
               {getTvshowVideosState.tvShowsVideosResponse!.results.map(
                 (tvShow, index) => {
                   if (index >= 0 && index < 2) {
