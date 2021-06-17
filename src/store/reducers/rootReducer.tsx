@@ -37,12 +37,18 @@ import trendingThisweekReducer from "../reducers/trendingThisweekReducer";
 import menuSectionReducer from "../reducers/menuSectionReducer";
 import getDiscoverRequestReducer from "../reducers/getDiscoverRequestReducer";
 
+// authentication
+
+import authenticationLogicReducer from "../reducers/authenticationReducer/authenticationReducer";
+import authenticationBannerHandlerReducer from "../reducers/authenticationReducer/authenticationBannerReducer";
+
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
 const rootPersistConfig = {
   key: "root",
   storage: storage,
+  blacklist: ["authenticationBannerHandlerR", "authenticationLogicR"],
 };
 
 const rootReducer = combineReducers({
@@ -85,6 +91,9 @@ const rootReducer = combineReducers({
   menuSectionR: menuSectionReducer,
   // Discover
   getDiscoverR: getDiscoverRequestReducer,
+  // Authentication
+  authenticationBannerHandlerR: authenticationBannerHandlerReducer,
+  authenticationLogicR: authenticationLogicReducer,
 });
 
 export default persistReducer(rootPersistConfig, rootReducer);

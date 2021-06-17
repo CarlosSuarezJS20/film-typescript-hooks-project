@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import "./home.css";
 
 import NavigationBar from "../mainNavigation/mainNavigation";
-import MenuSection from "../menuSection/menuSection";
 import HomeHeader from "../homeHeader/homeHeader";
 import SignUpSection from "../signUpSection/signUpSection";
 import MainCarousel from "../mainCarousel/mainCarousel";

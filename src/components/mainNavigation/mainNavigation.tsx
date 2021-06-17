@@ -18,8 +18,10 @@ import { storesUserSearchValueHandler } from "../../store/actions/searchValueFro
 import { showMenuSectionHandler } from "../../store/actions/actionsMenuSection/menuSectionShowHandler";
 
 import { RootStore } from "../../store/store";
-import { set } from "lodash";
-import { convertToObject } from "typescript";
+
+// Authentication
+import { authenticationBannerHandler } from "../../store/actions/actionsAuthentication/authenticationBannerHandler";
+import { logoutRequestHandler } from "../../store/actions/actionsAuthentication/authenticationLogoutHandler";
 
 const NavigationBar: React.FC = () => {
   const [searchActive, setSearchActive] = useState(false);
@@ -33,6 +35,10 @@ const NavigationBar: React.FC = () => {
 
   const multiSearchFeatureState = useSelector(
     (state: RootStore) => state.searchMultiCapabilityR
+  );
+
+  const autheticationState = useSelector(
+    (state: RootStore) => state.authenticationLogicR
   );
 
   // for UI changes and styling for small screen input div.
@@ -141,8 +147,18 @@ const NavigationBar: React.FC = () => {
       <div className="icon-holder hide-big-screen" onClick={searchActiveOpen}>
         <FontAwesomeIcon icon={faSearch} className="icon" />
       </div>
-      <div className="sign-in-holder">
-        <NavLink to="sign-in-page">sign in</NavLink>
+      <div
+        className="sign-in-holder"
+        onClick={() => {
+          // removes token and userId
+          if (autheticationState.authToken) {
+            dispatch(logoutRequestHandler());
+            return;
+          }
+          dispatch(authenticationBannerHandler());
+        }}
+      >
+        <p>{autheticationState.authToken ? "sign out" : "sign in"}</p>
       </div>
     </nav>
   );

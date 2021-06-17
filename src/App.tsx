@@ -11,6 +11,7 @@ import ResultsPage from "./components/results/results";
 import ScrollToTop from "./components/UI/scrollToTop/scrollToTop";
 import MenuSection from "./components/menuSection/menuSection";
 import Discovery from "./components/discovery/discovery";
+import Authentication from "./components/authentication/authentication";
 
 import { useSelector, useDispatch } from "react-redux";
 
@@ -54,6 +55,7 @@ const App: React.FC = () => {
       {/* Locates the scroll to where the user is intending to go. New page up to the top, goes back to where the user began searching */}
       <ScrollToTop>
         <MenuSection />
+        <Authentication />
         <Switch>
           <Route path="/" exact component={WelcomePage} />
           <Route path="/home" component={Home} />
