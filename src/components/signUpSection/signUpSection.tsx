@@ -18,7 +18,7 @@ const SignUp: React.FC = () => {
           dispatch(authenticationBannerHandler());
         }}
       >
-        Sign Up
+        Sign In
       </button>
     </div>
   );

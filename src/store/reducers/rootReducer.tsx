@@ -42,6 +42,11 @@ import getDiscoverRequestReducer from "../reducers/getDiscoverRequestReducer";
 import authenticationLogicReducer from "../reducers/authenticationReducer/authenticationReducer";
 import authenticationBannerHandlerReducer from "../reducers/authenticationReducer/authenticationBannerReducer";
 
+// wishlist
+
+import addNewItemToWishListReducer from "../reducers/wishlistReducer/addItemToWishlistReducer";
+import itemsForUsersWishingListReducer from "../reducers/wishlistReducer/getItemsforWishlistReducer";
+
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
@@ -94,6 +99,9 @@ const rootReducer = combineReducers({
   // Authentication
   authenticationBannerHandlerR: authenticationBannerHandlerReducer,
   authenticationLogicR: authenticationLogicReducer,
+  // Wishlist
+  addNewItemToWishListR: addNewItemToWishListReducer,
+  getItemsWishListR: itemsForUsersWishingListReducer,
 });
 
 export default persistReducer(rootPersistConfig, rootReducer);

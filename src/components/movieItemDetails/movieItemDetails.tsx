@@ -202,7 +202,10 @@ const MovieDetails: React.FC = () => {
           <div className="single-item-overview">
             <div className="plot-title">
               <h2> Plot Summary</h2>
-              <AddToWishlist location="details-page" />
+              <AddToWishlist
+                location="details-page"
+                itemId={getMoviesDetailsState.movieDetails!.id}
+              />
             </div>
             <div className="plot-summary">
               <p>{getMoviesDetailsState.movieDetails!.overview}</p>

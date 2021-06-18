@@ -12,6 +12,7 @@ import ScrollToTop from "./components/UI/scrollToTop/scrollToTop";
 import MenuSection from "./components/menuSection/menuSection";
 import Discovery from "./components/discovery/discovery";
 import Authentication from "./components/authentication/authentication";
+import UsersWishlist from "./components/usersWishlist/usersWishlist";
 
 import { useSelector, useDispatch } from "react-redux";
 
@@ -64,6 +65,7 @@ const App: React.FC = () => {
           <Route path="/details/actor/:name" component={ActorDetails} />
           <Route path="/results" component={ResultsPage} />
           <Route path="/discover" component={Discovery} />
+          <Route path="/wishlist/:userId" component={UsersWishlist} />
         </Switch>
       </ScrollToTop>
     </BrowserRouter>

@@ -19,7 +19,7 @@ import {
   faStar,
 } from "@fortawesome/free-solid-svg-icons";
 
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { RootStore } from "../../store/store";
 
 // btn Helper Components for Carousel Btns
@@ -62,6 +62,7 @@ interface PropsMaincarousel {
 }
 
 const MainCarousel: React.FC<PropsMaincarousel> = ({ items }) => {
+  const dispatch = useDispatch();
   const mDBConfigState = useSelector(
     (state: RootStore) => state.postApiConfigurationReducer
   );
@@ -73,6 +74,12 @@ const MainCarousel: React.FC<PropsMaincarousel> = ({ items }) => {
   );
   const typeOfSearchState = useSelector(
     (state: RootStore) => state.userSearchTypeR
+  );
+
+  //
+
+  const authenticationState = useSelector(
+    (state: RootStore) => state.authenticationLogicR
   );
 
   // initializes first carousel
@@ -145,7 +152,7 @@ const MainCarousel: React.FC<PropsMaincarousel> = ({ items }) => {
                       }${item.poster_path}`}
                     />
                   </NavLink>
-                  <AddToWishlist location="main-carousel" />
+                  <AddToWishlist location="main-carousel" itemId={item.id} />
                 </div>
                 <div className="item-description-slide">
                   <div className="item-rating">

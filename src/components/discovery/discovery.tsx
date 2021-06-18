@@ -259,7 +259,7 @@ const Discovery: React.FC = () => {
                           }
                           alt="poster"
                         />
-                        <AddToWishlist location="results" />
+                        <AddToWishlist location="results" itemId={result.id} />
                       </div>
                       <div className="discovery-results-page-result-details">
                         {result.title ? (

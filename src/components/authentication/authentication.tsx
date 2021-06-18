@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./authentication.css";
 
 import Backdrop from "../UI/backdrop/backdropHelper";
+import InformationLoader from "../UI/informationLoader/informationLoader";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
@@ -33,6 +34,7 @@ const Authentication: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [passwordsMatch, setPasswordsMatch] = useState(true);
   const [userRegistering, setUserRegistering] = useState(false);
 
   // For Handling the banner
@@ -97,6 +99,10 @@ const Authentication: React.FC = () => {
               onClick={() => {
                 dispatch(authenticationBannerHandler());
                 setUserRegistering(false);
+                // resets the inputs to empty if the user moves between sign in and sign up
+                setEmail("");
+                setConfirmPassword("");
+                setPassword("");
               }}
             />
           </div>
@@ -109,59 +115,69 @@ const Authentication: React.FC = () => {
                   .toLowerCase()}`}
             </p>
             <p className="match-password-error">
-              {password !== confirmPassword && userRegistering
+              {!passwordsMatch && userRegistering
                 ? "Password does not match"
                 : ""}
             </p>
           </div>
-          <form>
-            <input
-              className={
-                valueValidityHandler(email, { isEmail: true }) ? "valid" : ""
-              }
-              type="email"
-              value={email}
-              placeholder="Enter your email"
-              required={true}
-              onChange={(e) => {
-                onChangeHandler(e, "email");
-              }}
-            />
-            <input
-              className={
-                valueValidityHandler(password, { minLength: 7 }) ? "valid" : ""
-              }
-              type="password"
-              value={password}
-              placeholder="Enter Password"
-              required={true}
-              minLength={7}
-              onChange={(e) => {
-                onChangeHandler(e, "password");
-              }}
-            />
-            {userRegistering && (
+          {autheticationLogicState.loadingRequest ? (
+            <div className="infomation-loader-auth">
+              <InformationLoader />
+            </div>
+          ) : (
+            <form>
               <input
-                type="password"
-                value={confirmPassword}
-                placeholder="Confirm Password"
+                className={
+                  valueValidityHandler(email, { isEmail: true }) ? "valid" : ""
+                }
+                type="email"
+                value={email}
+                placeholder="Enter your email"
+                required={true}
                 onChange={(e) => {
-                  onChangeHandler(e, "confirm-password");
+                  onChangeHandler(e, "email");
                 }}
               />
-            )}
-            <button
-              onClick={(e) => {
-                e.preventDefault();
-                if (password !== confirmPassword && userRegistering) {
-                  return;
+              <input
+                className={
+                  valueValidityHandler(password, { minLength: 7 })
+                    ? "valid"
+                    : ""
                 }
-                submitRegisteringHandler();
-              }}
-            >
-              {userRegistering ? "Create Account" : "Log in"}
-            </button>
-          </form>
+                type="password"
+                value={password}
+                placeholder="Enter Password"
+                required={true}
+                minLength={7}
+                onChange={(e) => {
+                  onChangeHandler(e, "password");
+                }}
+              />
+              {userRegistering && (
+                <input
+                  type="password"
+                  value={confirmPassword}
+                  placeholder="Confirm Password"
+                  onChange={(e) => {
+                    onChangeHandler(e, "confirm-password");
+                  }}
+                />
+              )}
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  if (password !== confirmPassword && userRegistering) {
+                    setPasswordsMatch(false);
+                    return;
+                  }
+                  submitRegisteringHandler();
+                }}
+              >
+                {userRegistering ? "Create Account" : "Log in"}
+              </button>
+            </form>
+          )}
+
           <div className="options">
             <p>or</p>
             <hr />
@@ -169,6 +185,10 @@ const Authentication: React.FC = () => {
               className="options-message"
               onClick={() => {
                 setUserRegistering((prev) => !prev);
+                // resets the inputs to empty if the user moves between sign in and sign up
+                setEmail("");
+                setConfirmPassword("");
+                setPassword("");
               }}
             >
               {userRegistering

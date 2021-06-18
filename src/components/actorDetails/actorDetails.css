@@ -4,7 +4,7 @@
 }
 
 .back-page-section {
-  margin: 2rem 6rem;
+  margin: 2rem 2rem;
   display: flex;
   justify-content: flex-end;
   font-size: 1.5rem;
@@ -113,6 +113,10 @@
 }
 
 @media (min-width: 680px) {
+  .back-page-section {
+    margin: 2rem 6rem;
+  }
+
   .actor-header {
     padding: 1rem 0.5rem;
     border: 1px solid rgba(63, 63, 63, 0.24);

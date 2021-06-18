@@ -28,6 +28,9 @@ import { popularTvshowsFetchReq } from "../../store/actions/RequestPopularTvShow
 // Trending Request
 import { trendingThisweekFetchResponse } from "../../store/actions/TrendingItemsThisweekRequest";
 
+// authentication
+import { authenticationBannerHandler } from "../../store/actions/actionsAuthentication/authenticationBannerHandler";
+
 import { RootStore } from "../../store/store";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
@@ -82,6 +85,12 @@ const Home: React.FC = () => {
 
   const trendingRequestReqState = useSelector(
     (state: RootStore) => state.trendingThisweekReducer
+  );
+
+  // Authentication Status
+
+  const authenticationState = useSelector(
+    (state: RootStore) => state.authenticationLogicR
   );
 
   useEffect(() => {
@@ -165,16 +174,36 @@ const Home: React.FC = () => {
       <NavigationBar />
       <HomeHeader />
       <div className="watchlist-display-section">
-        <NavLink className="title-container" to="/watchlist">
-          <h2>Here is what is on your watchlist</h2>
-          <span id="arrow">
-            <FontAwesomeIcon
-              icon={faChevronRight}
-              className="arrow-watchlist"
-            />
-          </span>
-        </NavLink>
-        <SignUpSection />
+        {!authenticationState.authToken ? (
+          <div
+            className="title-container"
+            onClick={() => {
+              dispatch(authenticationBannerHandler());
+            }}
+          >
+            <h2>Here is what is on your watchlist</h2>
+            <span id="arrow">
+              <FontAwesomeIcon
+                icon={faChevronRight}
+                className="arrow-watchlist"
+              />
+            </span>
+          </div>
+        ) : (
+          <NavLink
+            className="title-container"
+            to={{ pathname: `/wishlist/${authenticationState.userId}` }}
+          >
+            <h2>Here is what is on your watchlist</h2>
+            <span id="arrow">
+              <FontAwesomeIcon
+                icon={faChevronRight}
+                className="arrow-watchlist"
+              />
+            </span>
+          </NavLink>
+        )}
+        {!authenticationState.authToken && <SignUpSection />}
       </div>
       {userTypeOfSearchState.userSearchType === "tv-shows" && (
         <React.Fragment>

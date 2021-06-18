@@ -216,7 +216,10 @@ const TvShowDetails: React.FC = (props) => {
           <div className="tv-show-single-item-overview">
             <div className="tv-show-plot-title">
               <h2> Plot Summary</h2>
-              <AddToWishlist location="details-page" />
+              <AddToWishlist
+                location="details-page"
+                itemId={getTvshowDetailsState.tvshowDetails!.id}
+              />
             </div>
             <div className="tv-show-plot-summary">
               <p>{getTvshowDetailsState.tvshowDetails!.overview}</p>
