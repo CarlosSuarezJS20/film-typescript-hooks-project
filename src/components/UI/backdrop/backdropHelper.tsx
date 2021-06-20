@@ -21,6 +21,10 @@ const BackDrop: React.FC = () => {
     dispatch(showMenuSectionHandler());
   };
 
+  const onAutheticationBannerHandler = () => {
+    dispatch(authenticationBannerHandler());
+  };
+
   return (
     <div
       className={
@@ -28,7 +32,14 @@ const BackDrop: React.FC = () => {
           ? "backdrop show-backdrop"
           : "backdrop"
       }
-      onClick={onMenuSectionHandler}
+      onClick={() => {
+        //  this allows the if statement to action the correct function depending on what backdrop is showing
+        if (menuSectionState.show) {
+          onMenuSectionHandler();
+        } else {
+          onAutheticationBannerHandler();
+        }
+      }}
     ></div>
   );
 };

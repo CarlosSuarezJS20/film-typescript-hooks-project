@@ -53,7 +53,11 @@ import storage from "redux-persist/lib/storage";
 const rootPersistConfig = {
   key: "root",
   storage: storage,
-  blacklist: ["authenticationBannerHandlerR", "authenticationLogicR"],
+  blacklist: [
+    "authenticationBannerHandlerR",
+    "authenticationLogicR",
+    "getItemsWishListR",
+  ],
 };
 
 const rootReducer = combineReducers({

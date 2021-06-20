@@ -71,13 +71,13 @@ const Authentication: React.FC = () => {
 
   const submitRegisteringHandler = () => {
     const details = {
-      email: email,
-      password: password,
+      email: email.trim(),
+      password: password.trim(),
       returnSecureToken: true,
     };
     let urlRequest = userRegistering
       ? "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBbBZw2BGsEBfl1-qxCBZFkC669UFyUKS0"
-      : "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAsm2AajbLjNnGdo4cb7pVXXfaxVkt-GKs";
+      : "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBbBZw2BGsEBfl1-qxCBZFkC669UFyUKS0";
     dispatch(postAuthenticationRequest(urlRequest, details));
   };
 

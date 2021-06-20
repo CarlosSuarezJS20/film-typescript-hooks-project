@@ -62,7 +62,6 @@ interface PropsMaincarousel {
 }
 
 const MainCarousel: React.FC<PropsMaincarousel> = ({ items }) => {
-  const dispatch = useDispatch();
   const mDBConfigState = useSelector(
     (state: RootStore) => state.postApiConfigurationReducer
   );

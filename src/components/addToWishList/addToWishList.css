@@ -10,6 +10,26 @@
   cursor: pointer;
 }
 
+.on-list {
+  position: absolute;
+  text-transform: capitalize;
+  font-weight: bold;
+  color: rgb(243, 243, 243);
+  top: 0;
+  left: 5%;
+  padding: 0.5rem 0.5rem;
+  background: rgba(228, 186, 0, 0.521);
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  clip-path: none;
+  border: 1px solid rgb(228, 186, 0);
+  transition: ease 0.5s;
+}
+
+.on-list span {
+  margin-left: 0.2rem;
+}
+
 .watch-later-icon:hover {
   background: rgba(138, 138, 138, 0.541);
 }
