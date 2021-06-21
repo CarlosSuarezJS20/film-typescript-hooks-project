@@ -205,6 +205,7 @@ const MovieDetails: React.FC = () => {
               <AddToWishlist
                 location="details-page"
                 itemId={getMoviesDetailsState.movieDetails!.id}
+                type={"movie"}
               />
             </div>
             <div className="plot-summary">

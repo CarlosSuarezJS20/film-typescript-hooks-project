@@ -118,7 +118,6 @@ const Results: React.FC = () => {
               if (!result.poster_path) {
                 return;
               }
-
               return (
                 // closeSearchInput function removed the search-input if on mobile version. if the user searches for another item
                 <div key={index} className="result-page-item">
@@ -147,7 +146,13 @@ const Results: React.FC = () => {
                           }
                           alt="poster"
                         />
-                        <AddToWishlist location="results" itemId={result.id} />
+                        <AddToWishlist
+                          location="results"
+                          itemId={result.id}
+                          type={
+                            result.media_type === "tv" ? "tv-show" : "movie"
+                          }
+                        />
                       </div>
                       <div className="results-page-result-details">
                         {result.title ? (

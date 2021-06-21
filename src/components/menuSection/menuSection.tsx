@@ -24,6 +24,10 @@ const MenuSection: React.FC = () => {
     (state: RootStore) => state.userSearchTypeR
   );
 
+  const authenticationState = useSelector(
+    (state: RootStore) => state.authenticationLogicR
+  );
+
   const menuSectionHandler = () => {
     dispatch(showMenuSectionHandler());
   };
@@ -55,6 +59,14 @@ const MenuSection: React.FC = () => {
           <li onClick={menuSectionHandler}>
             <NavLink className="menu-link" to="/discover">
               discover
+            </NavLink>
+          </li>
+          <li onClick={menuSectionHandler}>
+            <NavLink
+              className="menu-link"
+              to={{ pathname: `/wishlist/${authenticationState.userId}` }}
+            >
+              Wishlist
             </NavLink>
           </li>
           {typeOfSearchState.userSearchType === "movies" ? (

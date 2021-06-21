@@ -12,10 +12,15 @@ import { getItemsForUserWishlist } from "../../store/actions/actionsWishlist/req
 
 interface AddToWishlistProps {
   location: string;
+  type: string;
   itemId: number;
 }
 
-const AddToWishlist: React.FC<AddToWishlistProps> = ({ location, itemId }) => {
+const AddToWishlist: React.FC<AddToWishlistProps> = ({
+  location,
+  itemId,
+  type,
+}) => {
   // onList helps to show that the item has been added to the list and it is used for re rendering the component
   const [onList, setOnList] = useState(false);
   const dispatch = useDispatch();
@@ -43,13 +48,15 @@ const AddToWishlist: React.FC<AddToWishlistProps> = ({ location, itemId }) => {
     const wishListItem = {
       id: itemId,
       itemOwnerId: autheticationLogicState.userId!,
+      type: type,
       watched: false,
     };
     setOnList(true);
     dispatch(
       postAddItemToUserWishlist(
         "https://living-room-3a1ec-default-rtdb.europe-west1.firebasedatabase.app/items.json",
-        wishListItem
+        wishListItem,
+        autheticationLogicState.userId!
       )
     );
   };
@@ -74,7 +81,10 @@ const AddToWishlist: React.FC<AddToWishlistProps> = ({ location, itemId }) => {
             </p>
           )}
           {location === "details-page" && (
-            <span className="add-to-wishlist">watched ?</span>
+            <span className="add-to-wishlist">
+              <FontAwesomeIcon icon={faHeart} className="watch-later-plus" /> On
+              list
+            </span>
           )}
         </div>
       ) : (

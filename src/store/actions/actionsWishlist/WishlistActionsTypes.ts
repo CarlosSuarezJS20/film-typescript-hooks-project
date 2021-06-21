@@ -44,6 +44,7 @@ export type response = {
   itemOwnerId: string;
   watched: boolean;
   itemId: string;
+  type: string;
 };
 
 export type responseWishlist = response[];

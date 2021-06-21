@@ -219,6 +219,7 @@ const TvShowDetails: React.FC = (props) => {
               <AddToWishlist
                 location="details-page"
                 itemId={getTvshowDetailsState.tvshowDetails!.id}
+                type={"tv-show"}
               />
             </div>
             <div className="tv-show-plot-summary">

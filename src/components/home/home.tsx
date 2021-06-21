@@ -36,6 +36,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
 import { storesUserSearchValueHandler } from "../../store/actions/searchValueFromNavbarHandler";
+import { getItemsForUserWishlist } from "../../store/actions/actionsWishlist/requestItemsForUsersWishlist";
 
 import { NavLink } from "react-router-dom";
 
@@ -161,8 +162,17 @@ const Home: React.FC = () => {
         );
         break;
     }
-  }, [userTypeOfSearchState.userSearchType]);
+    // requests all current items for wishlist if the user is loggedin
+    if (authenticationState.userId) {
+      dispatch(
+        getItemsForUserWishlist(
+          `https://living-room-3a1ec-default-rtdb.europe-west1.firebasedatabase.app/items.json?orderBy="itemOwnerId"&equalTo="${authenticationState.userId}"`
+        )
+      );
+    }
+  }, [userTypeOfSearchState.userSearchType, authenticationState.userId]);
 
+  // closes the instant results div if user clicks outside the div. This is done in all the components
   const resetsUserSearchHandler = () => {
     if (storeSearchValueHandlerState.userSearchValue.length > 0) {
       dispatch(storesUserSearchValueHandler(""));

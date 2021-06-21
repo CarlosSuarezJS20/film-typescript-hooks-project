@@ -90,8 +90,13 @@ const Discovery: React.FC = () => {
         })
         .map((genre) => {
           return genre.name;
-        })[0];
-      return <p>{genres.toString()}</p>;
+        })
+        .map((g, idx) => {
+          if (idx === 0) {
+            return g;
+          }
+        });
+      return <p>{genres.toString().split(",")}</p>;
     }
   };
 
@@ -259,7 +264,15 @@ const Discovery: React.FC = () => {
                           }
                           alt="poster"
                         />
-                        <AddToWishlist location="results" itemId={result.id} />
+                        <AddToWishlist
+                          location="results"
+                          itemId={result.id}
+                          type={
+                            searchTypestate.userSearchType === "tv-shows"
+                              ? "tv-show"
+                              : "movie"
+                          }
+                        />
                       </div>
                       <div className="discovery-results-page-result-details">
                         {result.title ? (

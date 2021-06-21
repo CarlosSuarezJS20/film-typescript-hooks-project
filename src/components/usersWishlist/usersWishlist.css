@@ -1,0 +1,65 @@
+.list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  width: 80%;
+  margin: 2rem auto;
+}
+
+/* item*/
+
+.wishlist-item-holder {
+  position: relative;
+}
+
+.watched-message {
+  position: absolute;
+  background: rgba(19, 19, 19, 0.452);
+  text-align: center;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  border: 1px solid rgba(204, 204, 204, 0.349);
+  border-radius: 5px;
+}
+
+.watched-message h2 {
+  text-transform: capitalize;
+  font-size: 1.5rem;
+  color: #ccc;
+  padding-top: 10rem;
+}
+
+.wishlist-item-img-holder {
+  position: relative;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.wishlist-item-img-holder img {
+  opacity: 0.8;
+  border-radius: 5px;
+}
+
+.wishlist-item-img-holder img:hover {
+  opacity: 1;
+  border-radius: 5px;
+}
+
+.wishlist-iten-details {
+  padding: 1.5rem 0;
+  text-align: center;
+  color: rgb(214, 214, 214);
+}
+
+@media (min-width: 680px) {
+  .list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+    width: 70%;
+    margin: 2rem auto;
+  }
+}
