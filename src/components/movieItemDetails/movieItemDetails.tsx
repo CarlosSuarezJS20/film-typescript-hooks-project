@@ -93,7 +93,6 @@ const MovieDetails: React.FC = () => {
   return (
     <div
       className="movie-main-container"
-      // helps to clean the search input and close the results div
       onClick={() => {
         dispatch(storesUserSearchValueHandler(""));
       }}
@@ -107,7 +106,6 @@ const MovieDetails: React.FC = () => {
                 icon={faChevronCircleLeft}
                 className="back-page-icon"
                 onClick={() => {
-                  // closes the sharing icon holders if user leaves the page and the sharing icon container is open
                   if (sharing) {
                     onSharingHandler();
                   }
@@ -239,7 +237,7 @@ const MovieDetails: React.FC = () => {
                     <iframe
                       key={movie.key}
                       title="1"
-                      src={`https://www.youtube.com/embed/${movie.key}`}
+                      src={`https://www.youtube-nocookie.com/embed/${movie.key}`}
                     ></iframe>
                   );
                 }

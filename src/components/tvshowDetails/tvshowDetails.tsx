@@ -256,7 +256,7 @@ const TvShowDetails: React.FC = (props) => {
                       <iframe
                         key={tvShow.key}
                         title="1"
-                        src={`https://www.youtube.com/embed/${tvShow.key}`}
+                        src={`https://www.youtube-nocookie.com/embed/${tvShow.key}`}
                       ></iframe>
                     );
                   }

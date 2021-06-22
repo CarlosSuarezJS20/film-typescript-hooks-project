@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./backdropHelper.css";
 
 import { useSelector, useDispatch } from "react-redux";
@@ -24,6 +24,27 @@ const BackDrop: React.FC = () => {
   const onAutheticationBannerHandler = () => {
     dispatch(authenticationBannerHandler());
   };
+
+  useEffect(() => {
+    // removes overflow if the backdrop is showing
+    if (menuSectionState.show) {
+      document.body.style.overflow = "hidden";
+    }
+
+    if (!menuSectionState.show) {
+      document.body.style.overflow = "inherit";
+    }
+  }, [menuSectionState.show]);
+
+  useEffect(() => {
+    if (autheticationBannerState.showBanner) {
+      document.body.style.overflow = "hidden";
+    }
+
+    if (!autheticationBannerState.showBanner) {
+      document.body.style.overflow = "inherit";
+    }
+  }, [autheticationBannerState.showBanner]);
 
   return (
     <div

@@ -13,7 +13,6 @@ html {
   color: rgb(41, 41, 41);
   line-height: 1.5;
   font-size: 0.875rem;
-  overflow-x: hidden;
   scroll-behavior: smooth;
   min-width: 400px;
 }

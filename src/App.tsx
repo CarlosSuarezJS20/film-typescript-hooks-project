@@ -52,23 +52,28 @@ const App: React.FC = () => {
   // if user clicks outside the instant results div, it removes the div from the UI
 
   return (
-    <BrowserRouter>
-      {/* Locates the scroll to where the user is intending to go. New page up to the top, goes back to where the user began searching */}
-      <ScrollToTop>
-        <MenuSection />
-        <Authentication />
-        <Switch>
-          <Route path="/" exact component={WelcomePage} />
-          <Route path="/home" component={Home} />
-          <Route path="/details/movie/:title" component={SingleMovieDetails} />
-          <Route path="/details/tv/:title" component={TvShowDetails} />
-          <Route path="/details/actor/:name" component={ActorDetails} />
-          <Route path="/results" component={ResultsPage} />
-          <Route path="/discover" component={Discovery} />
-          <Route path="/wishlist/:userId" component={UsersWishlist} />
-        </Switch>
-      </ScrollToTop>
-    </BrowserRouter>
+    <div style={{ overflow: "hidden" }}>
+      <BrowserRouter>
+        {/* Locates the scroll to where the user is intending to go. New page up to the top, goes back to where the user began searching */}
+        <ScrollToTop>
+          <MenuSection />
+          <Authentication />
+          <Switch>
+            <Route path="/" exact component={WelcomePage} />
+            <Route path="/home" component={Home} />
+            <Route
+              path="/details/movie/:title"
+              component={SingleMovieDetails}
+            />
+            <Route path="/details/tv/:title" component={TvShowDetails} />
+            <Route path="/details/actor/:name" component={ActorDetails} />
+            <Route path="/results" component={ResultsPage} />
+            <Route path="/discover" component={Discovery} />
+            <Route path="/wishlist/:userId" component={UsersWishlist} />
+          </Switch>
+        </ScrollToTop>
+      </BrowserRouter>
+    </div>
   );
 };
 
