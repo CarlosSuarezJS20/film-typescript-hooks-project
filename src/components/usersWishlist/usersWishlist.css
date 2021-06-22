@@ -6,6 +6,30 @@
   margin: 2rem auto;
 }
 
+/* titles */
+.wishlist-title {
+  margin-top: 1.5rem;
+  text-transform: capitalize;
+  width: 100%;
+  text-align: center;
+  color: #ccc;
+  font-size: 1.2rem;
+}
+
+/* lists */
+
+.list-title {
+  color: #ccc;
+  font-size: 1rem;
+  text-transform: capitalize;
+  margin-left: 3rem;
+}
+
+.list-holder-main {
+  width: 90%;
+  margin: 0 auto;
+}
+
 /* item*/
 
 .wishlist-item-holder {

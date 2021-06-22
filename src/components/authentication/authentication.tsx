@@ -54,7 +54,7 @@ const Authentication: React.FC = () => {
       dispatch(authenticationBannerHandler());
       setUserRegistering(false);
     }
-  }, [autheticationLogicState.authToken]);
+  }, [autheticationLogicState.authToken, dispatch]);
 
   const onChangeHandler = (
     e: React.ChangeEvent<HTMLInputElement>,

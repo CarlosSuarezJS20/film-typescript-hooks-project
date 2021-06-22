@@ -30,7 +30,7 @@ import {
   faStar,
 } from "@fortawesome/free-solid-svg-icons";
 
-interface MovieDetails {
+interface MovieDetailsProps {
   itemId: number;
 }
 
@@ -38,7 +38,7 @@ const MovieDetails: React.FC = () => {
   // to show sharing icons:
   const [sharing, setSharing] = useState(false);
   // state for the items Id.
-  const { state } = useLocation<MovieDetails>();
+  const { state } = useLocation<MovieDetailsProps>();
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -84,7 +84,7 @@ const MovieDetails: React.FC = () => {
     );
     // cleans the search input if user search for a new movie
     dispatch(storesUserSearchValueHandler(""));
-  }, [state.itemId]);
+  }, [state.itemId, mDBConfigState.apiKey]);
 
   const gobackToProjectsPage = () => {
     history.goBack();
@@ -99,7 +99,7 @@ const MovieDetails: React.FC = () => {
       }}
     >
       <MainNavigation />
-      {getMoviesDetailsState.movieDetails && (
+      {getMoviesDetailsState.movieDetails! && (
         <React.Fragment>
           <div className="item-hero-section">
             <div className="share-and-nav-icons">
@@ -158,6 +158,7 @@ const MovieDetails: React.FC = () => {
                   mDBConfigState.payload?.images &&
                   mDBConfigState.payload.images.poster_sizes[6]
                 }${getMoviesDetailsState.movieDetails!.backdrop_path}`}
+                alt="movie-img"
               />
             ) : (
               <div className="no-poster-available">
@@ -175,6 +176,7 @@ const MovieDetails: React.FC = () => {
                   mDBConfigState.payload?.images &&
                   mDBConfigState.payload.images.poster_sizes[4]
                 }${getMoviesDetailsState.movieDetails!.poster_path}`}
+                alt="i"
               />
               <div className="single-item-description">
                 <div className="single-item-title">

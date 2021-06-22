@@ -9,6 +9,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { authenticationBannerHandler } from "../../store/actions/actionsAuthentication/authenticationBannerHandler";
 import { postAddItemToUserWishlist } from "../../store/actions/actionsWishlist/addItemToWishList";
 import { getItemsForUserWishlist } from "../../store/actions/actionsWishlist/requestItemsForUsersWishlist";
+import { NavLink } from "react-router-dom";
 
 interface AddToWishlistProps {
   location: string;
@@ -42,7 +43,7 @@ const AddToWishlist: React.FC<AddToWishlistProps> = ({
       );
       setOnList(false);
     }
-  }, [autheticationLogicState.userId]);
+  }, [autheticationLogicState.userId, dispatch]);
 
   const itemToWishlistHandler = () => {
     const wishListItem = {
@@ -69,22 +70,29 @@ const AddToWishlist: React.FC<AddToWishlistProps> = ({
         itemsWishlistState.payload!.map((item) => item.id).includes(itemId)) ||
       onList ? (
         <div
+          key={itemId}
           className={
             location === "details-page" ? "watch-later-details-page" : "on-list"
           }
         >
           {/* styles differently depending on where on the page the component is rendered */}
           {location !== "details-page" && (
-            <p>
+            <NavLink
+              className="on-list-link"
+              to={`/wishlist/${autheticationLogicState.userId}`}
+            >
               <FontAwesomeIcon icon={faHeart} className="watch-later-plus" />
               <span>on list</span>
-            </p>
+            </NavLink>
           )}
           {location === "details-page" && (
-            <span className="add-to-wishlist">
+            <NavLink
+              to={`/wishlist/${autheticationLogicState.userId}`}
+              className="add-to-wishlist"
+            >
               <FontAwesomeIcon icon={faHeart} className="watch-later-plus" /> On
               list
-            </span>
+            </NavLink>
           )}
         </div>
       ) : (

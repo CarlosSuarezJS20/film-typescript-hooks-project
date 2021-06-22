@@ -89,7 +89,8 @@ const PeopleCarousel: React.FC<PropsMaincarousel> = ({ items }) => {
         {items &&
           items.map((item, index) => {
             if (item.profile_path === null) {
-              return;
+              // no need to return anything here
+              return null;
             }
             return (
               <div key={index} className="slide-holder">
@@ -110,6 +111,7 @@ const PeopleCarousel: React.FC<PropsMaincarousel> = ({ items }) => {
                         mDBConfigState.payload?.images &&
                         mDBConfigState.payload.images.poster_sizes[4]
                       }${item.profile_path}`}
+                      alt="people"
                     />
                   </NavLink>
                 </div>

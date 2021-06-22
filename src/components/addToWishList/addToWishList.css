@@ -1,13 +1,14 @@
 .watch-later-icon {
   position: absolute;
   top: 0;
-  left: 5%;
+  left: 10%;
   padding: 1rem 0.5rem;
   background: rgba(56, 56, 56, 0.541);
   clip-path: polygon(100% 0, 100% 99%, 49% 78%, 0% 100%, 0 48%, 0% 0%);
   border: 1px solid rgba(180, 180, 180, 0.8);
   transition: ease 0.5s;
   cursor: pointer;
+  z-index: 1;
 }
 
 .on-list {
@@ -16,7 +17,7 @@
   font-weight: bold;
   color: rgb(243, 243, 243);
   top: 0;
-  left: 5%;
+  left: 10%;
   padding: 0.5rem 0.5rem;
   background: rgba(228, 186, 0, 0.521);
   border-bottom-left-radius: 5px;
@@ -24,6 +25,11 @@
   clip-path: none;
   border: 1px solid rgb(228, 186, 0);
   transition: ease 0.5s;
+  z-index: 1;
+}
+
+.on-list-link {
+  color: rgb(243, 243, 243);
 }
 
 .on-list span {

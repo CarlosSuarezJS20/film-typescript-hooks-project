@@ -18,14 +18,14 @@ import { storesUserSearchValueHandler } from "../../store/actions/searchValueFro
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 
-interface ActorMainDetails {
+interface ActorMainDetailsProps {
   actorId: number;
 }
 
 const ActorMainDetails: React.FC = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const { state } = useLocation<ActorMainDetails>();
+  const { state } = useLocation<ActorMainDetailsProps>();
 
   // fetches necessary configurations for elements img size etc.
   const configMbdApiState = useSelector(
@@ -51,7 +51,7 @@ const ActorMainDetails: React.FC = () => {
         `https://api.themoviedb.org/3/person/${state.actorId}/combined_credits?api_key=${configMbdApiState.apiKey}&language=en-US`
       )
     );
-  }, [state.actorId]);
+  }, [state.actorId, configMbdApiState.apiKey, dispatch]);
 
   const gobackToPreviousPage = () => {
     history.goBack();
@@ -89,6 +89,7 @@ const ActorMainDetails: React.FC = () => {
                       configMbdApiState.payload?.images &&
                       configMbdApiState.payload.images.poster_sizes[4]
                     }${actorDetailReqState.actorDetails.profile_path}`}
+                    alt="actor-img"
                   />
                   <div className="name-holder">
                     <h2>{actorDetailReqState.actorDetails.name}</h2>
@@ -108,12 +109,12 @@ const ActorMainDetails: React.FC = () => {
                               configMbdApiState.payload?.images &&
                               configMbdApiState.payload.images.poster_sizes[4]
                             }${credit.backdrop_path}`}
+                            alt="actor-img"
                           />
                         );
                       }
                     }
                   )}
-                  <img />
                 </div>
               </div>
               <div className="bio-section">
@@ -157,6 +158,7 @@ const ActorMainDetails: React.FC = () => {
                               configMbdApiState.payload?.images &&
                               configMbdApiState.payload.images.poster_sizes[4]
                             }${credit.poster_path}`}
+                            alt="credit-img"
                           />
                         </div>
                         <div>

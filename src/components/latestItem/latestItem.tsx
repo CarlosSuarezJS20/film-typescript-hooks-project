@@ -115,6 +115,7 @@ const LatestItemDisplayer: React.FC<PropsMaincarousel> = ({ item }) => {
                     mDBConfigState.payload?.images &&
                     mDBConfigState.payload.images.poster_sizes[4]
                   }${item.backdrop_path}`}
+                  alt="single-item-img"
                 />
                 <div className="latest-item-description">
                   <h2>

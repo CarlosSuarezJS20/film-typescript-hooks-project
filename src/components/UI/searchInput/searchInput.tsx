@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "./searchInput.css";
 
 import { useSelector, useDispatch } from "react-redux";
@@ -46,7 +46,12 @@ const SearchInput: React.FC<SearchInputProps> = ({ location, page }) => {
         )
       );
     }
-  }, [storeSearchValueState.userSearchValue, page]);
+  }, [
+    storeSearchValueState.userSearchValue,
+    page,
+    configMbdApiState.apiKey,
+    dispatch,
+  ]);
 
   const onChangeValueHanlder = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();

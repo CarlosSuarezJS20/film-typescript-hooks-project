@@ -25,6 +25,8 @@ export const postAuthenticationRequest =
           type: POST_AUTHENTICATION_SUCCESS,
           payload: res.data,
         });
+        // if users logs in it scrolls to top
+        window.scrollTo(0, 0);
       })
       .catch((error) => {
         console.log(error.response.data.error.message);

@@ -1,13 +1,12 @@
 import {
-  GET_ITEMS_FOR_USER_WISHLIST_SUCCESS,
-  GET_ITEMS_FOR_USER_WISHLIST_LOADING,
-  GET_ITEMS_FOR_USER_WISHLIST_FAILED,
-  responseWishlist,
-  GetItemsForUserWishlistTypes,
+  UPDATE_REQUEST_WISHLIST_ITEM_SUCCESS,
+  UPDATE_REQUEST_WISHLIST_ITEM_LOADING,
+  UPDATE_REQUEST_WISHLIST_ITEM_FAILED,
+  updateRequestItemFromWishListTypes,
 } from "../../actions/actionsWishlist/WishlistActionsTypes";
 
 interface DefaultStateInt {
-  payload?: responseWishlist;
+  payload?: any;
   loading: boolean;
   error?: string;
 }
@@ -16,23 +15,23 @@ const initialState = {
   loading: false,
 };
 
-const addToWishListReducer = (
+const updateItemFfromUserWishlist = (
   state: DefaultStateInt = initialState,
-  action: GetItemsForUserWishlistTypes
+  action: updateRequestItemFromWishListTypes
 ): DefaultStateInt => {
   switch (action.type) {
-    case GET_ITEMS_FOR_USER_WISHLIST_FAILED:
+    case UPDATE_REQUEST_WISHLIST_ITEM_FAILED:
       return {
         ...state,
         loading: false,
         error: action.error,
       };
-    case GET_ITEMS_FOR_USER_WISHLIST_LOADING:
+    case UPDATE_REQUEST_WISHLIST_ITEM_LOADING:
       return {
         ...state,
         loading: true,
       };
-    case GET_ITEMS_FOR_USER_WISHLIST_SUCCESS:
+    case UPDATE_REQUEST_WISHLIST_ITEM_SUCCESS:
       return {
         ...state,
         payload: action.payload,
@@ -43,4 +42,4 @@ const addToWishListReducer = (
   }
 };
 
-export default addToWishListReducer;
+export default updateItemFfromUserWishlist;

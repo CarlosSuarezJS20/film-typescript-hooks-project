@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import { useTrail, animated, to, config } from "react-spring";
+import React from "react";
+import { useTrail, animated, to } from "react-spring";
 
-interface TrailString {
+interface TrailStringProps {
   open: any;
 }
 
-const TrailString: React.FC<TrailString> = ({ open, children, ...props }) => {
+const TrailString: React.FC<TrailStringProps> = ({ children }) => {
   const items = React.Children.toArray(children);
   const trail: { x: any; y: any }[] = useTrail(items.length, {
     config: { mass: 5, tension: 2000, friction: 135 },

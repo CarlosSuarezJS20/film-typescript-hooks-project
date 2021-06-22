@@ -74,7 +74,16 @@ const Discovery: React.FC = () => {
         )
       );
     }
-  }, [page, sortBy]);
+  }, [
+    page,
+    sortBy,
+    mDBConfigState.apiKey,
+    dispatch,
+    searchTypestate.userSearchType,
+    voteAverage,
+    withGenres,
+    year,
+  ]);
 
   const addsGenre = (genreIds: number[]) => {
     // chooses the genres depending on the user's type of search
@@ -244,6 +253,15 @@ const Discovery: React.FC = () => {
               return (
                 // closeSearchInput function removed the search-input if on mobile version. if the user searches for another item
                 <div key={index} className="discovery-result-page-item">
+                  <AddToWishlist
+                    location="results"
+                    itemId={result.id}
+                    type={
+                      searchTypestate.userSearchType === "tv-shows"
+                        ? "tv-show"
+                        : "movie"
+                    }
+                  />
                   <NavLink
                     to={{
                       pathname: `/details/movie/${result.title}`,
@@ -263,15 +281,6 @@ const Discovery: React.FC = () => {
                               : ""
                           }
                           alt="poster"
-                        />
-                        <AddToWishlist
-                          location="results"
-                          itemId={result.id}
-                          type={
-                            searchTypestate.userSearchType === "tv-shows"
-                              ? "tv-show"
-                              : "movie"
-                          }
                         />
                       </div>
                       <div className="discovery-results-page-result-details">

@@ -77,6 +77,10 @@
 
 /* Results Section Holder */
 
+.discovery-result-page-item {
+  position: relative;
+}
+
 .discovery-no-items-holder {
   width: 80%;
   margin: 0 auto;

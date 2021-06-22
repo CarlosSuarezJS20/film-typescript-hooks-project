@@ -46,6 +46,7 @@ import authenticationBannerHandlerReducer from "../reducers/authenticationReduce
 
 import addNewItemToWishListReducer from "../reducers/wishlistReducer/addItemToWishlistReducer";
 import itemsForUsersWishingListReducer from "../reducers/wishlistReducer/getItemsforWishlistReducer";
+import updateItemFromWishlistReducer from "../reducers/wishlistReducer/updateItemFromWishlistReducer";
 
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
@@ -53,11 +54,7 @@ import storage from "redux-persist/lib/storage";
 const rootPersistConfig = {
   key: "root",
   storage: storage,
-  blacklist: [
-    "authenticationBannerHandlerR",
-    "authenticationLogicR",
-    "getItemsWishListR",
-  ],
+  blacklist: ["authenticationBannerHandlerR", "authenticationLogicR"],
 };
 
 const rootReducer = combineReducers({
@@ -106,6 +103,7 @@ const rootReducer = combineReducers({
   // Wishlist
   addNewItemToWishListR: addNewItemToWishListReducer,
   getItemsWishListR: itemsForUsersWishingListReducer,
+  updateItemFromWishlistR: updateItemFromWishlistReducer,
 });
 
 export default persistReducer(rootPersistConfig, rootReducer);

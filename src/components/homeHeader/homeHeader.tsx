@@ -91,6 +91,11 @@ const HomeHeader: React.FC = () => {
     airingNowTvShowsPlayingState,
     upcomingMoviesState,
     topRatedTvShowsState,
+    moviesNowPlayingState.nowPlayingMoviesResponse,
+    upcomingMoviesState.upcomingMoviesResponseMbd,
+    typeSearchState.userSearchType,
+    genresMoviesState.genresResponseMbd!,
+    genresTvShowsState.tvshowsGenresResponseMbd!,
   ]);
 
   // adds the genres to the paragraph by looping through the genres ids of the items

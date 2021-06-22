@@ -1,3 +1,5 @@
+// POST REQUEST TO ADD NEW ITEMS TO LIST
+
 export const ADD_ITEM_TO_USER_WISHLIST_SUCCESS =
   "ADD_ITEM_TO_USER_WISHLIST_SUCCESS";
 export const ADD_ITEM_TO_USER_WISHLIST_LOADING =
@@ -22,6 +24,8 @@ export type AddItemToUserWishlistTypes =
   | AddItemToUserWishlistLoading
   | AddItemToUserWishlistFailed
   | AddItemToUserWishlistSuccess;
+
+// GET ITEMS FROM SERVER
 
 export const GET_ITEMS_FOR_USER_WISHLIST_SUCCESS =
   "GET_ITEMS_FOR_USER_WISHLIST_SUCCESS";
@@ -58,3 +62,31 @@ export type GetItemsForUserWishlistTypes =
   | GetItemsForUserWishlistLoading
   | GetItemsForUserWishlistFailed
   | GetItemsForUserWishlistSuccess;
+
+// GET REQUEST TO UPDATE THE ITEM
+
+export const UPDATE_REQUEST_WISHLIST_ITEM_SUCCESS =
+  "UPDATE_REQUEST_WISHLIST_ITEM_SUCCESS";
+export const UPDATE_REQUEST_WISHLIST_ITEM_FAILED =
+  "UPDATE_REQUEST_WISHLIST_ITEM_FAILED";
+export const UPDATE_REQUEST_WISHLIST_ITEM_LOADING =
+  "UPDATE_REQUEST_WISHLIST_ITEM_LOADING";
+
+export interface updateRequestItemFromWishlistLoading {
+  type: typeof UPDATE_REQUEST_WISHLIST_ITEM_LOADING;
+}
+
+export interface updateRequestItemFromWishlistFailed {
+  type: typeof UPDATE_REQUEST_WISHLIST_ITEM_FAILED;
+  error: string;
+}
+
+export interface updateRequestItemFromWishlistSuccess {
+  type: typeof UPDATE_REQUEST_WISHLIST_ITEM_SUCCESS;
+  payload: any;
+}
+
+export type updateRequestItemFromWishListTypes =
+  | updateRequestItemFromWishlistLoading
+  | updateRequestItemFromWishlistFailed
+  | updateRequestItemFromWishlistSuccess;

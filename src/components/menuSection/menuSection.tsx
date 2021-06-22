@@ -61,7 +61,14 @@ const MenuSection: React.FC = () => {
               discover
             </NavLink>
           </li>
-          <li onClick={menuSectionHandler}>
+          <li
+            onClick={() => {
+              menuSectionHandler();
+              if (!authenticationState.authToken) {
+                alert("You must sign in to access your list");
+              }
+            }}
+          >
             <NavLink
               className="menu-link"
               to={{ pathname: `/wishlist/${authenticationState.userId}` }}

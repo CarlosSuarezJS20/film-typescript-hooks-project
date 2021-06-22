@@ -58,7 +58,7 @@ const Results: React.FC = () => {
         )}&page=${page}&include_adult=false`
       )
     );
-  }, [query.get("query"), page]);
+  }, [query.get("query"), page, dispatch, configMbdApiState.apiKey]);
 
   // adds the genres to the result dynamically. We need to combine two responses
   const addsGenre = (mediaType: string, genreIds: number[]) => {

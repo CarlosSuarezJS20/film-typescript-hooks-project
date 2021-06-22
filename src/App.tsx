@@ -47,7 +47,7 @@ const App: React.FC = () => {
         `https://api.themoviedb.org/3/genre/tv/list?api_key=${configMbdApiState.apiKey}`
       )
     );
-  }, []);
+  }, [configMbdApiState.apiKey, dispatch]);
 
   // if user clicks outside the instant results div, it removes the div from the UI
 

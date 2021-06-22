@@ -170,7 +170,12 @@ const Home: React.FC = () => {
         )
       );
     }
-  }, [userTypeOfSearchState.userSearchType, authenticationState.userId]);
+  }, [
+    userTypeOfSearchState.userSearchType,
+    configMbdApiState.apiKey,
+    authenticationState.userId,
+    dispatch,
+  ]);
 
   // closes the instant results div if user clicks outside the div. This is done in all the components
   const resetsUserSearchHandler = () => {

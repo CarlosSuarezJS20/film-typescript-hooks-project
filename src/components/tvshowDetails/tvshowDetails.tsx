@@ -77,7 +77,7 @@ const TvShowDetails: React.FC = (props) => {
         `https://api.themoviedb.org/3/tv/${state.itemId}/videos?api_key=${configMbdApiState.apiKey}&language=en-US`
       )
     );
-  }, [state.itemId]);
+  }, [state.itemId, dispatch, configMbdApiState.apiKey]);
 
   // displays sharing icons upon users requests
   const onSharingHandler = () => {
@@ -176,6 +176,7 @@ const TvShowDetails: React.FC = (props) => {
                   configMbdApiState.payload?.images &&
                   configMbdApiState.payload.images.poster_sizes[6]
                 }${getTvshowDetailsState.tvshowDetails!.backdrop_path}`}
+                alt="tv-show-img"
               />
             )}
             <div className="tv-show-back-and-share-container"></div>
@@ -189,6 +190,7 @@ const TvShowDetails: React.FC = (props) => {
                   configMbdApiState.payload?.images &&
                   configMbdApiState.payload.images.poster_sizes[4]
                 }${getTvshowDetailsState.tvshowDetails!.poster_path}`}
+                alt="tv-show-img"
               />
               <div className="tv-show-single-item-description">
                 <div className="tv-show-single-item-title">

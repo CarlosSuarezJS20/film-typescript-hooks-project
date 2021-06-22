@@ -7,6 +7,7 @@ import Footer from "../footer/footer";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, Redirect } from "react-router-dom";
 import { storesUserSearchValueHandler } from "../../store/actions/searchValueFromNavbarHandler";
+import { updateItemFfromUserWishlist } from "../../store/actions/actionsWishlist/updateItemFromWishlistRequest";
 import { RootStore } from "../../store/store";
 import axios from "axios";
 
@@ -102,7 +103,12 @@ const AddToWishlist: React.FC = () => {
           });
       });
     }
-  }, []);
+  }, [
+    authenticationState.authToken,
+    configMDBState.apiKey,
+    dispatch,
+    wishlistItemsState.payload,
+  ]);
 
   // closes the instant results div if user clicks outside the div. This is done in all the components
   const resetsUserSearchHandler = () => {
@@ -114,6 +120,19 @@ const AddToWishlist: React.FC = () => {
   const onWatchedMoviesFromWishListHandler = (itemId: number) => {
     const updatedList = moviesInWishlist.map((item) => {
       if (item.id === itemId) {
+        // prepares the item to be updated in the firebase database
+        const itemToUpdate = wishlistItemsState.payload!.find(
+          (item) => itemId === item.id
+        );
+        itemToUpdate!.watched = true;
+        dispatch(
+          updateItemFfromUserWishlist(
+            `https://living-room-3a1ec-default-rtdb.europe-west1.firebasedatabase.app/items/${
+              itemToUpdate!.itemId
+            }.json?`,
+            itemToUpdate!
+          )
+        );
         return { ...item, watched: true };
       }
       return item;
@@ -140,17 +159,18 @@ const AddToWishlist: React.FC = () => {
       <main className="wishlist">
         <div className="wishlist-title">
           <h2>Your living room list</h2>
+          <hr />
         </div>
         <div className="lists">
           {moviesInWishlist.length >= 0 || tvshowsInWishlist.length >= 0 ? (
             <React.Fragment>
-              <div className="movies-list">
-                <div className="movies-list-title">
+              <div className="list-holder-main">
+                <div className="list-title">
                   <h2>Your movies</h2>
                 </div>
                 <div className="list">
                   {moviesInWishlist.map((item, idx) => (
-                    <div className="wishlist-item-holder">
+                    <div key={`${idx}-movie`} className="wishlist-item-holder">
                       <div className="img-holder-results-page">
                         {item.watched && (
                           <div className="watched-message">
@@ -197,7 +217,7 @@ const AddToWishlist: React.FC = () => {
                                 onWatchedMoviesFromWishListHandler(item.id);
                               }}
                             >
-                              watched?
+                              watched it?
                             </button>
                           )}
                         </div>
@@ -206,13 +226,13 @@ const AddToWishlist: React.FC = () => {
                   ))}
                 </div>
               </div>
-              <div className="movies-list">
-                <div className="movies-list-title">
+              <div className="list-holder-main">
+                <div className="list-title">
                   <h2>Your Tv shows</h2>
                 </div>
                 <div className="list">
                   {tvshowsInWishlist.map((item, idx) => (
-                    <div className="wishlist-item-holder">
+                    <div key={`${idx}-tv`} className="wishlist-item-holder">
                       {item.watched && (
                         <div className="watched-message">
                           <h2>watched!</h2>
@@ -253,16 +273,16 @@ const AddToWishlist: React.FC = () => {
                             item.first_air_date ? item.first_air_date : "N/A"
                           }`}</h3>
                           <p>{item.vote_average}</p>
+                          {!item.watched && (
+                            <button
+                              onClick={() => {
+                                onWatchedTvshowFromWishListHandler(item.id);
+                              }}
+                            >
+                              watched it?
+                            </button>
+                          )}
                         </div>
-                        {!item.watched && (
-                          <button
-                            onClick={() => {
-                              onWatchedTvshowFromWishListHandler(item.id);
-                            }}
-                          >
-                            watched?
-                          </button>
-                        )}
                       </div>
                     </div>
                   ))}

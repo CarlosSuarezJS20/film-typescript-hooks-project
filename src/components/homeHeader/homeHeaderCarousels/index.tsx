@@ -130,6 +130,7 @@ export const FistCarouse: React.FC<FirstCarouselProps> = ({
                     mDBConfigState.payload?.images &&
                     mDBConfigState.payload.images.poster_sizes[4]
                   }${item.backdrop_path}`}
+                  alt="carousel-img"
                 />
                 <div className="item-description">
                   <div className="poster">
@@ -141,6 +142,7 @@ export const FistCarouse: React.FC<FirstCarouselProps> = ({
                         mDBConfigState.payload?.images &&
                         mDBConfigState.payload.images.poster_sizes[4]
                       }${item.poster_path}`}
+                      alt="carousel-img"
                     />
                   </div>
                   <div className="description">
@@ -232,6 +234,7 @@ export const SecondCarousel: React.FC<FirstCarouselProps> = ({
                       mDBConfigState.payload?.images &&
                       mDBConfigState.payload.images.poster_sizes[4]
                     }${item.poster_path}`}
+                    alt="carousel-img"
                   />
                 </div>
                 <div className="carousel-two-description-holder">

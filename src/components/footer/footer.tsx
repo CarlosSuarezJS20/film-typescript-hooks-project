@@ -1,7 +1,6 @@
 import React from "react";
 import "./footer.css";
 import Logo from "../UI/logo/logo";
-import { Link } from "react-scroll";
 
 import TMDBLogo from "./images/TMDBLogo.svg";
 
