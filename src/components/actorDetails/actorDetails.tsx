@@ -15,6 +15,9 @@ import { RootStore } from "../../store/store";
 import { getActorDetailsResponse } from "../../store/actions/actionsSingleItems/singleActorActions/GetActorDetails";
 import { getActorCombinedCreditsResponse } from "../../store/actions/actionsSingleItems/singleActorActions/GetCombinedCreditsReq";
 import { storesUserSearchValueHandler } from "../../store/actions/searchValueFromNavbarHandler";
+
+import { fetchItemIdUserIsViewingHandler } from "../../store/actions/fetchItemIdHandler";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 
@@ -53,6 +56,8 @@ const ActorMainDetails: React.FC = () => {
         `https://api.themoviedb.org/3/person/${state.actorId}/combined_credits?api_key=${configMbdApiState.apiKey}&language=en-US`
       )
     );
+
+    dispatch(fetchItemIdUserIsViewingHandler(state.actorId));
   }, [state.actorId, configMbdApiState.apiKey, dispatch]);
 
   const gobackToPreviousPage = () => {
