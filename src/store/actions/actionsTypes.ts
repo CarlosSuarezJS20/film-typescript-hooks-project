@@ -720,9 +720,13 @@ export const FETCH_ITEM_ID_HANDLER = "FETCH_ITEM_ID_HANDLER";
 
 export interface FetchItemIdHandler {
   type: typeof FETCH_ITEM_ID_HANDLER;
-  itemId: number;
+  itemId: number | null;
+  actorId: number | null;
 }
 
-export type FetchItemIdHandlerFunction = (itemId: number) => void;
+export type FetchItemIdHandlerFunction = (
+  itemId: number | null,
+  actorId: number | null
+) => void;
 
 export type FetchItemIdHandlerType = FetchItemIdHandler;

@@ -57,7 +57,7 @@ const ActorMainDetails: React.FC = () => {
       )
     );
 
-    dispatch(fetchItemIdUserIsViewingHandler(state.actorId));
+    dispatch(fetchItemIdUserIsViewingHandler(state.actorId, null));
   }, [state.actorId, configMbdApiState.apiKey, dispatch]);
 
   const gobackToPreviousPage = () => {

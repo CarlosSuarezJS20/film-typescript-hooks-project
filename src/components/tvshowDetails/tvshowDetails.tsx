@@ -16,6 +16,8 @@ import { getTvshowsCastResponse } from "../../store/actions/actionsSingleItems/s
 import { getTvshowsVideosResponse } from "../../store/actions/actionsSingleItems/singleTvshowActions/GetTvShowVideos";
 import { storesUserSearchValueHandler } from "../../store/actions/searchValueFromNavbarHandler";
 
+import { fetchItemIdUserIsViewingHandler } from "../../store/actions/fetchItemIdHandler";
+
 import { RootStore } from "../../store/store";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -79,6 +81,8 @@ const TvShowDetails: React.FC = (props) => {
         `https://api.themoviedb.org/3/tv/${state.itemId}/videos?api_key=${configMbdApiState.apiKey}&language=en-US`
       )
     );
+
+    dispatch(fetchItemIdUserIsViewingHandler(null, state.itemId));
   }, [state.itemId, dispatch, configMbdApiState.apiKey]);
 
   // displays sharing icons upon users requests

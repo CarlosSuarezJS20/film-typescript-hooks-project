@@ -6,9 +6,10 @@ import {
 import { Dispatch } from "redux";
 
 export const fetchItemIdUserIsViewingHandler: FetchItemIdHandlerFunction =
-  (itemId) => (dispatch: Dispatch<FetchItemIdHandlerType>) => {
+  (actorId, itemId) => (dispatch: Dispatch<FetchItemIdHandlerType>) => {
     dispatch({
       type: FETCH_ITEM_ID_HANDLER,
+      actorId: actorId,
       itemId: itemId,
     });
   };

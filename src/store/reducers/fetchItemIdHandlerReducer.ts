@@ -4,12 +4,11 @@ import {
 } from "../actions/actionsTypes";
 
 interface DefaultStateInt {
-  itemId: number | null;
+  itemId?: number | null;
+  actorId?: number | null;
 }
 
-const initialState = {
-  itemId: null,
-};
+const initialState = {};
 
 const fetchItemIdUserIsViewingHandlerReducer = (
   state: DefaultStateInt = initialState,
@@ -19,6 +18,7 @@ const fetchItemIdUserIsViewingHandlerReducer = (
     case FETCH_ITEM_ID_HANDLER:
       return {
         itemId: action.itemId,
+        actorId: action.actorId,
       };
     default:
       return state;

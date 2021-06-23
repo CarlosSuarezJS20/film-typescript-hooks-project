@@ -16,12 +16,8 @@ import { RootStore } from "../../store/store";
 
 import { useAlert } from "react-alert";
 
-type path = { itemId?: string; actorId?: string } | null;
-
 const MenuSection: React.FC = (props) => {
-  const location = useLocation<path>();
-  const { state } = location;
-  const [path, setPath] = useState<path>(null);
+  const location = useLocation();
   const alert = useAlert();
   const dispatch = useDispatch();
   const menuSectionState = useSelector(
@@ -40,13 +36,6 @@ const MenuSection: React.FC = (props) => {
   const itemIdStoredState = useSelector(
     (state: RootStore) => state.fetchItemIdReducer
   );
-
-  useEffect(() => {
-    const path = state!.actorId
-      ? { actorId: `${itemIdStoredState.itemId}` }
-      : { itemId: `${itemIdStoredState.itemId}` };
-    setPath(path);
-  }, []);
 
   const menuSectionHandler = () => {
     dispatch(showMenuSectionHandler());
@@ -97,7 +86,10 @@ const MenuSection: React.FC = (props) => {
                     ? location.pathname
                     : `/wishlist/${authenticationState.userId}`
                 }`,
-                state: path,
+                state: {
+                  itemId: itemIdStoredState.itemId,
+                  actorId: itemIdStoredState.actorId,
+                },
               }}
             >
               Wishlist

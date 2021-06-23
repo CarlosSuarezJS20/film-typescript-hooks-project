@@ -72,7 +72,7 @@ const MovieDetails: React.FC = () => {
 
   useEffect(() => {
     // stores and makes the item id globably available:
-    dispatch(fetchItemIdUserIsViewingHandler(state.itemId));
+    dispatch(fetchItemIdUserIsViewingHandler(null, state.itemId));
 
     dispatch(
       getMovieDetailsResponse(

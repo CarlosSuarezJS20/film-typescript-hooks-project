@@ -48,7 +48,7 @@ import addNewItemToWishListReducer from "../reducers/wishlistReducer/addItemToWi
 import itemsForUsersWishingListReducer from "../reducers/wishlistReducer/getItemsforWishlistReducer";
 import updateItemFromWishlistReducer from "../reducers/wishlistReducer/updateItemFromWishlistReducer";
 // for displaying pages that involved item details
-import fetchItemIdHandlerReducer from "../reducers/fetchItemIdHandler";
+import fetchItemIdHandlerReducer from "./fetchItemIdHandlerReducer";
 
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
