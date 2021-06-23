@@ -16,6 +16,10 @@ import { RootStore } from "../../store/store";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 
+import { storesUserSearchValueHandler } from "../../store/actions/searchValueFromNavbarHandler";
+
+import withErrorHandler from "../UI/withErrorHandler/withErrorHandler";
+
 const Discovery: React.FC = () => {
   // local state for search query set up
   const [sortBy, setSortBy] = useState("popularity.desc");
@@ -33,6 +37,10 @@ const Discovery: React.FC = () => {
 
   const searchTypestate = useSelector(
     (state: RootStore) => state.userSearchTypeR
+  );
+
+  const storeSearchValueHandlerState = useSelector(
+    (state: RootStore) => state.searchValueFromInputHandlerR
   );
 
   const getDiscoverRequestState = useSelector(
@@ -148,9 +156,21 @@ const Discovery: React.FC = () => {
     }
   };
 
+  // closes the instant results div if user clicks outside the div. This is done in all the components
+  const resetsUserSearchHandler = () => {
+    if (storeSearchValueHandlerState.userSearchValue.length > 0) {
+      dispatch(storesUserSearchValueHandler(""));
+    }
+  };
+
   return (
     <React.Fragment>
-      <div className="discovery">
+      <div
+        className="discovery"
+        onClick={() => {
+          resetsUserSearchHandler();
+        }}
+      >
         <MainNavigation />
         <header className="form-section">
           <div className="discover-back-to-home">
@@ -342,4 +362,4 @@ const Discovery: React.FC = () => {
   );
 };
 
-export default Discovery;
+export default withErrorHandler(Discovery);

@@ -12,6 +12,7 @@ import { getMovieDetailsResponse } from "../../store/actions/actionsSingleItems/
 import { getMovieCastResponse } from "../../store/actions/actionsSingleItems/singleMovieItemActions/GetMovieCast";
 import { getMovieTrailersResponse } from "../../store/actions/actionsSingleItems/singleMovieItemActions/GetMovieTrailers";
 import { storesUserSearchValueHandler } from "../../store/actions/searchValueFromNavbarHandler";
+import { fetchItemIdUserIsViewingHandler } from "../../store/actions/fetchItemIdHandler";
 
 import { useHistory, useLocation } from "react-router-dom";
 
@@ -29,6 +30,9 @@ import {
   faShareAlt,
   faStar,
 } from "@fortawesome/free-solid-svg-icons";
+
+// error handeling:
+import withErrorHanler from "../UI/withErrorHandler/withErrorHandler";
 
 interface MovieDetailsProps {
   itemId: number;
@@ -67,6 +71,9 @@ const MovieDetails: React.FC = () => {
   };
 
   useEffect(() => {
+    // stores and makes the item id globably available:
+    dispatch(fetchItemIdUserIsViewingHandler(state.itemId));
+
     dispatch(
       getMovieDetailsResponse(
         `https://api.themoviedb.org/3/movie/${state.itemId}?api_key=${mDBConfigState.apiKey}&language=en-US`
@@ -250,4 +257,4 @@ const MovieDetails: React.FC = () => {
   );
 };
 
-export default MovieDetails;
+export default withErrorHanler(MovieDetails);

@@ -12,6 +12,8 @@ import { RootStore } from "../../store/store";
 
 import { authenticationBannerHandler } from "../../store/actions/actionsAuthentication/authenticationBannerHandler";
 import { postAuthenticationRequest } from "../../store/actions/actionsAuthentication/postAuthenticationRequest";
+
+import withErrorHandler from "../UI/withErrorHandler/withErrorHandler";
 // Validation Function:
 const valueValidityHandler = (
   value: string,
@@ -202,4 +204,4 @@ const Authentication: React.FC = () => {
   );
 };
 
-export default Authentication;
+export default withErrorHandler(Authentication);

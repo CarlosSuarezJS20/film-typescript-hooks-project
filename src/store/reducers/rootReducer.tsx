@@ -47,6 +47,8 @@ import authenticationBannerHandlerReducer from "../reducers/authenticationReduce
 import addNewItemToWishListReducer from "../reducers/wishlistReducer/addItemToWishlistReducer";
 import itemsForUsersWishingListReducer from "../reducers/wishlistReducer/getItemsforWishlistReducer";
 import updateItemFromWishlistReducer from "../reducers/wishlistReducer/updateItemFromWishlistReducer";
+// for displaying pages that involved item details
+import fetchItemIdHandlerReducer from "../reducers/fetchItemIdHandler";
 
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
@@ -104,6 +106,7 @@ const rootReducer = combineReducers({
   addNewItemToWishListR: addNewItemToWishListReducer,
   getItemsWishListR: itemsForUsersWishingListReducer,
   updateItemFromWishlistR: updateItemFromWishlistReducer,
+  fetchItemIdReducer: fetchItemIdHandlerReducer,
 });
 
 export default persistReducer(rootPersistConfig, rootReducer);

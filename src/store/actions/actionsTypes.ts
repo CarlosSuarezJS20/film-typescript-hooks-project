@@ -713,3 +713,16 @@ export type getDiscoverRequestTypes =
   | GetDiscoverRequestSuccess
   | GetDiscoverRequestFail
   | GetDiscoverRequestLoading;
+
+// ITEM ID USER VISITING. For wishlist login alert requires this to display the id for the item the user is viewing
+
+export const FETCH_ITEM_ID_HANDLER = "FETCH_ITEM_ID_HANDLER";
+
+export interface FetchItemIdHandler {
+  type: typeof FETCH_ITEM_ID_HANDLER;
+  itemId: number;
+}
+
+export type FetchItemIdHandlerFunction = (itemId: number) => void;
+
+export type FetchItemIdHandlerType = FetchItemIdHandler;

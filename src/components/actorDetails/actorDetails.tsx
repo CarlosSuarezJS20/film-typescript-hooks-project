@@ -18,6 +18,8 @@ import { storesUserSearchValueHandler } from "../../store/actions/searchValueFro
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 
+import withErrorHandler from "../UI/withErrorHandler/withErrorHandler";
+
 interface ActorMainDetailsProps {
   actorId: number;
 }
@@ -182,4 +184,4 @@ const ActorMainDetails: React.FC = () => {
   );
 };
 
-export default ActorMainDetails;
+export default withErrorHandler(ActorMainDetails);

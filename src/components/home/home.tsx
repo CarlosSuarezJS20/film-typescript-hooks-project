@@ -40,6 +40,10 @@ import { getItemsForUserWishlist } from "../../store/actions/actionsWishlist/req
 
 import { NavLink } from "react-router-dom";
 
+// alert
+
+import withErrorHandler from "../UI/withErrorHandler/withErrorHandler";
+
 const Home: React.FC = () => {
   const dispatch = useDispatch();
 
@@ -307,4 +311,4 @@ const Home: React.FC = () => {
   );
 };
 
-export default Home;
+export default withErrorHandler(Home);

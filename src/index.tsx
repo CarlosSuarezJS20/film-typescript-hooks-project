@@ -9,12 +9,29 @@ import store from "./store/store";
 import { persistStore } from "redux-persist";
 import { PersistGate } from "redux-persist/integration/react";
 
+import { transitions, positions, Provider as AlertProvider } from "react-alert";
+
+// @ts-ignore
+import TemplateDark from "react-alert-template-basic";
+
 let persistor = persistStore(store);
+
+// optional configuration
+const options = {
+  // you can also just use 'bottom center'
+  position: positions.TOP_CENTER,
+  timeout: 5000,
+  offset: "30px",
+  // you can also just use 'scale'
+  transition: transitions.SCALE,
+};
 
 ReactDOM.render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
-      <App />
+      <AlertProvider template={TemplateDark} {...options}>
+        <App />
+      </AlertProvider>
     </PersistGate>
   </Provider>,
   document.getElementById("root")

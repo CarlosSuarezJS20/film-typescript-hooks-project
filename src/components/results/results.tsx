@@ -18,6 +18,8 @@ import { useLocation } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 
+import withErrorHandler from "../UI/withErrorHandler/withErrorHandler";
+
 //custome hook for passing params
 const useQuery = () => {
   return new URLSearchParams(useLocation().search);
@@ -215,4 +217,4 @@ const Results: React.FC = () => {
   );
 };
 
-export default Results;
+export default withErrorHandler(Results);

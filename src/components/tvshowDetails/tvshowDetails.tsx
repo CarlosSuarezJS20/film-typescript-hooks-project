@@ -31,6 +31,8 @@ import {
   faStar,
 } from "@fortawesome/free-solid-svg-icons";
 
+import withErrorHandler from "../UI/withErrorHandler/withErrorHandler";
+
 interface TvShowDetailsProps {
   itemId: number;
 }
@@ -270,4 +272,4 @@ const TvShowDetails: React.FC = (props) => {
   );
 };
 
-export default TvShowDetails;
+export default withErrorHandler(TvShowDetails);

@@ -3,7 +3,7 @@ import "./menuSection.css";
 
 import Backdrop from "../UI/backdrop/backdropHelper";
 
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
@@ -14,7 +14,11 @@ import { fetchUserTypeOfSearchHandler } from "../../store/actions/SetUserSearchT
 import { useSelector, useDispatch } from "react-redux";
 import { RootStore } from "../../store/store";
 
-const MenuSection: React.FC = () => {
+import { useAlert } from "react-alert";
+
+const MenuSection: React.FC = (props) => {
+  const location = useLocation();
+  const alert = useAlert();
   const dispatch = useDispatch();
   const menuSectionState = useSelector(
     (state: RootStore) => state.menuSectionR
@@ -26,6 +30,11 @@ const MenuSection: React.FC = () => {
 
   const authenticationState = useSelector(
     (state: RootStore) => state.authenticationLogicR
+  );
+
+  // consumes the itemId stored
+  const itemIdStoredState = useSelector(
+    (state: RootStore) => state.fetchItemIdReducer
   );
 
   const menuSectionHandler = () => {
@@ -65,13 +74,16 @@ const MenuSection: React.FC = () => {
             onClick={() => {
               menuSectionHandler();
               if (!authenticationState.authToken) {
-                alert("You must sign in to access your list");
+                alert.show("You must sign in to access your list");
               }
             }}
           >
             <NavLink
               className="menu-link"
-              to={{ pathname: `/wishlist/${authenticationState.userId}` }}
+              to={{
+                pathname: `${location.pathname}`,
+                state: { itemId: `${itemIdStoredState.itemId}` },
+              }}
             >
               Wishlist
             </NavLink>
