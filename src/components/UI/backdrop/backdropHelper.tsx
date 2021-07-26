@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import "./backdropHelper.css";
+import "./backdropHelper.scss";
 
 import { useSelector, useDispatch } from "react-redux";
 import { showMenuSectionHandler } from "../../../store/actions/actionsMenuSection/menuSectionShowHandler";

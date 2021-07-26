@@ -14,25 +14,24 @@ type details = {
   returnSecureToken: boolean;
 };
 
-export const postAuthenticationRequest =
-  (url: string, details: details) =>
+export const postAuthenticationRequest: (
+  url: string,
+  details: details
+) => void =
+  (url, details) =>
   async (dispatch: Dispatch<PostAuthenticationDispatchTypes>) => {
-    dispatch({ type: POST_AUTHENTICATION_STARTS });
-    axios
-      .post(url, details)
-      .then((res) => {
-        dispatch({
-          type: POST_AUTHENTICATION_SUCCESS,
-          payload: res.data,
-        });
-        // if users logs in it scrolls to top
-        window.scrollTo(0, 0);
-      })
-      .catch((error) => {
-        console.log(error.response.data.error.message);
-        dispatch({
-          type: POST_AUTHENTICATION_FAILED,
-          error: error.response.data.error.message,
-        });
+    try {
+      dispatch({ type: POST_AUTHENTICATION_STARTS });
+      const postAuthenticationResponse = await axios.post(url, details);
+      dispatch({
+        type: POST_AUTHENTICATION_SUCCESS,
+        payload: postAuthenticationResponse.data,
       });
+      window.scrollTo(0, 0);
+    } catch (error) {
+      dispatch({
+        type: POST_AUTHENTICATION_FAILED,
+        error: "Check passwords and user name and try again",
+      });
+    }
   };

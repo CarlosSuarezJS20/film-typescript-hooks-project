@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./usersWishlist.css";
+import "./usersWishlist.scss";
 
 import MainNavigation from "../mainNavigation/mainNavigation";
 import Footer from "../footer/footer";
@@ -172,23 +172,25 @@ const AddToWishlist: React.FC = () => {
   return !authenticationState.authToken ? (
     <Redirect to="/home" />
   ) : (
-    <div className="wishlist-section" onClick={resetsUserSearchHandler}>
+    <div onClick={resetsUserSearchHandler}>
       <MainNavigation />
       <main className="wishlist">
-        <div className="wishlist-title">
+        <div className="wishlist__wishlist-title">
           <h2>Your living room list</h2>
           <hr />
         </div>
-        <div className="lists">
+        <div className="wishlist__lists">
           {moviesInWishlist.length >= 0 || tvshowsInWishlist.length >= 0 ? (
             <React.Fragment>
               <div className="list-holder-main">
-                <div className="list-title">
+                <div className="list-holder-main__list-title">
                   <h2>Your movies</h2>
                 </div>
                 <div
                   className={
-                    moviesInWishlist.length > 0 ? "list" : "list-no-items"
+                    moviesInWishlist.length > 0
+                      ? "list-holder-main__list"
+                      : "list-holder-main__list-no-items"
                   }
                 >
                   {moviesInWishlist.length > 0 ? (
@@ -197,67 +199,65 @@ const AddToWishlist: React.FC = () => {
                         key={`${idx}-movie`}
                         className="wishlist-item-holder"
                       >
-                        <div className="img-holder-results-page">
-                          {item.watched && (
-                            <div className="watched-message">
-                              <h2>watched!</h2>
-                              <button
-                                onClick={() => {
-                                  onWatchedMoviesFromWishListHandler(
-                                    item.id,
-                                    true
-                                  );
-                                }}
-                              >
-                                watch again
-                              </button>
-                            </div>
-                          )}
-                          <NavLink
-                            key={idx}
-                            to={{
-                              pathname: `/details/movie/${item.title}`,
-                              state: { itemId: item.id },
-                            }}
-                          >
-                            <img
-                              src={
-                                item.poster_path
-                                  ? configMDBState.payload!.images
-                                      .secure_base_url +
-                                    configMDBState.payload!.images
-                                      .poster_sizes[6] +
-                                    item.poster_path
-                                  : ""
-                              }
-                              alt="poster"
-                            />
-                          </NavLink>
-                          <div className="wishlist-iten-details">
-                            {item.title ? (
-                              <h3 className="title" id="title">
-                                {item.title}
-                              </h3>
-                            ) : (
-                              <h3 className="title" id="title">
-                                Title N/A
-                              </h3>
-                            )}
-                            <h3>{`${
-                              item.release_date ? item.release_date : "N/A"
-                            }`}</h3>
-                            <p>{item.vote_average}</p>
-                            {!item.watched && (
-                              <button
-                                className="watch-again-btn"
-                                onClick={() => {
-                                  onWatchedMoviesFromWishListHandler(item.id);
-                                }}
-                              >
-                                watched it?
-                              </button>
-                            )}
+                        {item.watched && (
+                          <div className="wishlist-item-holder__watched-message">
+                            <h2>watched!</h2>
+                            <button
+                              onClick={() => {
+                                onWatchedMoviesFromWishListHandler(
+                                  item.id,
+                                  true
+                                );
+                              }}
+                            >
+                              watch again
+                            </button>
                           </div>
+                        )}
+                        <NavLink
+                          key={idx}
+                          to={{
+                            pathname: `/details/movie/${item.title}`,
+                            state: { itemId: item.id },
+                          }}
+                        >
+                          <img
+                            src={
+                              item.poster_path
+                                ? configMDBState.payload!.images
+                                    .secure_base_url +
+                                  configMDBState.payload!.images
+                                    .poster_sizes[6] +
+                                  item.poster_path
+                                : ""
+                            }
+                            alt="poster"
+                          />
+                        </NavLink>
+                        <div className="wishlist-item-details">
+                          {item.title ? (
+                            <h3 className="title" id="title">
+                              {item.title}
+                            </h3>
+                          ) : (
+                            <h3 className="title" id="title">
+                              Title N/A
+                            </h3>
+                          )}
+                          <h3>{`${
+                            item.release_date ? item.release_date : "N/A"
+                          }`}</h3>
+                          <p>{item.vote_average}</p>
+                          {!item.watched && (
+                            <button
+                              className="watch-again-btn"
+                              onClick={() => {
+                                onWatchedMoviesFromWishListHandler(item.id);
+                              }}
+                            >
+                              watched it?
+                            </button>
+                          )}
                         </div>
                       </div>
                     ))
@@ -269,19 +269,21 @@ const AddToWishlist: React.FC = () => {
                 </div>
               </div>
               <div className="list-holder-main">
-                <div className="list-title">
+                <div className="list-holder-main__list-title">
                   <h2>Your Tv shows</h2>
                 </div>
                 <div
                   className={
-                    tvshowsInWishlist.length > 0 ? "list" : "list-no-items"
+                    tvshowsInWishlist.length > 0
+                      ? "list-holder-main__list"
+                      : "list-holder-main__list-no-items"
                   }
                 >
                   {tvshowsInWishlist.length > 0 ? (
                     tvshowsInWishlist.map((item, idx) => (
                       <div key={`${idx}-tv`} className="wishlist-item-holder">
                         {item.watched && (
-                          <div className="watched-message">
+                          <div className="wishlist-item-holder__watched-message">
                             <h2>watched!</h2>
                             <button
                               onClick={() => {
@@ -295,51 +297,50 @@ const AddToWishlist: React.FC = () => {
                             </button>
                           </div>
                         )}
-                        <div className="wishlist-item-img-holder">
-                          <NavLink
-                            key={idx}
-                            to={{
-                              pathname: `/details/tv/${item.name}`,
-                              state: { itemId: item.id },
-                            }}
-                          >
-                            <img
-                              src={
-                                item.poster_path
-                                  ? configMDBState.payload!.images
-                                      .secure_base_url +
-                                    configMDBState.payload!.images
-                                      .poster_sizes[6] +
-                                    item.poster_path
-                                  : ""
-                              }
-                              alt="poster"
-                            />
-                          </NavLink>
-                          <div className="wishlist-iten-details">
-                            {item.name ? (
-                              <h3 className="title" id="title">
-                                {item.name}
-                              </h3>
-                            ) : (
-                              <h3 className="title" id="title">
-                                Title N/A
-                              </h3>
-                            )}
-                            <h3>{`${
-                              item.first_air_date ? item.first_air_date : "N/A"
-                            }`}</h3>
-                            <p>{item.vote_average}</p>
-                            {!item.watched && (
-                              <button
-                                onClick={() => {
-                                  onWatchedTvshowFromWishListHandler(item.id);
-                                }}
-                              >
-                                watched it?
-                              </button>
-                            )}
-                          </div>
+
+                        <NavLink
+                          key={idx}
+                          to={{
+                            pathname: `/details/tv/${item.name}`,
+                            state: { itemId: item.id },
+                          }}
+                        >
+                          <img
+                            src={
+                              item.poster_path
+                                ? configMDBState.payload!.images
+                                    .secure_base_url +
+                                  configMDBState.payload!.images
+                                    .poster_sizes[6] +
+                                  item.poster_path
+                                : ""
+                            }
+                            alt="poster"
+                          />
+                        </NavLink>
+                        <div className="wishlist-item-details">
+                          {item.name ? (
+                            <h3 className="title" id="title">
+                              {item.name}
+                            </h3>
+                          ) : (
+                            <h3 className="title" id="title">
+                              Title N/A
+                            </h3>
+                          )}
+                          <h3>{`${
+                            item.first_air_date ? item.first_air_date : "N/A"
+                          }`}</h3>
+                          <p>{item.vote_average}</p>
+                          {!item.watched && (
+                            <button
+                              onClick={() => {
+                                onWatchedTvshowFromWishListHandler(item.id);
+                              }}
+                            >
+                              watched it?
+                            </button>
+                          )}
                         </div>
                       </div>
                     ))

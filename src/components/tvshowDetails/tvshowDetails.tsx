@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./tvshowDetails.css";
+import "./tvshowDetails.scss";
 import { useSelector, useDispatch } from "react-redux";
 
 // components

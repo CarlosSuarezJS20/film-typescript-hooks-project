@@ -1,0 +1,120 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@200;300;400;500;700&display=swap");
+.wishlist {
+  padding: 1rem 0;
+}
+
+.wishlist__wishlist-title {
+  margin-top: 1.5rem;
+  text-transform: capitalize;
+  width: 100%;
+  text-align: center;
+  color: #ccc;
+  font-size: 1.2rem;
+}
+
+.wishlist__lists {
+  padding: 1rem 0;
+}
+
+.wishlist__lists .list-holder-main {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.wishlist__lists .list-holder-main__list-title {
+  color: #ccc;
+  font-size: 1rem;
+  text-transform: capitalize;
+  margin-left: 3rem;
+}
+
+.wishlist__lists .list-holder-main__list {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  width: 90%;
+  margin: 2rem auto;
+}
+
+@media (min-width: 680px) {
+  .wishlist__lists .list-holder-main__list {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+    width: 70%;
+    margin: 2rem auto;
+  }
+}
+
+.wishlist__lists .list-holder-main__list .wishlist-item-holder {
+  position: relative;
+}
+
+.wishlist__lists .list-holder-main__list .wishlist-item-holder img {
+  opacity: 0.8;
+  border-radius: 5px;
+}
+
+.wishlist__lists .list-holder-main__list .wishlist-item-holder img:hover {
+  opacity: 1;
+  border-radius: 5px;
+}
+
+.wishlist__lists .list-holder-main__list .wishlist-item-holder .wishlist-item-details {
+  padding: 1.5rem 0;
+  text-align: center;
+  color: #ccc;
+}
+
+.wishlist__lists .list-holder-main__list .wishlist-item-holder__watched-message {
+  position: absolute;
+  background: rgba(19, 19, 19, 0.692);
+  text-align: center;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  border: 1px solid rgba(204, 204, 204, 0.349);
+  border-radius: 5px;
+}
+
+.wishlist__lists .list-holder-main__list .wishlist-item-holder__watched-message h2 {
+  text-transform: capitalize;
+  font-size: 1.5rem;
+  color: #ccc;
+  padding-top: 10rem;
+}
+
+.wishlist__lists .list-holder-main__list .wishlist-item-holder__watched-message button {
+  background: none;
+  color: #ccc;
+  padding: 0.5rem 1.5rem;
+  text-transform: capitalize;
+  font-size: 1rem;
+  margin: 0.5rem;
+  border: 2px solid #ccc;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.wishlist__lists .list-holder-main__list .wishlist-item-holder__watched-message button:hover {
+  background: rgba(204, 204, 204, 0.199);
+}
+
+.wishlist__lists .list-holder-main__list-no-items {
+  display: block;
+  width: 90%;
+}
+
+.wishlist__lists .list-holder-main .no-items-message {
+  padding: 3rem;
+  margin-left: 3rem;
+  font-size: 1.3rem;
+  color: #f3f3f3;
+}
+/*# sourceMappingURL=usersWishlist.css.map */

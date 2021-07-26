@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import "./searchInput.css";
+import "./searchInput.scss";
 
 import { useSelector, useDispatch } from "react-redux";
 import { RootStore } from "../../../store/store";

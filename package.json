@@ -64,6 +64,7 @@
     ]
   },
   "devDependencies": {
-    "@types/react-alert": "^5.2.0"
+    "@types/react-alert": "^5.2.0",
+    "sass": "^1.36.0"
   }
 }

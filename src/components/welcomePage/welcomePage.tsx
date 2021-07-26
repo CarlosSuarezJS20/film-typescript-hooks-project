@@ -3,7 +3,7 @@ import React from "react";
 import TrailString from "../../components/UI/TrailTitle/trailTitle";
 import SqueezeString from "../../components/UI/squeezeSpringTitle/squeezeSpringTitle";
 
-import "./welcomePage.css";
+import "./welcomePage.scss";
 import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 
@@ -24,7 +24,7 @@ const WelcomePage = () => {
 
   return (
     <div className="welcomePageHero">
-      <div className="welcome-text-holder">
+      <div className="welcomePageHero__welcome-text-holder">
         <TrailString key="welcome-banner" open>
           {appName.map((word, index) => (
             <SqueezeString key={index}>{word}</SqueezeString>
@@ -35,7 +35,7 @@ const WelcomePage = () => {
           ))}
         </TrailString>
       </div>
-      <div className="links">
+      <div className="welcomePageHero__links">
         <div
           onClick={() => {
             typeOfSearchHandler("movies");

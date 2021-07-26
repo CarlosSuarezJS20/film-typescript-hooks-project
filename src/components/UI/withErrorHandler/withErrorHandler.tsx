@@ -11,7 +11,7 @@ const AlertCom: React.FC<alertComProps> = ({ message }) => {
   useEffect(() => {
     alert.error(message);
   }, [message]);
-  return <React.Fragment></React.Fragment>;
+  return null;
 };
 
 const withErrorHandler = (WrappedComponent: any) => {

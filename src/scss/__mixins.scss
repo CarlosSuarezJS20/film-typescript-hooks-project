@@ -1,0 +1,39 @@
+@mixin screen-size($screen-type) {
+  @if ($screen-type == "medium-size-screen") {
+    @media (min-width: 500px) {
+      @content;
+    }
+  } @else if($screen-type == "large-screen") {
+    @media (min-width: 680px) {
+      @content;
+    }
+  } @else if($screen-type == "above-780px") {
+    @media (min-width: 780px) {
+      @content;
+    }
+  } @else {
+    @media (min-width: 1400px) {
+      @content;
+    }
+  }
+}
+
+@mixin iframe-media-query($screen-size) {
+  @if ($screen-size == "520px") {
+    @media (min-width: 520px) {
+      @content;
+    }
+  } @else if($screen-size == "650px") {
+    @media (min-width: 650px) {
+      @content;
+    }
+  } @else if($screen-size == "750px") {
+    @media (min-width: 750px) {
+      @content;
+    }
+  } @else {
+    @media (min-width: 850px) {
+      @content;
+    }
+  }
+}

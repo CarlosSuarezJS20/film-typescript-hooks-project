@@ -1,5 +1,5 @@
 import React from "react";
-import "./informationLoader.css";
+import "./informationLoader.scss";
 
 const myProfileLoader = () => {
   return (

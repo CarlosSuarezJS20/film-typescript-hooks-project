@@ -80,6 +80,7 @@ const Authentication: React.FC = () => {
     let urlRequest = userRegistering
       ? "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBbBZw2BGsEBfl1-qxCBZFkC669UFyUKS0"
       : "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBbBZw2BGsEBfl1-qxCBZFkC669UFyUKS0";
+
     dispatch(postAuthenticationRequest(urlRequest, details));
   };
 

@@ -1,0 +1,107 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@200;300;400;500;700&display=swap");
+.welcomePageHero {
+  background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(0, 0, 0, 0.562))), url("../../assets/images/pexels-pixabay-33129.jpg") center/cover no-repeat;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.562)), url("../../assets/images/pexels-pixabay-33129.jpg") center/cover no-repeat;
+  height: 100vh;
+  width: 100vw;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+}
+
+.welcomePageHero__welcome-text-holder {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: white;
+  text-shadow: 3px 3px #000000;
+  font-size: 2.5rem;
+  font-weight: bolder;
+  margin: 20rem auto;
+  -webkit-transition: 0.3s color;
+  transition: 0.3s color;
+}
+
+@media (min-width: 500px) {
+  .welcomePageHero__welcome-text-holder {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    color: white;
+    font-size: 4rem;
+    font-weight: bolder;
+    margin: 20rem auto;
+    -webkit-transition: 0.3s color;
+    transition: 0.3s color;
+  }
+  .welcomePageHero__welcome-text-holder:hover {
+    color: #c40a0a;
+  }
+}
+
+.welcomePageHero__links {
+  margin-top: -20rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: white;
+  font-size: 1.6rem;
+  font-weight: bolder;
+  -webkit-transition: 0.3s color;
+  transition: 0.3s color;
+}
+
+@media (min-width: 500px) {
+  .welcomePageHero__links {
+    margin-top: -30rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    color: white;
+    font-size: 2.3rem;
+    font-weight: bolder;
+    -webkit-transition: 0.3s color;
+    transition: 0.3s color;
+  }
+}
+
+.welcomePageHero__links .movies-link {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: #ffff;
+  text-shadow: 1px 1px #000000;
+  margin: 0 1rem;
+  padding: 0 2rem;
+}
+
+.welcomePageHero__links .movies-link:hover {
+  background: rgba(196, 10, 10, 0.322);
+  border: 1px solid red;
+  border-radius: 15px;
+}
+
+.welcomePageHero__links .movies-link div:hover {
+  color: #c40a0a;
+}
+
+.welcomePageHero__links .tv-shows-link {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: #c40a0a;
+  text-shadow: 1px 1px #000000;
+  margin: 0 1rem;
+  padding: 0 2rem;
+}
+
+.welcomePageHero__links .tv-shows-link:hover {
+  background: rgba(255, 255, 255, 0.322);
+  border: 1px solid #ffff;
+  border-radius: 15px;
+}
+
+.welcomePageHero__links .tv-shows-link div:hover {
+  color: #ffff;
+}
+/*# sourceMappingURL=welcomePage.css.map */

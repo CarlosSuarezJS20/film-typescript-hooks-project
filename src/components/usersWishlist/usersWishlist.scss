@@ -1,0 +1,113 @@
+@import "../../scss/_variables", "../../scss/_mixins";
+
+.wishlist {
+  padding: 1rem 0;
+
+  &__wishlist-title {
+    margin-top: 1.5rem;
+    text-transform: capitalize;
+    width: 100%;
+    text-align: center;
+    color: $tertiary-font-color;
+    font-size: 1.2rem;
+  }
+
+  &__lists {
+    padding: 1rem 0;
+
+    .list-holder-main {
+      width: 90%;
+      margin: 0 auto;
+
+      &__list-title {
+        color: $tertiary-font-color;
+        font-size: 1rem;
+        text-transform: capitalize;
+        margin-left: 3rem;
+      }
+
+      &__list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        width: 90%;
+        margin: 2rem auto;
+        @include screen-size("large-screen") {
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr;
+          gap: 1rem;
+          width: 70%;
+          margin: 2rem auto;
+        }
+
+        .wishlist-item-holder {
+          position: relative;
+
+          img {
+            opacity: 0.8;
+            border-radius: 5px;
+
+            &:hover {
+              opacity: 1;
+              border-radius: 5px;
+            }
+          }
+
+          .wishlist-item-details {
+            padding: 1.5rem 0;
+            text-align: center;
+            color: $tertiary-font-color;
+          }
+
+          &__watched-message {
+            position: absolute;
+            background: rgba(19, 19, 19, 0.692);
+            text-align: center;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            z-index: 1;
+            border: 1px solid rgba(204, 204, 204, 0.349);
+            border-radius: 5px;
+
+            h2 {
+              text-transform: capitalize;
+              font-size: 1.5rem;
+              color: $tertiary-font-color;
+              padding-top: 10rem;
+            }
+
+            button {
+              background: none;
+              color: $tertiary-font-color;
+              padding: 0.5rem 1.5rem;
+              text-transform: capitalize;
+              font-size: 1rem;
+              margin: 0.5rem;
+              border: 2px solid $tertiary-font-color;
+              border-radius: 50px;
+              cursor: pointer;
+
+              &:hover {
+                background: rgba(204, 204, 204, 0.199);
+              }
+            }
+          }
+        }
+      }
+
+      &__list-no-items {
+        display: block;
+        width: 90%;
+      }
+
+      .no-items-message {
+        padding: 3rem;
+        margin-left: 3rem;
+        font-size: 1.3rem;
+        color: $primary-font-color;
+      }
+    }
+  }
+}

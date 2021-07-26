@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
+import "./index.scss";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
@@ -25,6 +25,8 @@ const options = {
   // you can also just use 'scale'
   transition: transitions.SCALE,
 };
+
+// Google Tag Manager
 
 ReactDOM.render(
   <Provider store={store}>

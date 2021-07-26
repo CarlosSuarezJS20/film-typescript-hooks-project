@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import "./App.css";
+// import "./App.css";
 
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
@@ -22,7 +22,6 @@ import { postMoviesGenresFetchResponse } from "./store/actions/PostMoviesGenresF
 import { postTvshowsGenresFetchResponse } from "./store/actions/PostTvShowsGenresFetchAction";
 import { RootStore } from "./store/store";
 import TvShowDetails from "./components/tvshowDetails/tvshowDetails";
-
 
 const App: React.FC = () => {
   const dispatch = useDispatch();
