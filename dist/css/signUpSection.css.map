@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "ACAA,OAAO,CAAC,4FAAI;ADEZ,AAAA,aAAa,CAAC;EACZ,KAAK,ECGc,OAAkB;EDFrC,SAAS,EAAE,IAAI;EACf,UAAU,EAAE,MAAM;EAClB,OAAO,EAAE,IAAI;CAed;;AAbE,AAAD,0BAAc,CAAC;EACb,MAAM,EAAE,IAAI;EACZ,WAAW,EAAE,IAAI;EACjB,OAAO,EAAE,WAAW;EACpB,UAAU,ECLS,OAAgB;EDMnC,MAAM,EAAE,IAAI;EACZ,aAAa,EAAE,GAAG;EAClB,MAAM,EAAE,OAAO;CAKhB;;AAZA,AASC,0BATY,AASX,MAAM,CAAC;EACN,UAAU,ECXO,OAAgB;CDYlC",
+    "sources": [
+        "../../src/components/signUpSection/signUpSection.scss",
+        "../../src/scss/__variables.scss"
+    ],
+    "names": [],
+    "file": "signUpSection.css"
+}

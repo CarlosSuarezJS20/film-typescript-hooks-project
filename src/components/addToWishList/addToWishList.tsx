@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./addToWishList.css";
+import "./addToWishList.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { faPlus, faHeart } from "@fortawesome/free-solid-svg-icons";

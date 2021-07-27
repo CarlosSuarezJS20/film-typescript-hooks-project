@@ -1,0 +1,22 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@200;300;400;500;700&display=swap");
+.sign-up-area {
+  color: #f3f3f3;
+  font-size: 1rem;
+  text-align: center;
+  padding: 4rem;
+}
+
+.sign-up-area__sign-up-btn {
+  margin: 2rem;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  background: #e4ba00;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.sign-up-area__sign-up-btn:hover {
+  background: #e4ba00;
+}
+/*# sourceMappingURL=signUpSection.css.map */

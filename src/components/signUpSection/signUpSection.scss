@@ -1,0 +1,22 @@
+@import "../../scss/_variables";
+
+.sign-up-area {
+  color: $primary-font-color;
+  font-size: 1rem;
+  text-align: center;
+  padding: 4rem;
+
+  &__sign-up-btn {
+    margin: 2rem;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    background: $secondary-font-color;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+    &:hover {
+      background: $secondary-font-color;
+    }
+  }
+}

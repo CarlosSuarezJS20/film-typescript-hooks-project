@@ -1,5 +1,5 @@
 import React from "react";
-import "./signUpSection.css";
+import "./signUpSection.scss";
 
 import { useDispatch } from "react-redux";
 
@@ -13,7 +13,7 @@ const SignUp: React.FC = () => {
       <h2>Sign in to access your watchlist</h2>
       <p>Save shows and movies to keep track of what you want to watch.</p>
       <button
-        className="sign-up-btn"
+        className="sign-up-area__sign-up-btn"
         onClick={() => {
           dispatch(authenticationBannerHandler());
         }}

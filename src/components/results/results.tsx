@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./results.css";
+import "./results.scss";
 
 import AddToWishlist from "../addToWishList/addToWishList";
 import Footer from "../footer/footer";
@@ -95,7 +95,7 @@ const Results: React.FC = () => {
 
   return (
     <div className="results-page">
-      <header className="search-query-title">
+      <header className="results-page__search-query-title">
         <div className="results-back-page-section">
           <p onClick={gobackToPreviousPage}>
             <span>
@@ -114,7 +114,7 @@ const Results: React.FC = () => {
 
         <hr className="search-query-title-highlight" />
       </header>
-      <main className="results-holder">
+      <main className="results-page__results-holder">
         {multiSearchState.results?.results
           ? multiSearchState.results.results.map((result, index) => {
               if (!result.poster_path) {
@@ -122,7 +122,7 @@ const Results: React.FC = () => {
               }
               return (
                 // closeSearchInput function removed the search-input if on mobile version. if the user searches for another item
-                <div key={index} className="result-page-item">
+                <div key={index} className="results-page__result-page-item">
                   <NavLink
                     to={{
                       pathname: `${
@@ -132,59 +132,54 @@ const Results: React.FC = () => {
                       }`,
                       state: { itemId: result.id },
                     }}
-                    className="results-result-link"
                   >
-                    <div className="results-result-link">
-                      <div className="img-holder-results-page">
-                        <img
-                          src={
-                            result.poster_path
-                              ? configMbdApiState.payload!.images
-                                  .secure_base_url +
-                                configMbdApiState.payload!.images
-                                  .poster_sizes[6] +
-                                result.poster_path
-                              : ""
-                          }
-                          alt="poster"
-                        />
-                        <AddToWishlist
-                          location="results"
-                          itemId={result.id}
-                          type={
-                            result.media_type === "tv" ? "tv-show" : "movie"
-                          }
-                        />
-                      </div>
-                      <div className="results-page-result-details">
-                        {result.title ? (
-                          <h3 className="title" id="title">
-                            {result.title}
-                          </h3>
-                        ) : result.name ? (
-                          <h3 className="title" id="title">
-                            {result.name}
-                          </h3>
-                        ) : (
-                          <h3 className="title" id="title">
-                            Title N/A
-                          </h3>
-                        )}
-                        <h3>{`Release date: ${
-                          result.release_date
-                            ? result.release_date
-                            : result.first_air_date
-                            ? result.first_air_date
-                            : "N/A"
-                        }`}</h3>
-                        {result.genre_ids.length > 0 ? (
-                          addsGenre(result.media_type, result.genre_ids)
-                        ) : (
-                          <p>No genres found</p>
-                        )}
-                        <p>{result.vote_average}</p>
-                        <h3 className="media-type">{result.media_type}</h3>
-                      </div>
+                    <div className="img-holder-results-page">
+                      <img
+                        src={
+                          result.poster_path
+                            ? configMbdApiState.payload!.images
+                                .secure_base_url +
+                              configMbdApiState.payload!.images
+                                .poster_sizes[6] +
+                              result.poster_path
+                            : ""
+                        }
+                        alt="poster"
+                      />
+                      <AddToWishlist
+                        location="results"
+                        itemId={result.id}
+                        type={result.media_type === "tv" ? "tv-show" : "movie"}
+                      />
+                    </div>
+                    <div className="results-page-result-details">
+                      {result.title ? (
+                        <h3 className="title" id="title">
+                          {result.title}
+                        </h3>
+                      ) : result.name ? (
+                        <h3 className="title" id="title">
+                          {result.name}
+                        </h3>
+                      ) : (
+                        <h3 className="title" id="title">
+                          Title N/A
+                        </h3>
+                      )}
+                      <h3>{`Release date: ${
+                        result.release_date
+                          ? result.release_date
+                          : result.first_air_date
+                          ? result.first_air_date
+                          : "N/A"
+                      }`}</h3>
+                      {result.genre_ids.length > 0 ? (
+                        addsGenre(result.media_type, result.genre_ids)
+                      ) : (
+                        <p>No genres found</p>
+                      )}
+                      <p>{result.vote_average}</p>
+                      <h3>{result.media_type}</h3>
                     </div>
                   </NavLink>
                 </div>

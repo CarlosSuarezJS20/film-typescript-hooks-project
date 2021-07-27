@@ -1,0 +1,114 @@
+@import "../../scss/_variables", "../../scss/_mixins";
+
+.results-page {
+  margin: 1rem;
+  background: $secondary-brand-color;
+
+  &__search-query-title {
+    width: 100%;
+    text-align: center;
+    margin: 3rem 0;
+    font-size: 1.5rem;
+    color: $tertiary-font-color;
+    @include screen-size("650px") {
+      font-size: 1.5rem;
+    }
+    .results-back-page-section {
+      margin: 2rem 6rem;
+      display: flex;
+      justify-content: flex-end;
+      font-size: 1.5rem;
+      text-transform: capitalize;
+      cursor: pointer;
+
+      span {
+        padding: 0 0.4rem;
+      }
+
+      p {
+        &:hover {
+          font-weight: bold;
+          text-decoration: underline;
+        }
+      }
+    }
+
+    h2 {
+      font-weight: 400;
+    }
+
+    span {
+      text-transform: capitalize;
+      font-weight: bold;
+    }
+  }
+
+  // highlights the title
+  .search-query-title-highlight {
+    border-color: rgb(228, 186, 0);
+    margin: 1rem auto 3rem;
+    width: 150px;
+  }
+
+  &__results-holder {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    width: 80%;
+    margin: 2rem auto;
+    @include screen-size("large-screen") {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1rem;
+      width: 70%;
+      margin: 2rem auto;
+    }
+  }
+
+  &__result-page-item {
+    background: rgba($tertiary-font-color, 0.02);
+    border-radius: 5px;
+
+    .img-holder-results-page {
+      position: relative;
+      margin: 0 auto;
+
+      img {
+        opacity: 0.7;
+        height: 22rem;
+        border-radius: 5px;
+
+        &:hover {
+          opacity: 1;
+          border-radius: 5px;
+        }
+      }
+    }
+
+    .results-page-result-details {
+      padding: 1.5rem 0;
+      text-align: center;
+      color: $primary-font-color;
+    }
+  }
+
+  &__pagination-btns-holder {
+    display: flex;
+    margin: 2.5rem;
+    justify-content: center;
+
+    button {
+      background: $secondary-font-color;
+      padding: 0.5rem 1rem;
+      text-transform: capitalize;
+      font-size: 1.2rem;
+      margin: 0.5rem;
+      border: none;
+      cursor: pointer;
+
+      &:hover {
+        background: $secondary-font-color;
+      }
+    }
+  }
+}
