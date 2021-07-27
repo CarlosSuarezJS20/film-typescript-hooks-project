@@ -105,11 +105,11 @@ const TvShowDetails: React.FC = (props) => {
       <MainNavigation />
       {getTvshowDetailsState.tvshowDetails && (
         <React.Fragment>
-          <div className="tv-show-hero-section">
+          <div className="tv-show-main-container__tv-show-hero-section">
             <div className="tv-show-share-and-nav-icons">
               <FontAwesomeIcon
                 icon={faChevronCircleLeft}
-                className="tv-show-back-page-icon"
+                className="tv-show-share-and-nav-icons__tv-show-back-page-icon"
                 onClick={() => {
                   // closes the sharing icon holders if user leaves the page and the sharing icon container is open
                   if (sharing) {
@@ -120,7 +120,7 @@ const TvShowDetails: React.FC = (props) => {
               />
               <FontAwesomeIcon
                 icon={faShareAlt}
-                className="tv-show-share-icon"
+                className="tv-show-share-and-nav-icons__tv-show-share-icon"
                 onClick={onSharingHandler}
               />
             </div>
@@ -135,8 +135,8 @@ const TvShowDetails: React.FC = (props) => {
                 icon={faFacebook}
                 className={
                   sharing
-                    ? "tv-show-facebook tv-show-display-icons "
-                    : "tv-show-facebook"
+                    ? "tv-show-sharing-icons-holder__tv-show-facebook tv-show-sharing-icons-holder__tv-show-display-icons "
+                    : "tv-show-sharing-icons-holder__tv-show-facebook"
                 }
               />
 
@@ -144,8 +144,8 @@ const TvShowDetails: React.FC = (props) => {
                 icon={faInstagram}
                 className={
                   sharing
-                    ? "tv-show-instagram tv-show-display-icons "
-                    : "tv-show-instagram"
+                    ? "tv-show-sharing-icons-holder__tv-show-instagram tv-show-sharing-icons-holder__tv-show-display-icons "
+                    : "tv-show-sharing-icons-holder__tv-show-instagram"
                 }
               />
 
@@ -153,16 +153,16 @@ const TvShowDetails: React.FC = (props) => {
                 icon={faLinkedin}
                 className={
                   sharing
-                    ? "tv-show-linkedin tv-show-display-icons "
-                    : "tv-show-linkedin"
+                    ? "tv-show-sharing-icons-holder__tv-show-linkedin tv-show-sharing-icons-holder__tv-show-display-icons "
+                    : "tv-show-sharing-icons-holder__tv-show-linkedin"
                 }
               />
               <FontAwesomeIcon
                 icon={faGithub}
                 className={
                   sharing
-                    ? "tv-show-github tv-show-display-icons "
-                    : "tv-show-github"
+                    ? "tv-show-sharing-icons-holder__tv-show-github tv-show-sharing-icons-holder__tv-show-display-icons "
+                    : "tv-show-sharing-icons-holder__tv-show-github"
                 }
               />
             </div>
@@ -185,10 +185,9 @@ const TvShowDetails: React.FC = (props) => {
                 alt="tv-show-img"
               />
             )}
-            <div className="tv-show-back-and-share-container"></div>
             <div className="tv-show-single-item-details">
               <img
-                className="tv-show-single-item-details-image"
+                className="tv-show-single-item-details__tv-show-single-item-details-image"
                 src={`${
                   configMbdApiState.payload?.images &&
                   configMbdApiState.payload.images.secure_base_url
@@ -198,17 +197,19 @@ const TvShowDetails: React.FC = (props) => {
                 }${getTvshowDetailsState.tvshowDetails!.poster_path}`}
                 alt="tv-show-img"
               />
-              <div className="tv-show-single-item-description">
+              <div className="tv-show-single-item-details__tv-show-single-item-description">
                 <div className="tv-show-single-item-title">
                   <h2>{getTvshowDetailsState.tvshowDetails!.name}</h2>
-                  <div className="tv-show-single-item-rating">
-                    <p>{getTvshowDetailsState.tvshowDetails!.vote_average}</p>
+                  <div className="tv-show-single-item-title__tv-show-single-item-rating">
+                    <p className="details">
+                      {getTvshowDetailsState.tvshowDetails!.vote_average}
+                    </p>
                     <FontAwesomeIcon
                       icon={faStar}
                       className="tv-show-single-star-rating"
                     />
                   </div>
-                  <p>
+                  <p className="tv-show-single-item-title__genrer">
                     {
                       getTvshowDetailsState.tvshowDetails!.genres.map(
                         (genre) => {
@@ -221,7 +222,7 @@ const TvShowDetails: React.FC = (props) => {
               </div>
             </div>
           </div>
-          <div className="tv-show-single-item-overview">
+          <div className="tv-show-main-container__tv-show-single-item-overview">
             <div className="tv-show-plot-title">
               <h2> Plot Summary</h2>
               <AddToWishlist
@@ -234,7 +235,7 @@ const TvShowDetails: React.FC = (props) => {
               <p>{getTvshowDetailsState.tvshowDetails!.overview}</p>
             </div>
           </div>
-          <div className="tv-show-cast-carousel-holder">
+          <div className="tv-show-main-container__tv-show-cast-carousel-holder">
             <div className="tv-show-cast-title-holder">
               <h2>Cast</h2>
             </div>
@@ -253,7 +254,7 @@ const TvShowDetails: React.FC = (props) => {
       )}
       {getTvshowVideosState.tvShowsVideosResponse?.results &&
         getTvshowVideosState.tvShowsVideosResponse!.results.length > 0 && (
-          <div className="tv-show-trailers-holder">
+          <div className="tv-show-main-container__tv-show-trailers-holder">
             <div className="tv-show-videos-holder">
               {getTvshowVideosState.tvShowsVideosResponse!.results.map(
                 (tvShow, index) => {
