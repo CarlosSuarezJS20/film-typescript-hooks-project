@@ -1,5 +1,5 @@
 import React from "react";
-import "./peopleCarousel.css";
+import "./peopleCarousel.scss";
 
 // Slick library styling
 import "slick-carousel/slick/slick.css";
@@ -85,7 +85,7 @@ const PeopleCarousel: React.FC<PropsMaincarousel> = ({ items }) => {
 
   return (
     <div className="people-carousel-holder">
-      <Slick className="main-carousel" {...slickSettings}>
+      <Slick {...slickSettings}>
         {items &&
           items.map((item, index) => {
             if (item.profile_path === null) {
@@ -94,7 +94,7 @@ const PeopleCarousel: React.FC<PropsMaincarousel> = ({ items }) => {
             }
             return (
               <div key={index} className="slide-holder">
-                <div className="slide" key={index}>
+                <div key={index}>
                   <NavLink
                     to={{
                       pathname: `/details/actor/${item.name}`,

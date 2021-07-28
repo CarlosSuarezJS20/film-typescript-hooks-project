@@ -37,3 +37,19 @@
     }
   }
 }
+
+@mixin navbar-screen-size($screen) {
+  @if ($screen == "medium-size-screen") {
+    @media (min-width: 600px) {
+      @content;
+    }
+  } @else if($screen == "large-screen") {
+    @media (min-width: 1080px) {
+      @content;
+    }
+  } @else if($screen == "xl-screen") {
+    @media (min-width: 1480px) {
+      @content;
+    }
+  }
+}

@@ -1,0 +1,83 @@
+@import "../../scss/_mixins", "../../scss/_variables";
+
+.people-carousel-holder {
+  width: 90%;
+  margin: 2rem auto;
+}
+
+.slide-holder {
+  opacity: 0.7;
+  transition: transform 0.2s;
+
+  &:hover {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+.people-carousel-holder .slick-track {
+  height: 250px;
+}
+
+.people-item-img-carousel {
+  width: 60%;
+  clip-path: circle(50% at 50% 50%);
+  @include screen-size("large-screen") {
+    width: 120px;
+    clip-path: circle(50% at 50% 50%);
+  }
+}
+
+.people-details {
+  text-align: center;
+
+  h2 {
+    text-align: center;
+    color: $primary-font-color;
+  }
+
+  p {
+    text-align: center;
+    color: $primary-font-color;
+  }
+}
+
+/* arrows carousel */
+
+.next-btn-people-carousel {
+  position: absolute;
+  top: 22%;
+  right: 0;
+  padding: 1rem;
+  font-size: 1.5rem;
+  color: $primary-font-color;
+  background: rgba(22, 22, 22, 0.521);
+  border: 1px solid $primary-font-color;
+  border-radius: 5px;
+  z-index: 100;
+
+  &:hover {
+    border: 1px solid $primary-font-color;
+    background: rgba($secondary-brand-color, 0.089);
+    color: $primary-brand-color;
+  }
+}
+
+.prev-btn-people-carousel {
+  position: absolute;
+  top: 22%;
+  left: 0%;
+  padding: 1rem;
+  color: $primary-font-color;
+  background: rgba($secondary-brand-color, 0.521);
+  border: 1px solid $primary-font-color;
+  border-radius: 5px;
+  font-size: 1.5rem;
+  z-index: 100;
+
+  &:hover {
+    border: 1px solid $primary-font-color;
+    background: rgba($secondary-brand-color, 0.089);
+    color: $primary-brand-color;
+  }
+}

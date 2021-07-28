@@ -1,0 +1,91 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@200;300;400;500;700&display=swap");
+.people-carousel-holder {
+  width: 90%;
+  margin: 2rem auto;
+}
+
+.slide-holder {
+  opacity: 0.7;
+  -webkit-transition: -webkit-transform 0.2s;
+  transition: -webkit-transform 0.2s;
+  transition: transform 0.2s;
+  transition: transform 0.2s, -webkit-transform 0.2s;
+}
+
+.slide-holder:hover {
+  opacity: 1;
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+}
+
+.people-carousel-holder .slick-track {
+  height: 250px;
+}
+
+.people-item-img-carousel {
+  width: 60%;
+  -webkit-clip-path: circle(50% at 50% 50%);
+          clip-path: circle(50% at 50% 50%);
+}
+
+@media (min-width: 680px) {
+  .people-item-img-carousel {
+    width: 120px;
+    -webkit-clip-path: circle(50% at 50% 50%);
+            clip-path: circle(50% at 50% 50%);
+  }
+}
+
+.people-details {
+  text-align: center;
+}
+
+.people-details h2 {
+  text-align: center;
+  color: #f3f3f3;
+}
+
+.people-details p {
+  text-align: center;
+  color: #f3f3f3;
+}
+
+/* arrows carousel */
+.next-btn-people-carousel {
+  position: absolute;
+  top: 22%;
+  right: 0;
+  padding: 1rem;
+  font-size: 1.5rem;
+  color: #f3f3f3;
+  background: rgba(22, 22, 22, 0.521);
+  border: 1px solid #f3f3f3;
+  border-radius: 5px;
+  z-index: 100;
+}
+
+.next-btn-people-carousel:hover {
+  border: 1px solid #f3f3f3;
+  background: rgba(15, 15, 15, 0.089);
+  color: #c40a0a;
+}
+
+.prev-btn-people-carousel {
+  position: absolute;
+  top: 22%;
+  left: 0%;
+  padding: 1rem;
+  color: #f3f3f3;
+  background: rgba(15, 15, 15, 0.521);
+  border: 1px solid #f3f3f3;
+  border-radius: 5px;
+  font-size: 1.5rem;
+  z-index: 100;
+}
+
+.prev-btn-people-carousel:hover {
+  border: 1px solid #f3f3f3;
+  background: rgba(15, 15, 15, 0.089);
+  color: #c40a0a;
+}
+/*# sourceMappingURL=peopleCarousel.css.map */

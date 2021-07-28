@@ -1,0 +1,260 @@
+@import "../../scss/_variables", "../../scss/_mixins";
+
+.nav-bar {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100vw;
+  min-width: 400px;
+  padding: 0.5rem 0.5rem;
+  background: black;
+  @include navbar-screen-size("medium-size-screen") {
+    padding: 0.5rem 3rem;
+  }
+
+  @include navbar-screen-size("large-screen") {
+    padding: 0.5rem 10rem;
+  }
+  @include navbar-screen-size("xl-screen") {
+    padding: 0.5rem 20rem;
+  }
+
+  div {
+    &:nth-child(1) {
+      flex-grow: 1;
+      @include navbar-screen-size("medium-size-screen") {
+        flex-grow: 0;
+      }
+    }
+    &:nth-child(2) {
+      flex-grow: 1;
+    }
+    &:nth-child(3) {
+      flex-grow: 10;
+    }
+    &:nth-child(4) {
+      flex-grow: 1;
+    }
+    &:nth-child(5) {
+      flex-grow: 1;
+    }
+  }
+
+  &__icon-holder {
+    padding: 1rem;
+    text-align: center;
+    border-radius: 50px;
+    cursor: pointer;
+
+    &:hover {
+      background: rgb(56, 56, 56);
+    }
+  }
+
+  .hide-big-screen {
+    @include navbar-screen-size("medium-size-screen") {
+      display: none;
+    }
+  }
+
+  .icon {
+    font-size: 1.5rem;
+    color: rgb(243, 243, 243);
+    cursor: pointer;
+  }
+
+  &__logo-holder {
+    max-width: 50px;
+  }
+
+  // FORM
+
+  &__form-holder {
+    display: flex;
+    border-radius: 40px;
+
+    .form {
+      @include navbar-screen-size("medium-size-screen") {
+        border: none;
+        position: relative;
+        margin: 0 auto;
+        border-radius: 15px;
+        width: 400px;
+      }
+      @include navbar-screen-size("large-screen") {
+        width: 600px;
+        border: 2px solid red;
+      }
+
+      @include navbar-screen-size("xl-screen") {
+        width: 600px;
+      }
+
+      &__search-input-holder {
+        position: absolute;
+        display: flex;
+        justify-content: space-between;
+        background: rgb(26, 26, 26);
+        height: 65px;
+        top: -100px;
+        transition: 1s;
+        left: 0;
+        width: 100%;
+        @include navbar-screen-size("medium-size-screen") {
+          position: initial;
+          display: flex;
+          justify-content: space-between;
+          background: rgb(243, 243, 243);
+          height: 35px;
+          border-radius: 10px;
+          width: initial;
+        }
+
+        input {
+          background: rgb(26, 26, 26);
+          color: rgb(243, 243, 243);
+          font-size: 1.2rem;
+          padding-left: 0.5rem;
+          width: 90vw;
+          border: none;
+          outline-width: 0;
+          @include navbar-screen-size("medium-size-screen") {
+            background: rgb(243, 243, 243);
+            color: rgb(26, 26, 26);
+            font-size: 1.2rem;
+            margin-left: 1rem;
+            padding: 0 0.5rem 0 0.5rem;
+            width: 80vw;
+            border-right: 1px solid rgb(77, 77, 77);
+            outline-width: 0;
+          }
+        }
+
+        .close-input-icon-holder {
+          padding: 1rem 0.5rem;
+          text-align: center;
+          height: 60px;
+          width: 60px;
+          margin: 0.2rem;
+          border-radius: 50px;
+          @include navbar-screen-size("medium-size-screen") {
+            display: none;
+          }
+
+          .close-input-btn {
+            margin-top: 0.5rem;
+            color: rgb(243, 243, 243);
+          }
+
+          &:hover {
+            background: rgb(71, 71, 71);
+          }
+        }
+
+        .form-search-icon {
+          display: none;
+          @include navbar-screen-size("medium-size-screen") {
+            position: relative;
+            display: block;
+            padding: 0.5rem;
+          }
+
+          &__input-search-icon {
+            color: rgb(77, 77, 77);
+            font-size: 1.5rem;
+          }
+
+          &__disable-link {
+            background: rgba(165, 165, 165, 0.384);
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+          }
+
+          &__remove-disabled-link {
+            display: none;
+          }
+        }
+      }
+
+      &__instant-results-holder {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgb(26, 26, 26);
+        display: none;
+        z-index: 101;
+        @include navbar-screen-size("medium-size-screen") {
+          position: absolute;
+          top: 120%;
+          left: 0;
+          width: 100%;
+          z-index: 101;
+        }
+
+        .results-list-holder {
+          padding-bottom: 0.1rem;
+
+          /* loader */
+          &__results-loader {
+            width: 40px;
+            margin: 0 auto;
+          }
+
+          &__no-results-warning-holder {
+            text-align: center;
+            padding: 1rem 0;
+            color: white;
+          }
+        }
+
+        .more-results-redirect {
+          margin: 1rem 0;
+          text-align: center;
+          &__more-results-link {
+            color: rgb(243, 243, 243);
+            font-weight: bold;
+
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+
+      &__show {
+        top: 0;
+      }
+
+      &__show-results {
+        display: block;
+      }
+    }
+  }
+
+  &__sign-in-holder {
+    text-align: center;
+    padding: 1rem 0.5rem;
+    min-width: 80px;
+    max-width: 80px;
+    border-radius: 10px;
+    cursor: pointer;
+
+    p {
+      color: rgb(248, 248, 248);
+      text-transform: capitalize;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    &:hover {
+      background: rgb(56, 56, 56);
+    }
+  }
+}

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./mainNavigation.css";
+import "./mainNavigation.scss";
 
 import InstantResultsList from "../instantResultsList/instantResultsList";
 import InformationLoader from "../UI/informationLoader/informationLoader";
@@ -63,13 +63,13 @@ const NavigationBar: React.FC = () => {
 
   return (
     <nav className="nav-bar">
-      <div className="icon-holder" onClick={menuShowHandler}>
+      <div className="nav-bar__icon-holder" onClick={menuShowHandler}>
         <FontAwesomeIcon icon={faBars} className="icon" />
       </div>
-      <div className="logo-holder">
+      <div className="nav-bar__logo-holder">
         <Logo />
       </div>
-      <div className="form-holder">
+      <div className="nav-bar__form-holder">
         <div
           className="form"
           style={{
@@ -81,7 +81,9 @@ const NavigationBar: React.FC = () => {
         >
           <div
             className={
-              searchActive ? "search-input-holder show" : "search-input-holder"
+              searchActive
+                ? "form__search-input-holder form__show"
+                : "form__search-input-holder"
             }
           >
             <SearchInput location="navigation" page={1} />
@@ -98,8 +100,8 @@ const NavigationBar: React.FC = () => {
               <div
                 className={
                   storeSearchValueState.userSearchValue.length === 0
-                    ? "disable-link"
-                    : "disable-link remove-disabled-link"
+                    ? "form-search-icon__disable-link"
+                    : "form-search-icon__disable-link form-search-icon__remove-disabled-link"
                 }
               ></div>
               <NavLink
@@ -107,7 +109,7 @@ const NavigationBar: React.FC = () => {
               >
                 <FontAwesomeIcon
                   icon={faSearch}
-                  className="input-search-icon"
+                  className="form-search-icon__input-search-icon"
                 />
               </NavLink>
             </div>
@@ -115,20 +117,20 @@ const NavigationBar: React.FC = () => {
           <div
             className={
               storeSearchValueState.userSearchValue.length > 0
-                ? "instant-results-holder show-results"
-                : "instant-results-holder"
+                ? "form__instant-results-holder form__show-results"
+                : "form__instant-results-holder"
             }
           >
-            <div className="results-list">
+            <div className="results-list-holder">
               {multiSearchFeatureState.loading ? (
-                <div className="results-loader">
+                <div className="results-list-holder__results-loader">
                   <InformationLoader />
                 </div>
               ) : multiSearchFeatureState.results?.results &&
                 multiSearchFeatureState.results?.results.length > 0 ? (
                 <InstantResultsList closeSearchInput={searchActiveClose} />
               ) : (
-                <div className="no-results-warning-holder">
+                <div className="results-list-holder__no-results-warning-holder">
                   <h3>No results found</h3>
                 </div>
               )}
@@ -136,7 +138,7 @@ const NavigationBar: React.FC = () => {
             <div className="more-results-redirect">
               <NavLink
                 to={`/results?query=${storeSearchValueState.userSearchValue}`}
-                className="more-results-link"
+                className="more-results-redirect__more-results-link"
               >
                 {`See all results for "${storeSearchValueState.userSearchValue}"`}
               </NavLink>
@@ -144,11 +146,14 @@ const NavigationBar: React.FC = () => {
           </div>
         </div>
       </div>
-      <div className="icon-holder hide-big-screen" onClick={searchActiveOpen}>
+      <div
+        className="navbar__icon-holder hide-big-screen"
+        onClick={searchActiveOpen}
+      >
         <FontAwesomeIcon icon={faSearch} className="icon" />
       </div>
       <div
-        className="sign-in-holder"
+        className="nav-bar__sign-in-holder"
         onClick={() => {
           // removes token and userId
           if (autheticationState.authToken) {
