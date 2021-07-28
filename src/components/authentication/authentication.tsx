@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./authentication.css";
+import "./authentication.scss";
 
 import Backdrop from "../UI/backdrop/backdropHelper";
 import InformationLoader from "../UI/informationLoader/informationLoader";
@@ -94,11 +94,11 @@ const Authentication: React.FC = () => {
             : "authentication-modal"
         }
       >
-        <div className="authentication">
+        <div className="authentication-modal__authentication">
           <div className="cancel-authentication">
             <FontAwesomeIcon
               icon={faTimes}
-              className="close-authentication"
+              className="cancel-authentication__close-authentication"
               onClick={() => {
                 dispatch(authenticationBannerHandler());
                 setUserRegistering(false);
@@ -111,13 +111,13 @@ const Authentication: React.FC = () => {
           </div>
           <div className="auth-title">
             <h2>living room</h2>
-            <p className="match-password-error">
+            <p className="auth-title__match-password-error">
               {autheticationLogicState.errorAuthentication &&
                 `${autheticationLogicState.errorAuthentication
                   .replace(/_/g, " ")
                   .toLowerCase()}`}
             </p>
-            <p className="match-password-error">
+            <p className="auth-title__match-password-error">
               {!passwordsMatch && userRegistering
                 ? "Password does not match"
                 : ""}
@@ -183,9 +183,9 @@ const Authentication: React.FC = () => {
 
           <div className="options">
             <p>or</p>
-            <hr />
+            <hr className="options__highlighter" />
             <p
-              className="options-message"
+              className="options__message"
               onClick={() => {
                 setUserRegistering((prev) => !prev);
                 // resets the inputs to empty if the user moves between sign in and sign up

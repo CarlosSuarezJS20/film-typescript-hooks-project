@@ -1,0 +1,118 @@
+@import "../../scss/_mixins", "../../scss/_variables";
+
+.authentication-modal {
+  position: absolute;
+  z-index: 101;
+  top: 20%;
+  height: 80%;
+  display: none;
+
+  &__authentication {
+    position: fixed;
+    text-align: center;
+    background: $primary-font-color;
+    padding: 1rem;
+    border-radius: 5px;
+    left: 50%;
+    width: 70%;
+    transform: translate(-50%, 0);
+    margin: 0 auto;
+    @include screen-size("large-screen") {
+      width: 50%;
+    }
+
+    .cancel-authentication {
+      text-align: right;
+      font-size: 1.5rem;
+      margin-right: 1rem;
+
+      &__close-authentication {
+        cursor: pointer;
+
+        &:hover {
+          color: $secondary-font-color;
+        }
+      }
+    }
+
+    .auth-title {
+      text-align: center;
+      text-transform: capitalize;
+      letter-spacing: 0.7rem;
+      padding: 1rem 0;
+
+      &__match-password-error {
+        text-transform: capitalize;
+        color: $primary-brand-color;
+        letter-spacing: initial;
+      }
+    }
+
+    /* loader */
+    .infomation-loader-auth {
+      width: 100%;
+      height: 100px;
+      text-align: center;
+    }
+  }
+
+  /* form */
+  form {
+    text-align: center;
+    display: inline-block;
+
+    input {
+      display: block;
+      padding: 0.5rem;
+      border-radius: 50px;
+      margin: 1rem 0;
+
+      .valid {
+        border: 2px solid rgb(4, 196, 4);
+      }
+
+      &:focus {
+        outline: none !important;
+      }
+    }
+
+    button {
+      background: $secondary-font-color;
+      padding: 0.5rem 1rem;
+      text-transform: capitalize;
+      font-size: 1.2rem;
+      margin: 0.5rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+
+      &:hover {
+        background: $secondary-font-color;
+      }
+    }
+  }
+
+  .options {
+    padding: 0.5rem 0;
+
+    &__highlighter {
+      border-color: $secondary-font-color;
+      margin: 1rem auto;
+      width: 150px;
+    }
+
+    &__message {
+      color: blue;
+      font-size: 1rem;
+      margin-bottom: 2rem;
+      cursor: pointer;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.show-auth-banner {
+  display: block;
+}

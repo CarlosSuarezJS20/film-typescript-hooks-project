@@ -188,7 +188,7 @@ const Results: React.FC = () => {
           : null}
       </main>
       {multiSearchState.results && multiSearchState.results!.total_pages > 1 && (
-        <div className="pagination-btns-holder">
+        <div className="results-page__pagination-btns-holder">
           <button
             disabled={page === 1}
             onClick={() => {

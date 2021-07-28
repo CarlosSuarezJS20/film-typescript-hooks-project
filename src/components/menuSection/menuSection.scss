@@ -1,0 +1,58 @@
+@import "../../scss/_variables", "../../scss/_mixins";
+
+.menu-section {
+  position: fixed;
+  width: 300px;
+  max-width: 70%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 102;
+  background: $secondary-brand-color;
+  color: $primary-font-color;
+  padding: 40px 20px;
+  transition: transform 0.3s ease-out;
+  border-right: 1px solid rgb(124, 103, 7);
+  box-shadow: 0 5px 15px rgba($forth-font-color, 0.2);
+  transform: translateX(-100%);
+  overflow: none;
+  @include screen-size("large-screen") {
+    width: 500px;
+  }
+
+  &__close-btn-section {
+    display: flex;
+    justify-content: flex-end;
+
+    .times-btn-holder {
+      padding: 1rem;
+      clip-path: circle(41% at 50% 50%);
+      text-align: center;
+      font-size: 1.5rem;
+
+      &:hover {
+        background: rgb(124, 103, 7);
+      }
+    }
+  }
+
+  &__list-of-links {
+    margin: 3rem 1rem;
+    font-size: 3rem;
+    text-transform: capitalize;
+    text-align: center;
+
+    .menu-link {
+      color: rgba($primary-font-color, 0.76);
+
+      &:hover {
+        text-decoration: underline;
+        color: rgba($primary-font-color, 0.932);
+      }
+    }
+  }
+}
+
+.show-menu {
+  transform: translateX(0);
+}

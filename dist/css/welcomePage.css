@@ -13,8 +13,8 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  color: white;
-  text-shadow: 3px 3px #000000;
+  color: #f3f3f3;
+  text-shadow: 3px 3px #0f0f0f;
   font-size: 2.5rem;
   font-weight: bolder;
   margin: 20rem auto;
@@ -27,7 +27,7 @@
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    color: white;
+    color: #f3f3f3;
     font-size: 4rem;
     font-weight: bolder;
     margin: 20rem auto;
@@ -44,7 +44,7 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  color: white;
+  color: #f3f3f3;
   font-size: 1.6rem;
   font-weight: bolder;
   -webkit-transition: 0.3s color;
@@ -57,7 +57,7 @@
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    color: white;
+    color: #f3f3f3;
     font-size: 2.3rem;
     font-weight: bolder;
     -webkit-transition: 0.3s color;
@@ -69,15 +69,15 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  color: #ffff;
-  text-shadow: 1px 1px #000000;
+  color: #f3f3f3;
+  text-shadow: 1px 1px #0f0f0f;
   margin: 0 1rem;
   padding: 0 2rem;
 }
 
 .welcomePageHero__links .movies-link:hover {
   background: rgba(196, 10, 10, 0.322);
-  border: 1px solid red;
+  border: 1px solid #c40a0a;
   border-radius: 15px;
 }
 
@@ -90,18 +90,18 @@
   display: -ms-flexbox;
   display: flex;
   color: #c40a0a;
-  text-shadow: 1px 1px #000000;
+  text-shadow: 1px 1px #0f0f0f;
   margin: 0 1rem;
   padding: 0 2rem;
 }
 
 .welcomePageHero__links .tv-shows-link:hover {
   background: rgba(255, 255, 255, 0.322);
-  border: 1px solid #ffff;
+  border: 1px solid #f3f3f3;
   border-radius: 15px;
 }
 
 .welcomePageHero__links .tv-shows-link div:hover {
-  color: #ffff;
+  color: #f3f3f3;
 }
 /*# sourceMappingURL=welcomePage.css.map */

@@ -10,22 +10,22 @@
 
   &__welcome-text-holder {
     display: flex;
-    color: white;
-    text-shadow: 3px 3px #000000;
+    color: $primary-font-color;
+    text-shadow: 3px 3px $secondary-brand-color;
     font-size: 2.5rem;
     font-weight: bolder;
     margin: 20rem auto;
     transition: 0.3s color;
     @include screen-size("medium-size-screen") {
       display: flex;
-      color: white;
+      color: $primary-font-color;
       font-size: 4rem;
       font-weight: bolder;
       margin: 20rem auto;
       transition: 0.3s color;
 
       &:hover {
-        color: rgb(196, 10, 10);
+        color: $primary-brand-color;
       }
     }
   }
@@ -33,14 +33,14 @@
   &__links {
     margin-top: -20rem;
     display: flex;
-    color: white;
+    color: $primary-font-color;
     font-size: 1.6rem;
     font-weight: bolder;
     transition: 0.3s color;
     @include screen-size("medium-size-screen") {
       margin-top: -30rem;
       display: flex;
-      color: white;
+      color: $primary-font-color;
       font-size: 2.3rem;
       font-weight: bolder;
       transition: 0.3s color;
@@ -48,40 +48,40 @@
 
     .movies-link {
       display: flex;
-      color: #ffff;
-      text-shadow: 1px 1px #000000;
+      color: $primary-font-color;
+      text-shadow: 1px 1px $secondary-brand-color;
       margin: 0 1rem;
       padding: 0 2rem;
 
       &:hover {
         background: rgba(196, 10, 10, 0.322);
-        border: 1px solid rgb(255, 0, 0);
+        border: 1px solid $primary-brand-color;
         border-radius: 15px;
       }
 
       div {
         &:hover {
-          color: rgb(196, 10, 10);
+          color: $primary-brand-color;
         }
       }
     }
 
     .tv-shows-link {
       display: flex;
-      color: rgb(196, 10, 10);
-      text-shadow: 1px 1px #000000;
+      color: $primary-brand-color;
+      text-shadow: 1px 1px $secondary-brand-color;
       margin: 0 1rem;
       padding: 0 2rem;
 
       &:hover {
         background: rgba(255, 255, 255, 0.322);
-        border: 1px solid #ffff;
+        border: 1px solid $primary-font-color;
         border-radius: 15px;
       }
 
       div {
         &:hover {
-          color: #ffff;
+          color: $primary-font-color;
         }
       }
     }

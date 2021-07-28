@@ -1,0 +1,120 @@
+@import "../../scss/_mixins", "../../scss/_variables";
+
+.mainFooter {
+  background: $secondary-brand-color;
+  color: $primary-font-color;
+  font-size: 0.9rem;
+  padding: 1rem;
+  border-top: 1px solid $secondary-font-color;
+  @include screen-size("medium-size-screen") {
+    display: grid;
+    padding-left: 8rem;
+    padding-right: 8rem;
+    grid-template-columns: 1fr 1fr;
+  }
+  @include screen-size("above-1400px") {
+    padding: 2rem 18rem;
+  }
+
+  &__mainFooterTop {
+    header {
+      font-size: 1rem;
+      margin-bottom: 2rem;
+
+      .header-title-footer {
+        color: $primary-font-color;
+        font-size: 2rem;
+        font-weight: bold;
+        letter-spacing: 0.4rem;
+        text-transform: uppercase;
+      }
+
+      .title-description-footer {
+        color: $tertiary-font-color;
+        margin-top: 0;
+        margin-bottom: 1rem;
+        text-transform: capitalize;
+      }
+    }
+
+    .item {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      @include screen-size("above-1400px") {
+        width: 400px;
+      }
+
+      &__footer-title {
+        padding: 0.2rem 0;
+        color: $secondary-font-color;
+        font-size: 0.9rem;
+        text-transform: capitalize;
+        font-weight: normal;
+      }
+
+      .mainproject {
+        text-transform: capitalize;
+        color: $tertiary-font-color;
+
+        &:hover {
+          color: $primary-font-color;
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .myPage {
+      color: blue;
+      font-size: 0.9rem;
+      margin-left: 0.5rem;
+      font-weight: bold;
+    }
+
+    .copyRights {
+      color: rgba($tertiary-font-color, 0.7);
+      line-height: 1.5rem;
+      margin-top: 2rem;
+      margin-bottom: 0;
+
+      a {
+        color: $primary-font-color;
+        font-weight: bold;
+      }
+    }
+  }
+
+  &__bottom-footer {
+    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 2rem;
+
+    @include screen-size("medium-size-screen") {
+      grid-template-columns: 1fr;
+      justify-items: right;
+    }
+
+    .section-two {
+      text-align: right;
+      @include screen-size("medium-size-screen") {
+        align-self: flex-end;
+      }
+    }
+  }
+}
+
+.social-icon {
+  color: $primary-font-color;
+  font-size: 2.5rem;
+  border-radius: 50%;
+  fill: $primary-font-color;
+  height: auto;
+  margin: 0 10px;
+  padding: 5px;
+  width: 30px;
+  transition: all 0.5s linear;
+
+  &:hover {
+    color: rgb(185, 64, 165);
+  }
+}

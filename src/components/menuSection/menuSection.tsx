@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import "./menuSection.css";
+import React from "react";
+import "./menuSection.scss";
 
 import Backdrop from "../UI/backdrop/backdropHelper";
 
@@ -16,7 +16,7 @@ import { RootStore } from "../../store/store";
 
 import { useAlert } from "react-alert";
 
-const MenuSection: React.FC = (props) => {
+const MenuSection: React.FC = () => {
   const location = useLocation();
   const alert = useAlert();
   const dispatch = useDispatch();
@@ -47,19 +47,19 @@ const MenuSection: React.FC = (props) => {
   };
 
   return (
-    <div className="menu-holder">
+    <React.Fragment>
       <Backdrop />
       <div
         className={
           menuSectionState.show ? "menu-section show-menu" : "menu-section"
         }
       >
-        <div className="close-btn-section">
+        <div className="menu-section__close-btn-section">
           <div className="times-btn-holder" onClick={menuSectionHandler}>
             <FontAwesomeIcon icon={faTimes} />
           </div>
         </div>
-        <ul className="list-of-links">
+        <ul className="menu-section__list-of-links">
           <li onClick={menuSectionHandler}>
             <NavLink className="menu-link" to="/home">
               home
@@ -120,7 +120,7 @@ const MenuSection: React.FC = (props) => {
           )}
         </ul>
       </div>
-    </div>
+    </React.Fragment>
   );
 };
 

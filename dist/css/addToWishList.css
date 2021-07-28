@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@200;300;400;500;700&display=swap");
 .watch-later-icon {
   position: absolute;
   top: 0;
@@ -6,7 +7,7 @@
   background: rgba(56, 56, 56, 0.541);
   -webkit-clip-path: polygon(100% 0, 100% 99%, 49% 78%, 0% 100%, 0 48%, 0% 0%);
           clip-path: polygon(100% 0, 100% 99%, 49% 78%, 0% 100%, 0 48%, 0% 0%);
-  border: 1px solid rgba(180, 180, 180, 0.8);
+  border: 1px solid rgba(204, 204, 204, 0.8);
   -webkit-transition: ease 0.5s;
   transition: ease 0.5s;
   cursor: pointer;
@@ -46,7 +47,7 @@
 
 /* this is for the details page icon */
 .watch-later-details-page {
-  background: rgba(56, 56, 56, 0.541);
+  background: rgba(15, 15, 15, 0.541);
   text-align: center;
   width: 150px;
   border-radius: 5px;

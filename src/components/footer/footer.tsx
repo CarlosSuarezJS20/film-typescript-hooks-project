@@ -1,5 +1,5 @@
 import React from "react";
-import "./footer.css";
+import "./footer.scss";
 import Logo from "../UI/logo/logo";
 
 import TMDBLogo from "./images/TMDBLogo.svg";
@@ -10,7 +10,7 @@ import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 const MainFooter = () => {
   return (
     <footer className="mainFooter">
-      <section className="mainFooterTop">
+      <section className="mainFooter__mainFooterTop">
         <header>
           <h2 className="header-title-footer">Living Room</h2>
           <p className="title-description-footer">
@@ -33,7 +33,7 @@ const MainFooter = () => {
         </div>
 
         <div className="item">
-          <h3 className="footerTitle">phone number:</h3>
+          <h3 className="item__footer-title">phone number:</h3>
           <p>+44 79 038 30 468</p>
         </div>
         <p className="copyRights">
@@ -50,23 +50,23 @@ const MainFooter = () => {
         </p>
       </section>
 
-      <section className="bottomFooter">
+      <section className="mainFooter__bottom-footer">
         <Logo />
 
-        <div className="sectionTwo">
+        <div className="section-two">
           <a
             href="https://www.linkedin.com/in/carlos-suarez-a3659141/"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <FontAwesomeIcon className="socialIcon" icon={faLinkedin} />
+            <FontAwesomeIcon className="social-icon" icon={faLinkedin} />
           </a>
           <a
             href="https://github.com/CarlosSuarezJS20"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <FontAwesomeIcon className="socialIcon" icon={faGithub} />
+            <FontAwesomeIcon className="social-icon" icon={faGithub} />
           </a>
           <a
             href="https://www.themoviedb.org/documentation/api"
