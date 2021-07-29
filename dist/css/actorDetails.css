@@ -1,0 +1,125 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@200;300;400;500;700&display=swap");
+.actor-page {
+  background: #f3f3f3;
+  height: 100;
+}
+
+.actor-page__back-page-section {
+  margin: 2rem 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  font-size: 1.5rem;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+
+.actor-page__back-page-section span {
+  padding: 0 0.4rem;
+}
+
+.actor-page__back-page-section .back-arrow:hover {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.actor-page__actor-details-main {
+  max-width: 80%;
+  margin: 2rem auto;
+}
+
+.actor-page__actor-details-main .actor-header {
+  padding: 1rem;
+  border: 1px solid #0f0f0f;
+  border-radius: 5px;
+}
+
+.actor-page__actor-details-main .actor-header__details-holder {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-line-pack: justify;
+      align-content: space-between;
+}
+
+.actor-page__actor-details-main .actor-header__details-holder .actor-details-holder {
+  width: 15%;
+  margin: 1.5rem;
+}
+
+.actor-page__actor-details-main .actor-header__details-holder .actor-details-holder img {
+  border-radius: 5px;
+}
+
+.actor-page__actor-details-main .actor-header__details-holder .actor-details-holder .name-holder {
+  margin-bottom: 0.5rem;
+  color: #0f0f0f;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+@media (min-width: 680px) {
+  .actor-page__actor-details-main .actor-header__details-holder .actor-details-holder .name-holder {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 780px) {
+  .actor-page__actor-details-main .actor-header__details-holder .actor-details-holder .name-holder {
+    font-size: 1.3rem;
+  }
+}
+
+.actor-page__actor-details-main .actor-header__details-holder .actor-latest-movie-holder {
+  width: 85%;
+}
+
+.actor-page__actor-details-main .actor-header__bio-section {
+  margin: 2rem 0.5rem;
+  font-size: 1.2rem;
+}
+
+.actor-page__actor-details-main .actor-header__bio-section .actor-birth-details {
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+.actor-page__actor-details-main .actor-header__bio-section .actor-birth-details__date-and-place {
+  font-weight: 400;
+}
+
+.actor-page__actor-details-main .credits-list {
+  width: 100;
+  margin: 1rem auto;
+  border: 1px solid rgba(63, 63, 63, 0.24);
+  border-radius: 5px;
+}
+
+.actor-page__actor-details-main .credits-list__credit-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 1rem 0.5rem;
+}
+
+.actor-page__actor-details-main .credits-list__credit-item .credit-image {
+  width: 80px;
+}
+
+.actor-page__actor-details-main .credits-list__credit-item:hover {
+  background: #ccc;
+}
+/*# sourceMappingURL=actorDetails.css.map */

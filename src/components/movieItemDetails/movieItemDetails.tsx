@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./movieItemDetails.css";
+import "./movieItemDetails.scss";
 import { useSelector, useDispatch } from "react-redux";
 
 import MainNavigation from "../mainNavigation/mainNavigation";
@@ -107,11 +107,11 @@ const MovieDetails: React.FC = () => {
       <MainNavigation />
       {getMoviesDetailsState.movieDetails! && (
         <React.Fragment>
-          <div className="item-hero-section">
+          <div className="movie-main-container__item-hero-section">
             <div className="share-and-nav-icons">
               <FontAwesomeIcon
                 icon={faChevronCircleLeft}
-                className="back-page-icon"
+                className="share-and-nav-icons__back-page-icon"
                 onClick={() => {
                   if (sharing) {
                     onSharingHandler();
@@ -121,7 +121,7 @@ const MovieDetails: React.FC = () => {
               />
               <FontAwesomeIcon
                 icon={faShareAlt}
-                className="share-icon"
+                className="share-and-nav-icons__share-icon"
                 onClick={onSharingHandler}
               />
             </div>
@@ -134,21 +134,37 @@ const MovieDetails: React.FC = () => {
             >
               <FontAwesomeIcon
                 icon={faFacebook}
-                className={sharing ? "facebook display-icons " : "facebook"}
+                className={
+                  sharing
+                    ? "sharing-icons-holder__facebook sharing-icons-holder__display-icons "
+                    : "sharing-icons-holder__facebook"
+                }
               />
 
               <FontAwesomeIcon
                 icon={faInstagram}
-                className={sharing ? "instagram display-icons " : "instagram"}
+                className={
+                  sharing
+                    ? "sharing-icons-holder__instagram sharing-icons-holder__display-icons "
+                    : "sharing-icons-holder__instagram"
+                }
               />
 
               <FontAwesomeIcon
                 icon={faLinkedin}
-                className={sharing ? "linkedin display-icons " : "linkedin"}
+                className={
+                  sharing
+                    ? "sharing-icons-holder__linkedin sharing-icons-holder__display-icons "
+                    : "sharing-icons-holder__linkedin"
+                }
               />
               <FontAwesomeIcon
                 icon={faGithub}
-                className={sharing ? "github display-icons " : "github"}
+                className={
+                  sharing
+                    ? "sharing-icons-holder__github sharing-icons-holder__display-icons "
+                    : "sharing-icons-holder__github"
+                }
               />
             </div>
             <div className="gradient"></div>
@@ -170,10 +186,9 @@ const MovieDetails: React.FC = () => {
                 <h2>Not poster available</h2>
               </div>
             )}
-            <div className="back-and-share-container"></div>
             <div className="single-item-details">
               <img
-                className="single-item-details-image"
+                className="single-item-details__image"
                 src={`${
                   mDBConfigState.payload?.images &&
                   mDBConfigState.payload.images.secure_base_url
@@ -183,14 +198,14 @@ const MovieDetails: React.FC = () => {
                 }${getMoviesDetailsState.movieDetails!.poster_path}`}
                 alt="i"
               />
-              <div className="single-item-description">
+              <div className="single-item-details__description">
                 <div className="single-item-title">
                   <h2>{getMoviesDetailsState.movieDetails!.title}</h2>
                   <div className="single-item-rating">
                     <p>{getMoviesDetailsState.movieDetails!.vote_average}</p>
                     <FontAwesomeIcon
                       icon={faStar}
-                      className="single-star-rating"
+                      className="single-item-rating__star"
                     />
                   </div>
                   <p>
@@ -206,7 +221,7 @@ const MovieDetails: React.FC = () => {
               </div>
             </div>
           </div>
-          <div className="single-item-overview">
+          <div className="movie-main-container__single-item-overview">
             <div className="plot-title">
               <h2> Plot Summary</h2>
               <AddToWishlist
@@ -219,7 +234,7 @@ const MovieDetails: React.FC = () => {
               <p>{getMoviesDetailsState.movieDetails!.overview}</p>
             </div>
           </div>
-          <div className="cast-carousel-holder">
+          <div className="movie-main-container__cast-carousel-holder">
             <div className="cast-title-holder">
               <h2>Cast</h2>
             </div>

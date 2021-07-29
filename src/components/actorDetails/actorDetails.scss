@@ -1,0 +1,108 @@
+@import "../../scss/_mixins", "../../scss/_variables";
+
+.actor-page {
+  background: $primary-font-color;
+  height: 100;
+
+  &__back-page-section {
+    margin: 2rem 2rem;
+    display: flex;
+    justify-content: flex-end;
+    font-size: 1.5rem;
+    text-transform: capitalize;
+    cursor: pointer;
+
+    span {
+      padding: 0 0.4rem;
+    }
+
+    .back-arrow {
+      &:hover {
+        font-weight: bold;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &__actor-details-main {
+    max-width: 80%;
+    margin: 2rem auto;
+
+    .actor-header {
+      padding: 1rem;
+      border: 1px solid $forth-font-color;
+      border-radius: 5px;
+
+      &__details-holder {
+        display: flex;
+        align-items: center;
+        align-content: space-between;
+
+        .actor-details-holder {
+          width: 15%;
+          margin: 1.5rem;
+
+          img {
+            border-radius: 5px;
+          }
+
+          .name-holder {
+            margin-bottom: 0.5rem;
+            color: $forth-font-color;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-align: center;
+
+            @include screen-size("large-screen") {
+              font-size: 1rem;
+            }
+
+            @include screen-size("above-780px") {
+              font-size: 1.3rem;
+            }
+          }
+        }
+
+        .actor-latest-movie-holder {
+          width: 85%;
+        }
+      }
+
+      &__bio-section {
+        margin: 2rem 0.5rem;
+        font-size: 1.2rem;
+
+        .actor-birth-details {
+          margin-top: 1rem;
+          font-weight: bold;
+
+          &__date-and-place {
+            font-weight: 400;
+          }
+        }
+      }
+    }
+
+    .credits-list {
+      width: 100;
+      margin: 1rem auto;
+      border: 1px solid rgba(63, 63, 63, 0.24);
+      border-radius: 5px;
+
+      &__credit-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 0.5rem;
+
+        .credit-image {
+          width: 80px;
+        }
+
+        &:hover {
+          background: $tertiary-font-color;
+        }
+      }
+    }
+  }
+}

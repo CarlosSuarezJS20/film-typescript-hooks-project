@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import "./home.css";
+import "./home.scss";
 
 import NavigationBar from "../mainNavigation/mainNavigation";
 import HomeHeader from "../homeHeader/homeHeader";
@@ -192,7 +192,7 @@ const Home: React.FC = () => {
     <div className="home-container" onClick={resetsUserSearchHandler}>
       <NavigationBar />
       <HomeHeader />
-      <div className="watchlist-display-section">
+      <div className="home-container__watchlist-display-section">
         {!authenticationState.authToken ? (
           <div
             className="title-container"
@@ -226,7 +226,7 @@ const Home: React.FC = () => {
       </div>
       {userTypeOfSearchState.userSearchType === "tv-shows" && (
         <React.Fragment>
-          <div className="tv-shows-carousels-holder">
+          <div className="home-container__tv-shows-carousels-holder">
             <div>
               <div className="main-carousel-title">
                 <h2>On the air tonight</h2>
@@ -261,19 +261,18 @@ const Home: React.FC = () => {
         </React.Fragment>
       )}
       {userTypeOfSearchState.userSearchType === "movies" && (
-        <div className="movies-carousels-holder">
-          <div>
-            <div className="main-carousel-title">
-              <h2>Popular movies</h2>
-              <p>Selected by our visitors. Get inspired!</p>
-            </div>
-            <MainCarousel
-              items={
-                popularMoviesReqState.popularMoviesResponseMbd! &&
-                popularMoviesReqState.popularMoviesResponseMbd!.results
-              }
-            />
+        <div className="home-container__movies-carousels-holder">
+          <div className="main-carousel-title">
+            <h2>Popular movies</h2>
+            <p>Selected by our visitors. Get inspired!</p>
           </div>
+          <MainCarousel
+            items={
+              popularMoviesReqState.popularMoviesResponseMbd! &&
+              popularMoviesReqState.popularMoviesResponseMbd!.results
+            }
+          />
+
           <LatestItemDisplayer
             item={
               latestMovieReqState.latestMovieResult! &&

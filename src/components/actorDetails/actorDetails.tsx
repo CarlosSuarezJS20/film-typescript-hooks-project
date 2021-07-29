@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import "./actorDetails.css";
+import "./actorDetails.scss";
 
 import Navbar from "../mainNavigation/mainNavigation";
 import Footer from "../footer/footer";
@@ -72,21 +72,19 @@ const ActorMainDetails: React.FC = () => {
       }}
     >
       <Navbar />
-      <div className="back-page-section">
-        <div>
-          <p onClick={gobackToPreviousPage}>
-            <span>
-              <FontAwesomeIcon icon={faChevronLeft} />
-            </span>
-            back
-          </p>
-        </div>
+      <div className="actor-page__back-page-section">
+        <p className="back-arrow" onClick={gobackToPreviousPage}>
+          <span>
+            <FontAwesomeIcon icon={faChevronLeft} />
+          </span>
+          back
+        </p>
       </div>
-      <div className="actor-details-main">
+      <div className="actor-page__actor-details-main">
         {actorDetailReqState.actorDetails &&
           actorCombinedCreditsReqState.combinedCredits && (
             <header className="actor-header">
-              <div className="details-holder">
+              <div className="actor-header__details-holder">
                 <div className="actor-details-holder">
                   <img
                     src={`${
@@ -124,11 +122,11 @@ const ActorMainDetails: React.FC = () => {
                   )}
                 </div>
               </div>
-              <div className="bio-section">
+              <div className="actor-header__bio-section">
                 <p>{actorDetailReqState.actorDetails.biography}</p>
                 <p className="actor-birth-details">
                   Born:
-                  <span className="date-and-place">{`${actorDetailReqState.actorDetails.birthday} in ${actorDetailReqState.actorDetails.place_of_birth}`}</span>
+                  <span className="actor-birth-details__date-and-place">{`${actorDetailReqState.actorDetails.birthday} in ${actorDetailReqState.actorDetails.place_of_birth}`}</span>
                 </p>
               </div>
             </header>
@@ -155,7 +153,7 @@ const ActorMainDetails: React.FC = () => {
                         state: { itemId: credit.id },
                       }}
                     >
-                      <div className="credit-item">
+                      <div className="credits-list__credit-item">
                         <div className="credit-image">
                           <img
                             src={`${

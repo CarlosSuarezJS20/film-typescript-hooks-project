@@ -1,7 +1,7 @@
 @import "../../scss/_variables";
 
 .latest-item-main-area {
-  background: rgb(20, 20, 20);
+  background: $forth-font-color;
   margin: 3rem auto;
   padding: 1.5rem 1rem;
   max-width: 1280px;
@@ -11,12 +11,12 @@
     margin: 1rem 0;
     padding: 0 2rem;
     font-size: 1.5rem;
-    color: rgb(228, 186, 0);
+    color: $secondary-font-color;
 
     p {
       font-size: 1rem;
       font-weight: bold;
-      color: rgb(214, 214, 214);
+      color: $primary-font-color;
     }
   }
 
@@ -28,7 +28,7 @@
       border: 1px solid rgba(250, 250, 250, 0.61);
 
       &:hover {
-        border: 2px solid rgb(250, 250, 250);
+        border: 2px solid $primary-font-color;
       }
 
       &__no-image-found {
@@ -50,12 +50,12 @@
         padding: 2rem;
 
         h2 {
-          color: rgb(228, 186, 0);
+          color: $secondary-font-color;
           font-size: 1.5rem;
         }
 
         p {
-          color: rgb(214, 214, 214);
+          color: $primary-font-color;
           font-size: 1rem;
           font-weight: bold;
         }
@@ -82,15 +82,15 @@
         width: 100%;
         height: 90px;
         top: 74%;
-        background: rgb(17, 17, 17);
+        background: $forth-font-color;
         background: linear-gradient(
           0deg,
-          rgba(17, 17, 17, 1) 46%,
+          rgba($forth-font-color, 1) 46%,
           rgba(255, 255, 255, 0.027220911949685567) 100%
         );
 
         h2 {
-          color: rgb(228, 186, 0);
+          color: $secondary-font-color;
           font-size: 1.5rem;
         }
 
