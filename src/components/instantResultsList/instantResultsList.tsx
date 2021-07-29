@@ -1,5 +1,5 @@
 import React from "react";
-import "./instantResultsList.css";
+import "./instantResultsList.scss";
 
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -56,7 +56,11 @@ const InstantResultsList: React.FC<PropsIntantR> = ({ closeSearchInput }) => {
             if (index >= 0 && index < 5) {
               return (
                 // closeSearchInput function removed the search-input if on mobile version. if the user searches for another item
-                <li key={index} className="result" onClick={closeSearchInput}>
+                <li
+                  key={index}
+                  className="results-list__result"
+                  onClick={closeSearchInput}
+                >
                   <NavLink
                     to={{
                       pathname: `${
@@ -69,7 +73,7 @@ const InstantResultsList: React.FC<PropsIntantR> = ({ closeSearchInput }) => {
                     className="result-link"
                   >
                     <div className="result-link">
-                      <div className="img-holder">
+                      <div className="result-link__img-holder">
                         <img
                           src={
                             result.poster_path
@@ -83,7 +87,7 @@ const InstantResultsList: React.FC<PropsIntantR> = ({ closeSearchInput }) => {
                           alt="poster"
                         />
                       </div>
-                      <div className="result-details">
+                      <div className="result-link__result-details">
                         {result.title ? (
                           <h3 className="title" id="title">
                             {result.title}
