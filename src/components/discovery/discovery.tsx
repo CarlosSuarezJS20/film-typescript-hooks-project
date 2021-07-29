@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./discovery.css";
+import "./discovery.scss";
 
 import MainNavigation from "../mainNavigation/mainNavigation";
 import InformationLoader from "../UI/informationLoader/informationLoader";
@@ -172,16 +172,18 @@ const Discovery: React.FC = () => {
         }}
       >
         <MainNavigation />
-        <header className="form-section">
+        <header className="discovery__form-section">
           <div className="discover-back-to-home">
             <p
-              className="back-page"
+              className="discover-back-to-home__back-page"
               onClick={() => {
                 history.goBack();
               }}
             >
               <FontAwesomeIcon icon={faChevronLeft} />
-              <span className="discovery-back">back</span>
+              <span className="discover-back-to-home__discovery-back">
+                back
+              </span>
             </p>
           </div>
           <h1>{`Discover ${
@@ -189,7 +191,7 @@ const Discovery: React.FC = () => {
           }`}</h1>
           <hr className="title-highlighter" />
           <form className="discover-form" method="GET" action="/">
-            <div className="filters">
+            <div className="discover-form__filters">
               <select
                 className="filter-discover"
                 name="sort_by"
@@ -256,8 +258,8 @@ const Discovery: React.FC = () => {
             getDiscoverRequestState.loading ||
             (getDiscoverRequestState.response?.results &&
               getDiscoverRequestState.response?.results.length === 0)
-              ? "discovery-no-items-holder"
-              : "discovery-results-holder"
+              ? "discovery__no-items-holder"
+              : "discovery__results-holder"
           }
         >
           {getDiscoverRequestState.loading ? (
@@ -272,7 +274,7 @@ const Discovery: React.FC = () => {
               }
               return (
                 // closeSearchInput function removed the search-input if on mobile version. if the user searches for another item
-                <div key={index} className="discovery-result-page-item">
+                <div key={index} className="discovery-result">
                   <AddToWishlist
                     location="results"
                     itemId={result.id}
@@ -287,46 +289,38 @@ const Discovery: React.FC = () => {
                       pathname: `/details/movie/${result.title}`,
                       state: { itemId: result.id },
                     }}
-                    className="discovery-results-result-link"
+                    className="discovery-result__link"
                   >
-                    <div className="discovery-results-result-link">
-                      <div className="discovery-img-holder-results-page">
-                        <img
-                          className="discovery-img"
-                          src={
-                            result.poster_path
-                              ? mDBConfigState.payload!.images.secure_base_url +
-                                mDBConfigState.payload!.images.poster_sizes[6] +
-                                result.poster_path
-                              : ""
-                          }
-                          alt="poster"
-                        />
-                      </div>
-                      <div className="discovery-results-page-result-details">
-                        {result.title ? (
-                          <h3 className="discovery-title" id="title">
-                            {result.title}
-                          </h3>
-                        ) : result.name ? (
-                          <h3 className="discovery-title" id="title">
-                            {result.name}
-                          </h3>
-                        ) : (
-                          <h3 className="discovery-title" id="title">
-                            Title N/A
-                          </h3>
-                        )}
-                        <h3>{`Release date: ${
-                          result.release_date ? result.release_date : "N/A"
-                        }`}</h3>
-                        {result.genre_ids.length > 0 ? (
-                          addsGenre(result.genre_ids)
-                        ) : (
-                          <p>No genres found</p>
-                        )}
-                        <p>{result.vote_average}</p>
-                      </div>
+                    <div className="discovery-img-holder-results-page">
+                      <img
+                        className="discovery-img"
+                        src={
+                          result.poster_path
+                            ? mDBConfigState.payload!.images.secure_base_url +
+                              mDBConfigState.payload!.images.poster_sizes[6] +
+                              result.poster_path
+                            : ""
+                        }
+                        alt="poster"
+                      />
+                    </div>
+                    <div className="discovery-results-page-result-details">
+                      {result.title ? (
+                        <h3 id="title">{result.title}</h3>
+                      ) : result.name ? (
+                        <h3 id="title">{result.name}</h3>
+                      ) : (
+                        <h3 id="title">Title N/A</h3>
+                      )}
+                      <h3>{`Release date: ${
+                        result.release_date ? result.release_date : "N/A"
+                      }`}</h3>
+                      {result.genre_ids.length > 0 ? (
+                        addsGenre(result.genre_ids)
+                      ) : (
+                        <p>No genres found</p>
+                      )}
+                      <p>{result.vote_average}</p>
                     </div>
                   </NavLink>
                 </div>

@@ -1,5 +1,5 @@
 import React from "react";
-import "./latestItem.css";
+import "./latestItem.scss";
 
 // Slick library styling
 import "slick-carousel/slick/slick.css";
@@ -69,7 +69,7 @@ const LatestItemDisplayer: React.FC<PropsMaincarousel> = ({ item }) => {
     <React.Fragment>
       {item && (
         <div className="latest-item-main-area">
-          <div className="latest-item-title-holder">
+          <div className="latest-item-main-area__item-title-holder">
             <h2>
               {`Latest ${
                 typeOfSearchState.userSearchType === "tv-shows"
@@ -80,7 +80,7 @@ const LatestItemDisplayer: React.FC<PropsMaincarousel> = ({ item }) => {
             <p>Here is our latest addition, check it out!</p>
           </div>
           <NavLink
-            className="latest-item-holder"
+            className="latest-item-main-area__item-holder"
             to={{
               pathname:
                 typeOfSearchState.userSearchType === "tv-shows"
@@ -91,11 +91,11 @@ const LatestItemDisplayer: React.FC<PropsMaincarousel> = ({ item }) => {
           >
             {item.backdrop_path === null ? (
               <div className="not-image-latest-item-holder">
-                <div className="no-image-found">
+                <div className="not-image-latest-item-holder__no-image-found">
                   <p>No image found</p>
                   <FontAwesomeIcon icon={faSadCry} className="cry-face" />
                 </div>
-                <div className="latest-item-description-with-noimage">
+                <div className="not-image-latest-item-holder__latest-item-description-with-no-image">
                   <h2>
                     {typeOfSearchState.userSearchType === "tv-shows"
                       ? `${item.name}`
@@ -117,7 +117,7 @@ const LatestItemDisplayer: React.FC<PropsMaincarousel> = ({ item }) => {
                   }${item.backdrop_path}`}
                   alt="single-item-img"
                 />
-                <div className="latest-item-description">
+                <div className="lastest-item-info__description">
                   <h2>
                     {typeOfSearchState.userSearchType === "tv-shows"
                       ? `${item.name}`
