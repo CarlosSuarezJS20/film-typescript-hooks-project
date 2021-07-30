@@ -1,5 +1,5 @@
 import React from "react";
-import "./mainCarousel.css";
+import "./mainCarousel.scss";
 
 // Slick library styling
 import "slick-carousel/slick/slick.css";
@@ -118,13 +118,16 @@ const MainCarousel: React.FC<PropsMaincarousel> = ({ items }) => {
 
   return (
     <div className="home-page-carousel-holder">
-      <Slick className="main-carousel" {...slickSettings}>
+      <Slick
+        className="home-page-carousel-holder__main-carousel"
+        {...slickSettings}
+      >
         {items &&
           items.map((item, index) => {
             // request images
             return (
               <div key={index} className="item-holder">
-                <div className="item-image-container">
+                <div className="item-holder__item-image-container">
                   <NavLink
                     to={{
                       pathname:
@@ -155,9 +158,12 @@ const MainCarousel: React.FC<PropsMaincarousel> = ({ items }) => {
                     }
                   />
                 </div>
-                <div className="item-description-slide">
+                <div className="item-holder__item-description-slide">
                   <div className="item-rating">
-                    <FontAwesomeIcon icon={faStar} className="star" />
+                    <FontAwesomeIcon
+                      icon={faStar}
+                      className="item-rating__star"
+                    />
                     <p>{item.vote_average}</p>
                   </div>
                   <NavLink

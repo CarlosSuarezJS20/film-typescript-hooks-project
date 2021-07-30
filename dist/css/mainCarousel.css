@@ -1,0 +1,103 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@200;300;400;500;700&display=swap");
+.home-page-carousel-holder {
+  width: 90%;
+  margin: 3rem auto;
+}
+
+.home-page-carousel-holder__main-carousel {
+  background: rgba(15, 15, 15, 0.521);
+}
+
+.home-page-carousel-holder__main-carousel .item-holder {
+  background: #1d1d1d;
+}
+
+.home-page-carousel-holder__main-carousel .item-holder__item-image-container {
+  position: relative;
+}
+
+.home-page-carousel-holder__main-carousel .item-holder__item-image-container .item-img-main-carousel {
+  opacity: 0.7;
+}
+
+.home-page-carousel-holder__main-carousel .item-holder__item-image-container .item-img-main-carousel:hover {
+  opacity: 1;
+}
+
+.home-page-carousel-holder__main-carousel .item-holder__item-description-slide {
+  height: 220px;
+  color: #ccc;
+  text-align: left;
+  padding: 1rem;
+  /* rating */
+}
+
+.home-page-carousel-holder__main-carousel .item-holder__item-description-slide .item-rating {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0.5rem 0;
+  width: 90px;
+}
+
+.home-page-carousel-holder__main-carousel .item-holder__item-description-slide .item-rating__star {
+  color: #e4ba00;
+  font-size: 1.2rem;
+  margin: 0 0.4rem;
+}
+
+.home-page-carousel-holder__main-carousel .item-holder__item-description-slide .item-rating .item-rating p {
+  font-size: 1rem;
+}
+
+.home-page-carousel-holder__main-carousel .item-holder__item-description-slide .item-title-main-carousel {
+  color: #ccc;
+}
+
+.home-page-carousel-holder__main-carousel .item-holder__item-description-slide .item-title-main-carousel:hover {
+  text-decoration: underline;
+}
+
+.home-page-carousel-holder__main-carousel .item-holder__item-description-slide .genres-holder {
+  margin: 0.5rem 0;
+}
+
+/* arrows carousel */
+.next-btn-main-carousel {
+  position: absolute;
+  top: 40%;
+  right: 0;
+  padding: 1rem;
+  font-size: 1.5rem;
+  color: #e4e3e3;
+  background: rgba(22, 22, 22, 0.521);
+  border: 1px solid #e4e3e3;
+  border-radius: 5px;
+  z-index: 100;
+}
+
+.next-btn-main-carousel:hover {
+  border: 1px solid white;
+  background: rgba(255, 255, 255, 0.089);
+  color: #b11e1e;
+}
+
+.prev-btn-main-carousel {
+  position: absolute;
+  top: 40%;
+  left: 0%;
+  padding: 1rem;
+  color: #d8d8d8;
+  background: rgba(22, 22, 22, 0.521);
+  border: 1px solid #e4e3e3;
+  border-radius: 5px;
+  font-size: 1.5rem;
+  z-index: 100;
+}
+
+.prev-btn-main-carousel:hover {
+  border: 1px solid white;
+  background: rgba(255, 255, 255, 0.089);
+  color: #b11e1e;
+}
+/*# sourceMappingURL=mainCarousel.css.map */
