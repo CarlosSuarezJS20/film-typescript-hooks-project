@@ -9,7 +9,7 @@
 }
 
 .home-page-carousel-holder__main-carousel .item-holder {
-  background: #1d1d1d;
+  background: #1a1a1a;
 }
 
 .home-page-carousel-holder__main-carousel .item-holder__item-image-container {
@@ -69,15 +69,15 @@
   right: 0;
   padding: 1rem;
   font-size: 1.5rem;
-  color: #e4e3e3;
-  background: rgba(22, 22, 22, 0.521);
-  border: 1px solid #e4e3e3;
+  color: #f3f3f3;
+  background: rgba(26, 26, 26, 0.521);
+  border: 1px solid #f3f3f3;
   border-radius: 5px;
   z-index: 100;
 }
 
 .next-btn-main-carousel:hover {
-  border: 1px solid white;
+  border: 1px solid #f3f3f3;
   background: rgba(255, 255, 255, 0.089);
   color: #b11e1e;
 }
@@ -89,15 +89,15 @@
   padding: 1rem;
   color: #d8d8d8;
   background: rgba(22, 22, 22, 0.521);
-  border: 1px solid #e4e3e3;
+  border: 1px solid #f3f3f3;
   border-radius: 5px;
   font-size: 1.5rem;
   z-index: 100;
 }
 
 .prev-btn-main-carousel:hover {
-  border: 1px solid white;
+  border: 1px solid #f3f3f3;
   background: rgba(255, 255, 255, 0.089);
-  color: #b11e1e;
+  color: #c40a0a;
 }
 /*# sourceMappingURL=mainCarousel.css.map */

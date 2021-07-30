@@ -1,0 +1,81 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@200;300;400;500;700&display=swap");
+.header-container {
+  min-width: 400px;
+  padding: 1rem 0;
+  background: #141414;
+}
+
+@media (min-width: 990px) {
+  .header-container {
+    margin: 0 auto;
+    max-width: 1280px;
+  }
+}
+
+.header-container__loader-holder-header {
+  height: 100vh;
+}
+
+.header-container__carousels-container {
+  max-width: 1280px;
+  margin: 0rem auto;
+}
+
+@media (min-width: 990px) {
+  .header-container__carousels-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+}
+
+.header-container__carousels-container .first-carousel {
+  position: relative;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.header-container__carousels-container .first-carousel__title {
+  position: absolute;
+  top: 80%;
+  width: 100%;
+  padding: 1rem 0;
+  background: rgba(22, 22, 22, 0.651);
+  z-index: 100;
+}
+
+.header-container__carousels-container .first-carousel__title h2 {
+  color: #e4ba00;
+  font-weight: bold;
+  font-size: 1.5rem;
+  text-transform: capitalize;
+}
+
+.header-container__carousels-container .second-carousel-holder {
+  position: relative;
+  margin: 1.5rem auto;
+  width: 90%;
+  min-width: 400px;
+}
+
+@media (min-width: 990px) {
+  .header-container__carousels-container .second-carousel-holder {
+    width: 350px;
+    margin: 0 auto;
+    margin: 0rem;
+  }
+}
+
+.header-container__carousels-container .second-carousel-holder__second-carousel-title {
+  text-align: left;
+  font-size: 1.3rem;
+  color: #e4ba00;
+  margin: 0.5rem 2rem;
+}
+/*# sourceMappingURL=homeHeader.css.map */

@@ -1,0 +1,239 @@
+@import "../../../scss/_mixins", "../../../scss/_variables";
+
+.loader-holder-header {
+  padding: 10rem;
+}
+
+.carousels-container {
+  max-width: 1280px;
+  margin: 0rem auto;
+  @include screen-size("above-990px") {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.first-carousel {
+  position: relative;
+  @include screen-size("above-990px") {
+    width: 60%;
+  }
+}
+
+.carousel {
+  margin: 0 auto;
+  @include screen-size("above-990px") {
+    width: 600px;
+    margin: 0 auto;
+  }
+
+  &__link {
+    cursor: pointer;
+
+    /* item Description classe */
+
+    .image-and-description-holder {
+      position: relative;
+      opacity: 0.9;
+
+      &:hover {
+        opacity: 1;
+      }
+
+      &__item-img {
+        opacity: 0.7;
+      }
+
+      &__item-description {
+        position: absolute;
+        display: flex;
+        top: 2%;
+        left: 5%;
+        z-index: 100;
+
+        .poster {
+          width: 100px;
+          z-index: 100;
+
+          img {
+            border-radius: 10px;
+            margin: 0.5rem;
+          }
+        }
+
+        .description {
+          text-align: left;
+          font-size: 1.2rem;
+          padding: 1rem;
+          color: rgba($primary-font-color, 0.9);
+        }
+      }
+    }
+  }
+}
+
+.carousel-title {
+  position: absolute;
+  top: 80%;
+  width: 100%;
+  padding: 1rem 0;
+  background: rgba($tertiary-brand-color, 0.651);
+  z-index: 100;
+}
+
+.carousel-title h2 {
+  color: $secondary-font-color;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.5rem;
+  text-transform: capitalize;
+}
+
+.image-holder {
+  z-index: 99;
+}
+
+/* arrows carousel */
+
+.next-btn {
+  position: absolute;
+  top: 40%;
+  right: 0;
+  padding: 1rem;
+  font-size: 1.5rem;
+  color: $primary-font-color;
+  background: rgba($forth-font-color, 0.521);
+  border: 1px solid $primary-font-color;
+  border-radius: 5px;
+  z-index: 100;
+
+  &:hover {
+    border: 1px solid $primary-font-color;
+    background: rgba(255, 255, 255, 0.089);
+    color: $primary-brand-color;
+  }
+}
+
+.prev-btn {
+  position: absolute;
+  top: 40%;
+  left: 0;
+  padding: 1rem;
+  color: rgb(216, 216, 216);
+  background: rgba($tertiary-brand-color, 0.521);
+  border: 1px solid rgb(228, 227, 227);
+  border-radius: 5px;
+  font-size: 1.5rem;
+  z-index: 100;
+  @include screen-size("above-990px") {
+    position: absolute;
+    left: -3%;
+  }
+
+  &:hover {
+    border: 1px solid $primary-font-color;
+    background: rgba(255, 255, 255, 0.089);
+    color: rgb(177, 30, 30);
+  }
+}
+
+/* Second Carousel */
+
+.slick-slider {
+  width: 88%;
+  margin: 0 auto;
+}
+
+.slick-slide {
+  padding: 0 10px;
+  box-sizing: border-box;
+
+  @include screen-size("above-990px") {
+    padding: 5px 10px;
+    box-sizing: border-box;
+  }
+}
+
+.select:hover {
+  background: rgba(255, 255, 255, 0.041);
+}
+
+.carousel-two-img {
+  opacity: 0.7;
+  border-radius: 10px;
+}
+
+/* second carousel */
+.carousel-two-slide {
+  @include screen-size("above-990px") {
+    display: flex;
+    align-items: center;
+  }
+
+  &:hover #image-second-carousel {
+    opacity: 1;
+  }
+}
+
+.carousel-two-image-holder {
+  @include screen-size("above-990px") {
+    width: 35%;
+  }
+}
+
+.carousel-two-description-holder {
+  color: rgba($primary-font-color, 0.9);
+  font-size: 1.1em;
+  margin: 0.5rem;
+  @include screen-size("above-990px") {
+    width: 65%;
+  }
+}
+
+/* Second Carousel btn*/
+
+.second-carousel-up-btn {
+  display: none;
+  @include screen-size("above-990px") {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 40%;
+    padding: 0.5rem 1rem;
+    color: rgb(216, 216, 216);
+    background: rgba($tertiary-brand-color, 0.521);
+    border: 1px solid $primary-font-color;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    z-index: 100;
+
+    &:hover {
+      border: 1px solid $primary-font-color;
+      background: rgba(255, 255, 255, 0.089);
+      color: $primary-brand-color;
+    }
+  }
+}
+
+.second-carousel-next-btn {
+  position: absolute;
+  top: 30%;
+  right: 0;
+  padding: 1rem;
+  font-size: 1.5rem;
+  color: rgb(228, 227, 227);
+  background: rgba(22, 22, 22, 0.521);
+  border: 1px solid rgb(228, 227, 227);
+  border-radius: 5px;
+  z-index: 100;
+  @include screen-size("above-990px") {
+    display: none;
+  }
+
+  &:hover {
+    border: 1px solid white;
+    background: rgba(255, 255, 255, 0.089);
+    color: $primary-brand-color;
+  }
+}

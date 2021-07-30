@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./homeHeader.css";
+import "./homeHeader.scss";
 
 import { FistCarouse, SecondCarousel } from "./homeHeaderCarousels";
 
@@ -121,13 +121,13 @@ const HomeHeader: React.FC = () => {
       airingNowTvShowsPlayingState.loading &&
       upcomingMoviesState.loading &&
       topRatedTvShowsState.loading ? (
-        <div className="loader-holder-header">
+        <div className="header-container__loader-holder-header">
           <InformationLoader />
         </div>
       ) : (
-        <div className="carousels-container">
+        <div className="header-container__carousels-container">
           <div className="first-carousel">
-            <div className="carousel-title">
+            <div className="first-carousel__title">
               <h2>
                 {typeSearchState.userSearchType === "tv-shows"
                   ? "Show airing now!"
@@ -140,7 +140,7 @@ const HomeHeader: React.FC = () => {
             />
           </div>
           <div className="second-carousel-holder">
-            <div className="second-carousel-title">
+            <div className="second-carousel-holder__second-carousel-title">
               <h2>
                 {typeSearchState.userSearchType === "tv-shows"
                   ? "Top rated shows"

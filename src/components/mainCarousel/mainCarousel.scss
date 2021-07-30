@@ -5,10 +5,10 @@
   margin: 3rem auto;
 
   &__main-carousel {
-    background: rgba(15, 15, 15, 0.521);
+    background: rgba($secondary-brand-color, 0.521);
 
     .item-holder {
-      background: rgb(29, 29, 29);
+      background: $tertiary-brand-color;
 
       &__item-image-container {
         position: relative;
@@ -24,7 +24,7 @@
 
       &__item-description-slide {
         height: 220px;
-        color: #ccc;
+        color: $tertiary-font-color;
         text-align: left;
         padding: 1rem;
 
@@ -36,7 +36,7 @@
           width: 90px;
 
           &__star {
-            color: rgb(228, 186, 0);
+            color: $secondary-font-color;
             font-size: 1.2rem;
             margin: 0 0.4rem;
           }
@@ -47,7 +47,7 @@
         }
 
         .item-title-main-carousel {
-          color: #ccc;
+          color: $tertiary-font-color;
 
           &:hover {
             text-decoration: underline;
@@ -70,14 +70,14 @@
   right: 0;
   padding: 1rem;
   font-size: 1.5rem;
-  color: rgb(228, 227, 227);
-  background: rgba(22, 22, 22, 0.521);
-  border: 1px solid rgb(228, 227, 227);
+  color: $primary-font-color;
+  background: rgba($tertiary-brand-color, 0.521);
+  border: 1px solid $primary-font-color;
   border-radius: 5px;
   z-index: 100;
 
   &:hover {
-    border: 1px solid white;
+    border: 1px solid $primary-font-color;
     background: rgba(255, 255, 255, 0.089);
     color: rgb(177, 30, 30);
   }
@@ -90,14 +90,14 @@
   padding: 1rem;
   color: rgb(216, 216, 216);
   background: rgba(22, 22, 22, 0.521);
-  border: 1px solid rgb(228, 227, 227);
+  border: 1px solid $primary-font-color;
   border-radius: 5px;
   font-size: 1.5rem;
   z-index: 100;
 
   &:hover {
-    border: 1px solid white;
+    border: 1px solid $primary-font-color;
     background: rgba(255, 255, 255, 0.089);
-    color: rgb(177, 30, 30);
+    color: $primary-brand-color;
   }
 }

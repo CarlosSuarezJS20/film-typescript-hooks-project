@@ -1,6 +1,6 @@
 import React from "react";
 
-import "./index.css";
+import "./index.scss";
 // Import css files
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -111,6 +111,7 @@ export const FistCarouse: React.FC<FirstCarouselProps> = ({
           // request images
           return (
             <NavLink
+              className="carousel__link"
               key={index}
               to={{
                 pathname:
@@ -122,7 +123,7 @@ export const FistCarouse: React.FC<FirstCarouselProps> = ({
             >
               <div className="image-and-description-holder">
                 <img
-                  className="item-img"
+                  className="image-and-description-holder__item-img"
                   src={`${
                     mDBConfigState.payload?.images &&
                     mDBConfigState.payload.images.secure_base_url
@@ -132,7 +133,7 @@ export const FistCarouse: React.FC<FirstCarouselProps> = ({
                   }${item.backdrop_path}`}
                   alt="carousel-img"
                 />
-                <div className="item-description">
+                <div className="image-and-description-holder__item-description">
                   <div className="poster">
                     <img
                       src={`${
